@@ -39,6 +39,10 @@ export default function Robotic() {
     return () => clearInterval(interval);
   }, [inView]);
 
+  const nextModule = () => {
+    setCurrentIndex(prev => (prev + 1) % moduleData.length);
+  };
+
   return (
     <section
       ref={ref}
@@ -85,11 +89,12 @@ export default function Robotic() {
             {inView && (
             <motion.div
                 key={currentIndex}
+                onClick={nextModule}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="p-6 border border-gray-200 rounded-lg bg-[#DAF6E6] shadow-lg flex flex-col items-center"
+                className="p-6 border-5 border-[#39E0A5] rounded-lg bg-[#DAF6E6] shadow-lg flex flex-col items-center"
                 >
                 {/* Centered Image */}
                 <Image

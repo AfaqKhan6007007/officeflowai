@@ -2,6 +2,7 @@ import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Modules from "@/components/modules";
 import Robotic from "@/components/Robotic";
+import Samples from "@/components/Samples";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,6 +22,9 @@ export default function Home() {
 
         {/* Robotic Section */}
         <Robotic />
+
+        {/* Samples Section */}
+        <Samples />
     </div>
   );
 }
