@@ -1,6 +1,7 @@
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Modules from "@/components/modules";
+import Projects from "@/components/Projects";
 import Robotic from "@/components/Robotic";
 import Samples from "@/components/Samples";
 import Image from "next/image";
@@ -25,6 +26,9 @@ export default function Home() {
 
         {/* Samples Section */}
         <Samples />
+
+        {/* Projects Section */}
+        <Projects />
     </div>
   );
 }

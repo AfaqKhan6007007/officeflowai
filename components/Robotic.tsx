@@ -12,7 +12,7 @@ const cards = [
   { title: "Secure by Design" },
   { title: "Seamless Integrations" },
 ];
-const cardOffsets = [180, 160, 8, -20, 140];
+const cardOffsets = [10, 0, -200, -180, -100];
 
 const moduleData = [
   { title: "Always On, Always Productive", src: "/clock.png", desc: "No delays. No office hours.", features: ["Your AI employee works 24/7, helping teams move faster and smarter"] },
@@ -84,7 +84,7 @@ export default function Robotic() {
 
         
         {/* Modules — one at a time in front of cards */}
-        <div className="absolute left-120 transform -translate-x-1/2 top-40 z-30 w-[600px]">
+        <div className="absolute left-80 transform -translate-x-1/2 top-40 z-30 w-[400px]">
         <AnimatePresence mode="wait">
             {inView && (
             <motion.div
