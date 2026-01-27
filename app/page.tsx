@@ -1,6 +1,7 @@
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Modules from "@/components/modules";
+import Robotic from "@/components/Robotic";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,6 +18,9 @@ export default function Home() {
 
         {/* Modules Section */}
         <Modules />
+
+        {/* Robotic Section */}
+        <Robotic />
     </div>
   );
 }
