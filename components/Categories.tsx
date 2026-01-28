@@ -45,48 +45,43 @@ export default function Categories() {
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           className="w-80 h-48 bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col p-6 z-10 relative"
         >
-          <div className="bg-emerald-50 text-emerald-600 text-[10px] tracking-widest font-bold px-3 py-1 rounded-full self-center mb-6 border border-emerald-100 uppercase">
+          <div className="bg-emerald-50 text-emerald-600 text-[10px] tracking-widest font-bold px-3 py-1 rounded-full self-center mb-2 border border-emerald-100 uppercase">
             OfficeFlowAI
           </div>
            
-          <div className="flex items-center justify-between h-full px-2">
+          <div className="flex items-center h-full divide-x divide-gray-300 px-2">
             
-           <div className="relative w-24 h-24 flex flex-col items-center justify-center">
+          <div className="relative w-24 h-24 flex flex-col items-center justify-center pr-6">
   <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-    {/* 1. THE ENTIRE GROUP (Handles Rotation) */}
+    {/* ENTIRE GROUP ROTATION */}
     <motion.g
-      animate={isInView ? { 
-        rotate: [0, 360, 360, 360] // Rotate, then stay still while segment moves
-      } : {}}
+      animate={isInView ? { rotate: [0, 360, 360, 360] } : {}}
       transition={{
-        duration: 5, // Total loop duration
+        duration: 5,          // total duration of rotation + segment pop
         repeat: Infinity,
-        // 0-0.4: Rotation | 0.4-1.0: Hold for segment animation
-        times: [0, 0.4, 0.4, 1], 
+        times: [0, 0.4, 0.4, 1], // 0→0.4: rotation, 0.4→1: hold
         ease: "easeInOut",
       }}
       style={{ transformOrigin: "50% 50%" }}
     >
-      {/* MAIN BASE (The "Pacman" shape) */}
+      {/* MAIN BASE */}
       <path
         d="M 50 50 L 90 50 A 40 40 0 1 1 50 10 Z"
         fill="#fbbf24"
       />
 
-      {/* 2. THE DETACHING SECTOR (Handles the Pop-out) */}
+      {/* DETACHING SEGMENT */}
       <motion.path
         d="M 50 50 L 50 10 A 40 40 0 0 1 90 50 Z"
         fill="#fbbf24"
         animate={isInView ? { 
-          // Stay put during rotation, pop out, stay, pop back
-          x: [0, 0, 5, 5, 0], 
-          y: [0, 0, -5, -5, 0] 
+          x: [3, 3, 11, 11, 3], // base gap + pop-out
+          y: [-3, -3, -11, -11, -3]
         } : {}}
         transition={{
-          duration: 5, // Must match the group duration
+          duration: 5,          // matches the group duration
           repeat: Infinity,
-          // 0-0.4: Rotation (no move) | 0.5: Pop out | 0.8: Start return | 1.0: Back
-          times: [0, 0.4, 0.6, 0.8, 1],
+          times: [0, 0.4, 0.6, 0.8, 1], // 0→0.4: hold (no move), 0.4→0.6 pop out, 0.6→0.8 hold, 0.8→1 return
           ease: "easeInOut",
         }}
         style={{
@@ -97,7 +92,7 @@ export default function Categories() {
     </motion.g>
   </svg>
 
-  {/* HORIZONTAL DETAIL LINES */}
+  {/* Horizontal detail lines */}
   <div className="absolute -bottom-4 left-0 w-full flex flex-col gap-1.5 px-2 opacity-20">
     <div className="h-[4px] w-full bg-green-400 rounded" />
     <div className="h-[4px] w-full bg-blue-400 rounded" />
@@ -107,8 +102,11 @@ export default function Categories() {
 
 
 
+
+
             {/* BAR CHART */}
-            <div className="flex gap-2.5 h-24 items-end">
+            <div className="pl-6">
+                <div className="flex gap-2.5 h-24 items-end">
                 {barHeights.map((h, i) => {
                   const drainStart = 0.4 + ((totalBars - 1 - i) * 0.1); 
                   const drainEnd = drainStart + 0.15;
@@ -130,7 +128,12 @@ export default function Categories() {
                   );
                 })}
             </div>
+            <div className="h-[2px] w-full bg-green-200 rounded mt-3" />
+            </div>
+            
+            
           </div>
+          
         </motion.div>
 
         {/* Static Bubble Nodes */}
