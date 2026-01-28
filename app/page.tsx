@@ -1,3 +1,4 @@
+import Categories from "@/components/Categories";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Modules from "@/components/modules";
@@ -19,6 +20,9 @@ export default function Home() {
 
         {/* Main Content */}
         <Hero />
+
+        {/* Categories Section */}
+        <Categories />
 
         {/* Modules Section */}
         <Modules />
