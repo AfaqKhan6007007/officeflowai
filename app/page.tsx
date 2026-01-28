@@ -1,4 +1,5 @@
 import Categories from "@/components/Categories";
+import Contact from "@/components/Contact";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Modules from "@/components/modules";
@@ -42,7 +43,8 @@ export default function Home() {
         {/* Reviews Section */}
         <Reviews />
 
-        
+        {/* Contact Section */}
+        <Contact />
     </div>
   );
 }
