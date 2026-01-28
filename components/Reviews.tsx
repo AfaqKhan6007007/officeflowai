@@ -50,7 +50,7 @@ export default function Reviews() {
   const next = reviews[(index + 1) % reviews.length];
 
   return (
-    <div className="relative flex justify-center items-center mt-0 h-[700px] w-full bg-gray-100">
+    <div className="relative flex justify-center items-center mt-0 h-[700px] w-full">
       {/* LEFT CARD */}
       <motion.div
         className="absolute"

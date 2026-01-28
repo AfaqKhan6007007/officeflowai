@@ -33,7 +33,7 @@ export default function Samples() {
   }, [inView]);
 
   return (
-    <section ref={ref} className="relative w-full h-screen mx-auto bg-gray-100">
+    <section ref={ref} className="relative w-full h-screen mx-auto mt-10 mb-40">
       {/* Background Image */}
       {showBackground && (
         <motion.div
@@ -54,8 +54,8 @@ export default function Samples() {
       {/* Overlay Image */}
       {showOverlay && (
         <motion.div
-          initial={{ x: -200, opacity: 0, scale: 0.95 }} // start from left
-          animate={{ x: 0, opacity: 1, scale: 1 }}
+          initial={{ x: -200,y:170, opacity: 0, scale: 0.95 }} // start from left
+          animate={{ x: 0,y:170 ,opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="absolute inset-0"
         >

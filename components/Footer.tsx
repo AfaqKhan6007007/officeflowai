@@ -3,6 +3,53 @@ import Image from "next/image";
 export default function Footer () {
   return (
     <footer className="w-full bg-[#F6FBF8] text-black py-6 flex flex-col items-center justify-center">
+        <div className="flex items-center mb-8 mt-8">
+            <div className="flex flex-col items-left w-[400px]">
+
+                <Image
+                        src="/OfficeFlowAI-Logo.png"
+                        alt="OfficeFlowAI Logo"
+                        width={120}
+                        height={113}
+                        />
+                <p className="mt-2 text-gray-600">Unified platform for managing workforce, operations, and business processes intelligently.</p>
+                <button className="bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-emerald-700 transition shadow-xl mt-9 w-1/2">
+                    Request a Demo
+                </button>
+            </div>
+            <div className="ml-20 flex flex-col gap-4">
+                <h4 className="font-semibold">Product</h4>
+                <p className="text-gray-600">Platform Overview</p>
+                <p className="text-gray-600">AI Agents</p>
+                <p className="text-gray-600">Integrations</p>
+                <p className="text-gray-600">Security & Compliance</p>
+                <p className="text-gray-600">Pricing</p>
+            </div>
+            <div className="ml-20 flex flex-col gap-4">
+                <h4 className="font-semibold">Product</h4>
+                <p className="text-gray-600">Platform Overview</p>
+                <p className="text-gray-600">AI Agents</p>
+                <p className="text-gray-600">Integrations</p>
+                <p className="text-gray-600">Security & Compliance</p>
+                <p className="text-gray-600">Pricing</p>
+            </div>
+            <div className="ml-20 flex flex-col gap-4">
+                <h4 className="font-semibold">Product</h4>
+                <p className="text-gray-600">Platform Overview</p>
+                <p className="text-gray-600">AI Agents</p>
+                <p className="text-gray-600">Integrations</p>
+                <p className="text-gray-600">Security & Compliance</p>
+                <p className="text-gray-600">Pricing</p>
+            </div>
+            <div className="ml-20 flex flex-col gap-4">
+                <h4 className="font-semibold">Product</h4>
+                <p className="text-gray-600">Platform Overview</p>
+                <p className="text-gray-600">AI Agents</p>
+                <p className="text-gray-600">Integrations</p>
+                <p className="text-gray-600">Security & Compliance</p>
+                <p className="text-gray-600">Pricing</p>
+            </div>
+        </div>
         <hr className="w-full border-t border-gray-300 my-4" />
         <div className="flex gap-4">
             <h4 className="font-semibold mt-4">Follow Us</h4>

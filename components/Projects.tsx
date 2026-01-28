@@ -45,7 +45,7 @@ export default function Projects() {
   return (
     <section
       ref={ref}
-      className="relative w-full h-screen bg-gray-100 flex items-center justify-center overflow-hidden"
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden"
     >
       <motion.div
         variants={containerVariants}
@@ -65,7 +65,7 @@ export default function Projects() {
               src={src}
               alt={`Project ${i + 1}`}
               fill
-              className="object-contain drop-shadow-[0_40px_90px_rgba(0,0,0,0.4)]"
+              className="object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.25)]"
             />
           </motion.div>
         ))}
