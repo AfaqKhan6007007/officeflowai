@@ -46,6 +46,14 @@ export default function Modules() {
       className="py-12 bg-white"
       style={{ backgroundImage: 'url("/background_modules.png")', backgroundSize: 'cover' }}
     >
+      <div className='relative flex flex-col gap-4 mb-22 items-center justify-center z-30'>
+          <h1 className="text-2xl md:text-5xl font-bold text-center text-[#005143]">
+          Everything Your Office Needs, All in One Platform
+          </h1>
+          <p className="text-center text-gray-700 max-w-6xl">
+          From HR to Finance to Sales, OfficeFlowAI simplifies every aspect of your business operations.
+          </p>
+      </div>
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
