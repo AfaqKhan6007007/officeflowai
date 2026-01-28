@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex w-full items-center justify-between bg-rgba(0, 153, 119, 0.05) max-h-max p-4" style={{backgroundColor:"#0099770D"}}>
+    <header className="flex w-full items-center justify-between bg-rgba(0, 153, 119, 0.05) max-h-max p-4" style={{backgroundColor:"rgba(0, 153, 119, 0.05)"}}>
       {/* Logo */}
       <div className="text-xl font-semibold ml-6">
         <Image
