@@ -1,5 +1,6 @@
 import Categories from "@/components/Categories";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Modules from "@/components/modules";
@@ -45,6 +46,9 @@ export default function Home() {
 
         {/* Contact Section */}
         <Contact />
+
+        {/* Footer */}
+        <Footer />
     </div>
   );
 }
