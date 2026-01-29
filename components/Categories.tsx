@@ -165,23 +165,39 @@ export default function Categories() {
             </motion.div>
 
             {/* Static Bubble Nodes */}
-            {nodes.map((node, i) => (
-            <motion.div
-                key={i}
-                className="absolute w-32 h-32 flex items-center justify-center text-center p-4 text-xs font-semibold text-slate-700 bg-[#bed4be]/60 backdrop-blur-md rounded-full z-20 shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_5px_5px_5px_rgba(0,0,0,0.15)]"
-                style={{ x: node.x, y: node.y }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{
-                delay: 0.8 + (i * 0.1),
-                type: "spring",
-                stiffness: 120,
-                damping: 12
-                }}
-            >
-                {node.text}
-            </motion.div>
-            ))}
+{nodes.map((node, i) => (
+  <motion.div
+    key={i}
+    className="absolute w-32 h-32 flex items-center justify-center text-center p-4 text-xs font-semibold text-slate-700 bg-[#bed4be]/60 backdrop-blur-md rounded-full z-20 shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_5px_5px_5px_rgba(0,0,0,0.15)] overflow-hidden"
+    style={{ x: node.x, y: node.y }}
+    initial={{ opacity: 0, scale: 0 }}
+    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+    transition={{
+      delay: 0.8 + (i * 0.1),
+      type: "spring",
+      stiffness: 120,
+      damping: 12
+    }}
+  >
+    {/* LIGHT ARC / SHINE EFFECT */}
+    <motion.div
+      initial={{ x: "-150%", skewX: -30 }}
+      animate={isInView ? { 
+        x: ["150%", "-150%"], // Moves across
+      } : {}}
+      transition={{
+        delay: 2.0 + (i * 0.1), // Starts after the bubbles pop in
+        duration: 2,
+        repeat: 0,
+        repeatDelay: 3, // Delay between each "sweep"
+        ease: "easeInOut"
+      }}
+      className="absolute top-0 w-12 h-full bg-white/40 blur-md pointer-events-none"
+    />
+
+    <span className="relative z-10">{node.text}</span>
+  </motion.div>
+))}
           </div>
 
           <div className="max-w-2xl mx-auto p-8">
