@@ -64,7 +64,7 @@ export default function Robotic() {
 
 
         {/* Modules — one at a time in front of cards */}
-        <div className="relative left-55 transform -translate-x-1/2 top-0 z-30 w-[1300px] h-[400px]">
+        <div className="relative left-55 transform -translate-x-1/2 top-0 z-30 w-[1300px] h-[400px] mb-10">
         <AnimatePresence mode="wait">
             {inView && (
             <motion.div

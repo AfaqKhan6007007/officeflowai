@@ -3,12 +3,12 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const nodes = [
-  { text: "Secure & Compliant", x: 0, y: -220 },
-  { text: "Scalable Modules", x: 270, y: -80 },
-  { text: "AI-Powered Actions", x: 270, y: 80 },
-  { text: "Cross-Team Visibility", x: 0, y: 220 },
-  { text: "Real-Time Insights", x: -270, y: 80 },
-  { text: "Workflow Automation", x: -270, y: -80 },
+  { text: "Secure & Compliant", x: 0, y: -260 },
+  { text: "Scalable Modules", x: 310, y: -120 },
+  { text: "AI-Powered Actions", x: 310, y: 80 },
+  { text: "Cross-Team Visibility", x: 0, y: 260 },
+  { text: "Real-Time Insights", x: -310, y: 80 },
+  { text: "Workflow Automation", x: -310, y: -120 },
 ];
 
 const barHeights = ["40%", "50%", "60%", "70%", "80%"];
@@ -168,7 +168,7 @@ export default function Categories() {
             {nodes.map((node, i) => (
             <motion.div
                 key={i}
-                className="absolute w-32 h-32 flex items-center justify-center text-center p-4 text-xs font-semibold text-slate-700 bg-[#dfebdf]/60 backdrop-blur-md rounded-full border border-white shadow-xl z-20"
+                className="absolute w-32 h-32 flex items-center justify-center text-center p-4 text-xs font-semibold text-slate-700 bg-[#bed4be]/60 backdrop-blur-md rounded-full z-20 shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_5px_5px_5px_rgba(0,0,0,0.15)]"
                 style={{ x: node.x, y: node.y }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
