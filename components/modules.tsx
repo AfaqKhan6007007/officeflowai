@@ -46,7 +46,7 @@ export default function Modules() {
       className="py-12 bg-white"
       style={{ backgroundImage: 'url("/background_modules.png")', backgroundSize: 'cover' }}
     >
-      <div className='relative flex flex-col gap-4 mb-22 items-center justify-center z-30'>
+      <div className='relative flex flex-col gap-4 mb-22 items-center justify-center z-30 mt-10'>
           <h1 className="text-2xl md:text-5xl font-bold text-center text-[#005143]">
           Everything Your Office Needs, All in One Platform
           </h1>

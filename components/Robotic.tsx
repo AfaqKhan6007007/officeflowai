@@ -64,7 +64,7 @@ export default function Robotic() {
 
 
         {/* Modules — one at a time in front of cards */}
-        <div className="relative left-80 transform -translate-x-1/2 top-0 z-30 w-[1000px]">
+        <div className="relative left-55 transform -translate-x-1/2 top-0 z-30 w-[1300px]">
         <AnimatePresence mode="wait">
             {inView && (
             <motion.div
@@ -109,8 +109,8 @@ export default function Robotic() {
         </div>
 
         {/* Robot */}
-        <div className="relative left-90 bottom-0 top-8 ml-auto">
-          <Image src="/Robot.svg" alt="AI Robot" width={1620} height={1620} priority />
+        <div className="relative left-90 bottom-0 top-10 ml-auto">
+          <Image src="/Robot.svg" alt="AI Robot" width={1820} height={1820} priority />
         </div>
 
         {/* Cards — in front of robot */}

@@ -63,7 +63,7 @@ export default function Projects() {
     ];
 
   return (
-    <div className="py-20 bg-white">
+    <div className="py-20">
         <div className='relative flex flex-col gap-4 mb-10 items-left justify-left z-30 pl-20 md:pl-32'>
             <h1 className="text-2xl md:text-5xl font-bold text-left text-[#005143]">
               Why Choose Us

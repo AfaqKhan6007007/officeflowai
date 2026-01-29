@@ -29,14 +29,14 @@ export default function AnimatedStackedSvgs() {
       {/* LEFT FLOATERS */}
         <FloatingSvg
         src="/Frame1.svg"
-        size={56}
+        size={64}
         className="top-[80px] left-[60px]"
         delay={0}
         />
         <FloatingSvg
         src="/Frame2.svg"
-        size={48}
-        className="top-[300px] left-[0px]"
+        size={64}
+        className="top-[250px] left-[0px]"
         delay={1}
         />
         <FloatingSvg
@@ -49,13 +49,13 @@ export default function AnimatedStackedSvgs() {
         {/* RIGHT FLOATERS */}
         <FloatingSvg
         src="/Frame4.svg"
-        size={52}
+        size={64}
         className="top-[240px] right-[-40px]"
         delay={0.5}
         />
         <FloatingSvg
         src="/Frame5.svg"
-        size={60}
+        size={64}
         className="bottom-[140px] right-[0px]"
         delay={1.5}
         />

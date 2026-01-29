@@ -38,9 +38,12 @@ export default function Header() {
 
       {/* Get Started Button */}
       <div className="text-xl font-semibold">
-        <button className="bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-emerald-700 transition shadow-xl">
-              Get Started
-            </button>
+        <button 
+  style={{ background: "linear-gradient(359.02deg, #1F7A5A 32.42%, #39E0A5 131.86%)" }} 
+  className="text-white px-8 py-4 rounded-lg font-bold transition-all shadow-xl hover:brightness-110 hover:shadow-emerald-500/50 active:scale-95"
+>
+  Get Started
+</button>
       </div>
     </header>
   );

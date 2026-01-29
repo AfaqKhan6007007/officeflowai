@@ -28,9 +28,12 @@ export default function Hero() {
           </p>
 
           <div className="mt-10 flex gap-4">
-            <button className="bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-emerald-700 transition shadow-xl">
-              Start Free Trial
-            </button>
+            <button 
+  style={{ background: "linear-gradient(359.02deg, #1F7A5A 32.42%, #39E0A5 131.86%)" }} 
+  className="text-white px-8 py-4 rounded-lg font-bold transition-all shadow-xl hover:brightness-110 hover:shadow-emerald-500/50 active:scale-95"
+>
+  Start Free Trial
+</button>
             <button className="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-lg font-bold hover:bg-emerald-50 transition">
               Watch Demo
             </button>

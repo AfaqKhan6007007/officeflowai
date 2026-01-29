@@ -13,9 +13,12 @@ export default function Footer () {
                         height={113}
                         />
                 <p className="mt-2 text-gray-600">Unified platform for managing workforce, operations, and business processes intelligently.</p>
-                <button className="bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-emerald-700 transition shadow-xl mt-9 w-1/2">
-                    Request a Demo
-                </button>
+                <button 
+  style={{ background: "linear-gradient(359.02deg, #1F7A5A 32.42%, #39E0A5 131.86%)" }} 
+  className="text-white px-8 py-4 rounded-lg font-bold transition-all shadow-xl hover:brightness-110 hover:shadow-emerald-500/50 active:scale-95 w-1/2 mt-10"
+>
+  Request a Demo
+</button>
             </div>
             <div className="ml-20 flex flex-col gap-4">
                 <h4 className="font-semibold">Product</h4>
