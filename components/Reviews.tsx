@@ -32,107 +32,83 @@ const reviews: Review[] = [
     avatar: "/avatar.png",
   },
 ];
-
 export default function Reviews() {
   const [index, setIndex] = useState(0);
 
-  // auto-rotate
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((i) => (i + 1) % reviews.length);
     }, 4000);
-
     return () => clearInterval(interval);
   }, []);
 
-  const prev = reviews[(index - 1 + reviews.length) % reviews.length];
-  const current = reviews[index];
-  const next = reviews[(index + 1) % reviews.length];
+  // We map the array to always show 3 items based on the current index
+  const displayItems = [
+    { item: reviews[(index - 1 + reviews.length) % reviews.length], position: "left" },
+    { item: reviews[index], position: "center" },
+    { item: reviews[(index + 1) % reviews.length], position: "right" },
+  ];
 
   return (
     <div>
-        <h1 className="text-4xl font-bold text-center pt-32 text-[#005143]">
+      <h1 className="text-4xl font-bold text-center pt-32 text-[#005143]">
         Trusted By Teams Worldwide
       </h1>
       <p className="text-center mt-4 text-gray-700 max-w-2xl mx-auto">
         Hear from Those Who’ve Tried OfficeFlow AI
       </p>
+
       <div className="relative flex justify-center items-center mt-0 h-[700px] w-full">
-        
-      {/* LEFT CARD */}
-      <motion.div
-        className="absolute"
-        animate={{
-          x: -180,
-          scale: 0.9,
-          rotate: -12,
-          filter: "blur(6px) grayscale(60%)",
-          opacity: 0.55,
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        <Card {...prev} />
-      </motion.div>
-
-      {/* CENTER CARD */}
-      <motion.div
-        className="absolute z-10 cursor-pointer"
-        whileTap={{ scale: 0.97 }}
-        onClick={() => setIndex((i) => (i + 1) % reviews.length)}
-        animate={{
-          x: 0,
-          scale: 1,
-          rotate: 0,
-          filter: "blur(0px)",
-          opacity: 1,
-        }}
-        transition={{ type: "spring", stiffness: 220, damping: 20 }}
-      >
-        <Card {...current} />
-      </motion.div>
-
-      {/* RIGHT CARD */}
-      <motion.div
-        className="absolute"
-        animate={{
-          x: 180,
-          scale: 0.9,
-          rotate: 12,
-          filter: "blur(6px) grayscale(60%)",
-          opacity: 0.55,
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        <Card {...next} />
-      </motion.div>
-    </div>
+        {displayItems.map((slot) => (
+          <motion.div
+            // KEY IS CRUCIAL: It tells Framer this specific card is moving
+            key={slot.item.name} 
+            layout // This enables the "shifting" flight animation
+            initial={false}
+            className="absolute"
+            style={{ zIndex: slot.position === "center" ? 10 : 0 }}
+            animate={{
+              x: slot.position === "left" ? -250 : slot.position === "right" ? 250 : 0,
+              scale: slot.position === "center" ? 1 : 0.85,
+              rotate: slot.position === "left" ? -8 : slot.position === "right" ? 8 : 0,
+              filter: slot.position === "center" ? "blur(0px)" : "blur(4px) grayscale(80%) brightness(0.95)",
+              opacity: slot.position === "center" ? 1 : 0.55,
+              boxShadow:
+    slot.position === "center"
+      ? "0px 20px 40px rgba(0, 0, 0, 0.18)"
+      : "0px 16px 30px rgba(120, 120, 120, 0.35)",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 180,
+              damping: 22,
+              opacity: { duration: 0.4 }
+            }}
+            
+          >
+            <Card {...slot.item} isCenter={slot.position === "center"} />
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
 
-function Card({ name, role, text, avatar }: Review) {
+function Card({ name, role, text, avatar, isCenter }: Review & { isCenter: boolean }) {
   return (
-    <div className="relative p-6 border border-[#B4B4B4] rounded-lg bg-white shadow-lg flex flex-col items-center w-[320px]">
-      {/* subtle gray overlay (helps background cards) */}
-      <div className="absolute inset-0 rounded-lg bg-gray-200 opacity-10 pointer-events-none" />
-
-      <div className="relative flex flex-col items-center">
-        <Image
-          src={avatar}
-          alt={name}
-          width={160}
-          height={160}
-          className="mx-auto mt-6 mb-6"
-        />
-
-        <h1 className="text-xl font-bold mt-4 text-center">{name}</h1>
-        <p className="text-sm text-[#6B7280] text-center">{role}</p>
-
-        <p className="mt-10 mb-8 text-center text-gray-600 text-sm leading-relaxed">
-          “{text}”
-        </p>
-      </div>
+    <div className={`relative p-6 border ${isCenter ? 'border-[#B4B4B4]' : 'border-slate-200'} rounded-lg bg-white shadow-4xl flex flex-col items-center w-[320px] transition-colors duration-500`}>
+      <Image
+        src={avatar}
+        alt={name}
+        width={160} // Reduced size for a more professional look
+        height={160}
+        className="mx-auto mt-6 mb-6"
+      />
+      <h3 className="text-xl font-bold mt-4 text-center">{name}</h3>
+      <p className="text-sm text-[#6B7280] text-center">{role}</p>
+      <p className="mt-10 mb-8 text-center text-gray-600 text-sm leading-relaxed">
+        “{text}”
+      </p>
     </div>
-    
   );
 }
