@@ -204,11 +204,11 @@ export default function Categories() {
                 ))}
             </ul>
             <button 
-  style={{ background: "linear-gradient(359.02deg, #1F7A5A 32.42%, #39E0A5 131.86%)" }} 
-  className="text-white px-8 py-4 rounded-lg font-bold transition-all shadow-xl hover:brightness-110 hover:shadow-emerald-500/50 active:scale-95 mt-10 ml-5"
->
-  Explore Modules
-</button>
+                style={{ background: "linear-gradient(359.02deg, #1F7A5A 32.42%, #39E0A5 131.86%)" }} 
+                className="text-white px-8 py-4 rounded-lg font-bold transition-all shadow-xl hover:brightness-110 hover:shadow-emerald-500/50 active:scale-95 mt-10 ml-5"
+            >
+                Explore Modules
+            </button>
             </div>
 
         </div>

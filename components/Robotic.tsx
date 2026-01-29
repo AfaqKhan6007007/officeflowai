@@ -64,7 +64,7 @@ export default function Robotic() {
 
 
         {/* Modules — one at a time in front of cards */}
-        <div className="relative left-55 transform -translate-x-1/2 top-0 z-30 w-[1300px]">
+        <div className="relative left-55 transform -translate-x-1/2 top-0 z-30 w-[1300px] h-[400px]">
         <AnimatePresence mode="wait">
             {inView && (
             <motion.div
@@ -75,16 +75,15 @@ export default function Robotic() {
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
                 className="
-  relative
-  p-6
-  border-5 border-[#33b386]
-  rounded-lg
-  bg-[#DAF6E6]
-  flex flex-col items-center
-  shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_0_0_40px_rgba(55,194,145,0.65)]
-  outline outline-2 outline-white
-  
-"
+                  relative
+                  p-6
+                  border-5 border-[#33b386]
+                  rounded-lg
+                  bg-[#DAF6E6]
+                  flex flex-col items-center
+                  shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_0_0_40px_rgba(55,194,145,0.65)]
+                  outline outline-2 outline-white
+                "
                 >
                 {/* Centered Image */}
                 <Image
