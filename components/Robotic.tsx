@@ -49,42 +49,22 @@ export default function Robotic() {
       className="relative py-28"
       style={{ backgroundImage: 'url("/Robotic_hero.png")', backgroundSize: 'cover' }}
     >
+      <div className='relative flex flex-col gap-4 mb-22 items-center justify-center z-30'>
+          <h1 className="text-2xl md:text-5xl font-bold text-center text-[white]">
+            The Intelligent Assistant Behind Every Task
+          </h1>
+          <p className="text-center text-white max-w-6xl">
+            Automate workflows, track tasks, and connect your teams all from one smart AI.
+          </p>
+          <p className="text-center text-white max-w-6xl">
+            OfficeFlowAI’s Agentic AI chatbot acts like a dedicated employee inside your system. It understands your data, follows your workflows, and performs actions on your behalf from answering questions to adding, editing, and managing records all in real time, 24/7.
+          </p>
+      </div>
       <div className="flex justify-end px-6 max-w-7xl mx-auto">
 
-        {/* Robot Background */}
-        <div className="absolute right-0 bottom-0 top-24 ml-auto">
-          <Image src="/Robot_bg.svg" alt="AI Robot BG" width={720} height={720} priority />
-        </div>
 
-        {/* Robot */}
-        <div className="absolute right-0 bottom-0 top-24 ml-auto">
-          <Image src="/Robot.svg" alt="AI Robot" width={720} height={720} priority />
-        </div>
-
-        {/* Cards — in front of robot */}
-        <div className="relative right-50 top-0 z-20 w-[360px] ml-auto">
-          {cards.map((card, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 24, x: cardOffsets[i] }}
-              animate={inView ? { opacity: 1, y: 0, x: cardOffsets[i] } : { opacity: 0, y: 24, x: cardOffsets[i] }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.35,
-                ease: "easeOut",
-              }}
-              className="rounded-2xl bg-[#39E0A5] p-5 shadow-xl w-full mt-6"
-            >
-              <h3 className="font-semibold text-base text-center text-white">
-                {card.title}
-              </h3>
-            </motion.div>
-          ))}
-        </div>
-
-        
         {/* Modules — one at a time in front of cards */}
-        <div className="absolute left-80 transform -translate-x-1/2 top-40 z-30 w-[400px]">
+        <div className="relative left-80 transform -translate-x-1/2 top-0 z-30 w-[1000px]">
         <AnimatePresence mode="wait">
             {inView && (
             <motion.div
@@ -123,6 +103,39 @@ export default function Robotic() {
             )}
         </AnimatePresence>
         </div>
+        {/* Robot Background */}
+        <div className="absolute right-0 bottom-0 top-80 ml-auto">
+          <Image src="/Robot_bg.svg" alt="AI Robot BG" width={720} height={720} priority />
+        </div>
+
+        {/* Robot */}
+        <div className="relative left-90 bottom-0 top-8 ml-auto">
+          <Image src="/Robot.svg" alt="AI Robot" width={1620} height={1620} priority />
+        </div>
+
+        {/* Cards — in front of robot */}
+        <div className="relative right-40 top-0 z-20 w-[700px] ml-auto">
+          {cards.map((card, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 24, x: cardOffsets[i] }}
+              animate={inView ? { opacity: 1, y: 0, x: cardOffsets[i] } : { opacity: 0, y: 24, x: cardOffsets[i] }}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.35,
+                ease: "easeOut",
+              }}
+              className="rounded-2xl bg-[#39E0A5] p-5 shadow-xl w-full mt-6"
+            >
+              <h3 className="font-semibold text-base text-center text-white">
+                {card.title}
+              </h3>
+            </motion.div>
+          ))}
+        </div>
+
+        
+        
 
       </div>
     </section>

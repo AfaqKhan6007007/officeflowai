@@ -38,9 +38,9 @@ export default function Header() {
 
       {/* Get Started Button */}
       <div className="text-xl font-semibold">
-        <button className="rounded-lg px-6 py-3 text-white mt-3 mb-3 bg-gradient-to-r from-[#1F7A5A] to-[#39E0A5]">
-          Get Started
-        </button>
+        <button className="bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-emerald-700 transition shadow-xl">
+              Get Started
+            </button>
       </div>
     </header>
   );

@@ -50,7 +50,15 @@ export default function Reviews() {
   const next = reviews[(index + 1) % reviews.length];
 
   return (
-    <div className="relative flex justify-center items-center mt-0 h-[700px] w-full">
+    <div>
+        <h1 className="text-4xl font-bold text-center pt-32 text-[#005143]">
+        Trusted By Teams Worldwide
+      </h1>
+      <p className="text-center mt-4 text-gray-700 max-w-2xl mx-auto">
+        Hear from Those Who’ve Tried OfficeFlow AI
+      </p>
+      <div className="relative flex justify-center items-center mt-0 h-[700px] w-full">
+        
       {/* LEFT CARD */}
       <motion.div
         className="absolute"
@@ -98,6 +106,7 @@ export default function Reviews() {
         <Card {...next} />
       </motion.div>
     </div>
+    </div>
   );
 }
 
@@ -124,5 +133,6 @@ function Card({ name, role, text, avatar }: Review) {
         </p>
       </div>
     </div>
+    
   );
 }
