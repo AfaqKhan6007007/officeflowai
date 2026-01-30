@@ -12,7 +12,7 @@ export default function HeroSection() {
             </span>
 
             <h1 className="text-6xl font-extrabold text-[#004E40] mt-4 leading-tight relative inline-block">
-                Defining the Future of Business Flow
+                Defining the Future <br />of Business Flow
 
                 {/* Curved line directly under the text */}
                 <svg className="w-full h-20 ml-[-120]" viewBox="0 0 200 50" fill="none">
@@ -29,7 +29,7 @@ export default function HeroSection() {
                 OfficeFlow AI helps teams automate processes, gain insights, and make data-driven decisions across HR, Finance, Sales, and Operations.
             </p>
 
-            <p className="text-md text-[#00C99C] mt-6 max-w-2xl">
+            <p className="text-md text-[#00C99C] mt-6 max-w-xl">
                 We built OfficeFlow AI to replace fragmented tools, manual workflows, and operational blind spots. Our platform brings structure, automation, and real-time insight to how teams work so decisions are faster, processes are cleaner, and growth is controlled.
             </p>
 
