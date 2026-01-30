@@ -44,18 +44,19 @@ export default function HeroSection() {
         src="/dash1.png"
         size={224}
         delay={0}
+        className="top-80"
         />
         <Image src="/dash.svg" alt="Dashboard" width={600} height={536} className="mt-20"/>
         <FloatingSvg
         src="/dash2.png"
         size={244}
-        className="top-146 right-100"
+        className="top-146 right-80"
         delay={3}
         />
         <FloatingSvg
         src="/dash3.png"
         size={224}
-        className="top-68 right-20"
+        className="top-68 right-10"
         delay={1.5}
         />
             </div>
