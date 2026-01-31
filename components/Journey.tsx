@@ -9,6 +9,27 @@ export default function Journey() {
 
   const [activeStep, setActiveStep] = useState(0);
   const [playKey, setPlayKey] = useState(0);
+  const [isLg, setIsLg] = useState(false);
+  
+
+  // Dot positions
+const dotPositions = [
+  { cx: 20, cy: isLg ? 20 : 20 },
+  { cx: 20, cy: isLg ? 160 : 275 },
+  { cx: 20, cy: isLg ? 300 : 560 },
+  { cx: 20, cy: isLg ? 440 : 850 },
+];
+const maxY = Math.max(...dotPositions.map(dot => dot.cy));
+// Build path dynamically
+const pathD = dotPositions.map((dot, i) => (i === 0 ? `M ${dot.cx} ${dot.cy}` : `L ${dot.cx} ${i===3?dot.cy:(isLg?650:1250)}`)).join(" ");
+  useEffect(() => {
+  // This only runs on the client
+  const handleResize = () => setIsLg(window.innerWidth >= 1024);
+
+  handleResize(); // set initially
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
   //const hasAnimated = useRef(false);
 
@@ -42,8 +63,8 @@ useEffect(() => {
     <svg
       key={playKey}
       width="40"
-      height="640"
-      viewBox="0 0 40 640"
+      height={maxY + 40} // add some padding at the bottom
+  viewBox={`0 0 40 ${maxY + 40}`}
       fill="none"
     >
         <defs>
@@ -58,7 +79,7 @@ useEffect(() => {
   </filter>
 </defs>
       <motion.path
-        d="M 20 20 L 20 160 L 20 300 L 20 520"
+        d={pathD}
         stroke="#bfc3c9"
         strokeWidth="1"
         fill="none"
@@ -73,10 +94,10 @@ useEffect(() => {
         }}
       />
 
-      <Dot cx={20} cy={20} active={activeStep >= 1} />
-      <Dot cx={20} cy={160} active={activeStep >= 2} />
-      <Dot cx={20} cy={300} active={activeStep >= 3} />
-      <Dot cx={20} cy={440} active={activeStep >= 4} />
+      {/* Render dots */}
+{dotPositions.map((dot, i) => (
+  <Dot key={i} cx={dot.cx} cy={dot.cy} active={activeStep >= i + 1} />
+))}
     </svg>
   </div>
 
