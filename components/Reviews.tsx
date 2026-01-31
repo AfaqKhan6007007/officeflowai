@@ -32,9 +32,11 @@ const reviews: Review[] = [
     avatar: "/avatar.png",
   },
 ];
+
 export default function Reviews() {
   const [index, setIndex] = useState(0);
 
+  // Auto rotate every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((i) => (i + 1) % reviews.length);
@@ -42,7 +44,10 @@ export default function Reviews() {
     return () => clearInterval(interval);
   }, []);
 
-  // We map the array to always show 3 items based on the current index
+  const nextReview = () => {
+    setIndex((i) => (i + 1) % reviews.length);
+  };
+
   const displayItems = [
     { item: reviews[(index - 1 + reviews.length) % reviews.length], position: "left" },
     { item: reviews[index], position: "center" },
@@ -61,9 +66,8 @@ export default function Reviews() {
       <div className="relative flex justify-center items-center mt-0 h-[700px] w-full">
         {displayItems.map((slot) => (
           <motion.div
-            // KEY IS CRUCIAL: It tells Framer this specific card is moving
             key={slot.item.name} 
-            layout // This enables the "shifting" flight animation
+            layout
             initial={false}
             className="absolute"
             style={{ zIndex: slot.position === "center" ? 10 : 0 }}
@@ -74,9 +78,9 @@ export default function Reviews() {
               filter: slot.position === "center" ? "blur(0px)" : "blur(4px) grayscale(80%) brightness(0.95)",
               opacity: slot.position === "center" ? 1 : 0.55,
               boxShadow:
-    slot.position === "center"
-      ? "0px 20px 40px rgba(0, 0, 0, 0.18)"
-      : "0px 16px 30px rgba(120, 120, 120, 0.35)",
+                slot.position === "center"
+                  ? "0px 20px 40px rgba(0, 0, 0, 0.18)"
+                  : "0px 16px 30px rgba(120, 120, 120, 0.35)",
             }}
             transition={{
               type: "spring",
@@ -84,7 +88,7 @@ export default function Reviews() {
               damping: 22,
               opacity: { duration: 0.4 }
             }}
-            
+            onClick={() => slot.position === "center" && nextReview()} // CLICK HANDLER
           >
             <Card {...slot.item} isCenter={slot.position === "center"} />
           </motion.div>
@@ -96,11 +100,13 @@ export default function Reviews() {
 
 function Card({ name, role, text, avatar, isCenter }: Review & { isCenter: boolean }) {
   return (
-    <div className={`relative p-6 border ${isCenter ? 'border-[#B4B4B4]' : 'border-slate-200'} rounded-lg bg-white shadow-4xl flex flex-col items-center w-[320px] transition-colors duration-500`}>
+    <div
+      className={`relative p-6 border ${isCenter ? 'border-[#B4B4B4]' : 'border-slate-200'} rounded-lg bg-white shadow-4xl flex flex-col items-center w-[320px] transition-colors duration-500 cursor-pointer`}
+    >
       <Image
         src={avatar}
         alt={name}
-        width={160} // Reduced size for a more professional look
+        width={160}
         height={160}
         className="mx-auto mt-6 mb-6"
       />

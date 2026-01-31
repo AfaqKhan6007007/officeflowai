@@ -17,62 +17,77 @@ export default function Categories() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   const totalBars = barHeights.length;
-  const [segmentDetached, setSegmentDetached] = React.useState(false);
+
   const listItems = [
     {
-        title: "Manual Workflows",
-        description: "Streamline repetitive tasks and reduce administrative load."
+      title: "Manual Workflows",
+      description: "Streamline repetitive tasks and reduce administrative load."
     },
     {
-        title: "Disconnected Systems",
-        description: "Connect departments for seamless collaboration."
+      title: "Disconnected Systems",
+      description: "Connect departments for seamless collaboration."
     },
     {
-        title: "Time-Consuming Tasks",
-        description: "Automate processes to save valuable time."
+      title: "Time-Consuming Tasks",
+      description: "Automate processes to save valuable time."
     },
     {
-        title: "Lack of Insights",
-        description: "Access real-time data to make informed decisions."
+      title: "Lack of Insights",
+      description: "Access real-time data to make informed decisions."
     }
-    ];
+  ];
 
   return (
-    // 1. Change the section to use a standard flow with padding instead of min-h-screen centering
-    <section ref={containerRef} className="relative flex flex-col items-left py-24 bg-white overflow-hidden">
-        <div className='relative flex flex-col gap-4 mb-32 items-left justify-left z-30 pl-30'>
-            <h1 className="text-2xl md:text-5xl font-bold text-left text-[#005143]">
-            Simplifying Office Operations for Growing Teams
-            </h1>
-            <p className="text-left text-gray-700 max-w-6xl">
-            OfficeFlowAI eliminates manual workflows, connects all departments, and provides real-time insights so your team can focus on what matters.
-            </p>
-        </div>
-        <div className="relative flex items-center justify-center w-full overflow-visible gap-28">
-          <div key={isInView ? "visible" : "hidden"} className="relative flex items-center justify-center min-h-[500px] mr-auto ml-80">
+    <section
+      ref={containerRef}
+      className="relative flex flex-col py-24 bg-white overflow-hidden px-0 md:px-0"
+    >
+      {/* Header */}
+      <div className="relative flex flex-col gap-4 mb-24 md:mb-32 z-30 max-w-7xl md:pl-30 text-left">
+        <h1 className="text-2xl md:text-5xl font-bold text-left text-[#005143]">
+          Simplifying Office Operations for Growing Teams
+        </h1>
+        <p className="text-left text-gray-700 max-w-6xl">
+          OfficeFlowAI eliminates manual workflows, connects all departments, and provides real-time insights so your team can focus on what matters.
+        </p>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative flex flex-col lg:flex-row items-center justify-center w-full gap-16 lg:gap-28">
         
-            {/* SVG Connector Lines */}
-            <svg className="absolute overflow-visible" width="1" height="1">
+        {/* Visualization */}
+        <div
+  key={isInView ? "visible" : "hidden"}
+  className="relative flex items-center justify-center min-h-[420px] sm:min-h-[500px]
+             scale-[0.5] sm:scale-90 lg:scale-90
+             lg:ml-60
+             max-w-[700px] w-full
+             overflow-visible lg:overflow-visible"
+>
+          {/* SVG Connector Lines */}
+          <svg className="absolute overflow-visible" width="1" height="1">
             {nodes.map((node, i) => (
-                <motion.line
+              <motion.line
                 key={`line-${i}`}
-                x1="0" y1="0"
-                x2={node.x} y2={node.y}
+                x1="0"
+                y1="0"
+                x2={node.x}
+                y2={node.y}
                 stroke="#e2e8f0"
                 strokeWidth="2"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
                 transition={{ delay: 0.5, duration: 1.5 }}
-                />
+              />
             ))}
-            </svg>
+          </svg>
 
-            {/* Central Dashboard Card */}
-            <motion.div 
+          {/* Central Card */}
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            className="w-80 h-48 bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col p-6 z-10 relative"
-            >
+            className="w-72 sm:w-80 h-48 bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col p-6 z-10 relative"
+          >
             <div className="bg-emerald-50 text-emerald-600 text-[10px] tracking-widest font-bold px-3 py-1 rounded-full self-center mb-2 border border-emerald-100 uppercase">
                 OfficeFlowAI
             </div>
@@ -162,74 +177,62 @@ export default function Categories() {
                 
             </div>
             
-            </motion.div>
+            
+          </motion.div>
 
-            {/* Static Bubble Nodes */}
-{nodes.map((node, i) => (
-  <motion.div
-    key={i}
-    className="absolute w-32 h-32 flex items-center justify-center text-center p-4 text-xs font-semibold text-slate-700 bg-[#bed4be]/60 backdrop-blur-md rounded-full z-20 shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_5px_5px_5px_rgba(0,0,0,0.15)] overflow-hidden"
-    style={{ x: node.x, y: node.y }}
-    initial={{ opacity: 0, scale: 0 }}
-    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-    transition={{
-      delay: 0.8 + (i * 0.1),
-      type: "spring",
-      stiffness: 120,
-      damping: 12
-    }}
-  >
-    {/* LIGHT ARC / SHINE EFFECT */}
-    <motion.div
-      initial={{ x: "-150%", skewX: -30 }}
-      animate={isInView ? { 
-        x: ["150%", "-150%"], // Moves across
-      } : {}}
-      transition={{
-        delay: 2.0 + (i * 0.1), // Starts after the bubbles pop in
-        duration: 2,
-        repeat: 0,
-        repeatDelay: 3, // Delay between each "sweep"
-        ease: "easeInOut"
-      }}
-      className="absolute top-0 w-12 h-full bg-white/40 blur-md pointer-events-none"
-    />
-
-    <span className="relative z-10">{node.text}</span>
-  </motion.div>
-))}
-          </div>
-
-          <div className="max-w-2xl mx-auto p-8">
-            <ul className="space-y-18">
-                {listItems.map((item, index) => (
-                <li key={index} className="flex gap-4 items-start group">
-                    {/* The Bullet Point */}
-                    <span className="mt-1.5 h-2 w-2 rounded-full bg-black shrink-0 group-hover:scale-125 transition-transform" />
-                    
-                    {/* Heading and Description as 1 Item */}
-                    <div>
-                    <h3 className="text-lg font-bold text-slate-800 leading-tight">
-                        {item.title}
-                    </h3>
-                    <p className="mt-1 text-slate-600 leading-relaxed">
-                        {item.description}
-                    </p>
-                    </div>
-                </li>
-                ))}
-            </ul>
-            <button 
-                style={{ background: "linear-gradient(359.02deg, #1F7A5A 32.42%, #39E0A5 131.86%)" }} 
-                className="text-white px-8 py-4 rounded-lg font-bold transition-all shadow-xl hover:brightness-110 hover:shadow-emerald-500/50 active:scale-95 mt-10 ml-5"
+          {/* Bubble Nodes */}
+          {nodes.map((node, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center text-center p-3 sm:p-4
+                         text-[10px] sm:text-xs font-semibold text-slate-700
+                         bg-[#bed4be]/60 backdrop-blur-md rounded-full z-20
+                         shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_5px_5px_5px_rgba(0,0,0,0.15)]"
+              style={{ x: node.x, y: node.y }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{
+                delay: 0.8 + i * 0.1,
+                type: "spring",
+                stiffness: 120,
+                damping: 12
+              }}
             >
-                Explore Modules
-            </button>
-            </div>
-
+              <span>{node.text}</span>
+            </motion.div>
+          ))}
         </div>
 
-      
+        {/* Text List */}
+        <div className="max-w-2xl w-full px-2 sm:px-8">
+          <ul className="space-y-10 sm:space-y-18">
+            {listItems.map((item, index) => (
+              <li key={index} className="flex gap-4 items-start group">
+                <span className="mt-1.5 h-2 w-2 rounded-full bg-black shrink-0" />
+                <div>
+                  <h3 className="text-lg font-bold text-slate-800">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-slate-600">
+                    {item.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <button
+            style={{
+              background:
+                "linear-gradient(359.02deg, #1F7A5A 32.42%, #39E0A5 131.86%)",
+            }}
+            className="text-white px-8 py-4 rounded-lg font-bold shadow-xl
+                       hover:brightness-110 active:scale-95 mt-10 ml-0 sm:ml-5"
+          >
+            Explore Modules
+          </button>
+        </div>
+      </div>
     </section>
   );
 }

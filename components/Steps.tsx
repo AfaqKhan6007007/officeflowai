@@ -10,40 +10,46 @@ export default function Steps() {
   const [activeStep, setActiveStep] = useState(0);
   const [playKey, setPlayKey] = useState(0);
 
-  const hasAnimated = useRef(false);
-
-useEffect(() => {
-  if (isInView) {
-    setActiveStep(0);
-    setPlayKey((k) => k + 1);
-  } else {
-    // reset steps so it can replay next time
-    setActiveStep(0);
-  }
-}, [isInView]);
+  useEffect(() => {
+    if (isInView) {
+      setActiveStep(0);
+      setPlayKey((k) => k + 1);
+    } else {
+      setActiveStep(0);
+    }
+  }, [isInView]);
 
   return (
     <section
-      ref={ref}
-      className="w-full min-h-screen bg-cover bg-center relative"
-      style={{ backgroundImage: "url('/steps_bg.svg')" }}
-    >
+  ref={ref}
+  className="
+    w-full
+    min-h-screen
+    relative
+    px-4
+    bg-no-repeat
+    bg-[length:140%]
+    bg-[position:center_140px]
+    sm:bg-cover
+    sm:bg-center
+  "
+  style={{ backgroundImage: "url('/steps_bg.svg')" }}
+>
       {/* Title */}
-      <h1 className="text-4xl font-bold text-center pt-32 text-[#005143]">
+      <h1 className="text-3xl md:text-4xl font-bold text-center pt-24 md:pt-32 text-[#005143]">
         How It Works
       </h1>
-      <p className="text-center mt-4 text-gray-700 max-w-2xl mx-auto">
+      <p className="text-center mt-4 text-gray-700 max-w-2xl mx-auto text-sm md:text-base">
         Discover the simplicity and efficiency of OfficeFlow AI through these
         three easy steps.
       </p>
 
       {/* SVG LINE */}
-      <div className="relative mt-15 flex justify-center">
+      <div className="relative mt-12 md:mt-15 flex justify-center overflow-x-auto">
         <svg
-          key={playKey} // force remount to replay animation
-          width="900"
-          height="220"
+          key={playKey}
           viewBox="0 0 900 220"
+          className="w-[700px] md:w-[900px] h-auto"
           fill="none"
         >
           <motion.path
@@ -69,31 +75,32 @@ useEffect(() => {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-10 grid grid-cols-4 gap-10 text-center px-10">
-  <StepText show={activeStep >= 1} title="You Ask">
-    Type a question or give a command in plain language.
-  </StepText>
+      {/* Steps */}
+      <div className="max-w-6xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 text-center px-2 md:px-10">
+        <StepText show={activeStep >= 1} title="You Ask">
+          Type a question or give a command in plain language.
+        </StepText>
 
-  <StepText
-    show={activeStep >= 2}
-    title="It Understands"
-    className="-mt-40" // pushes this text closer to the SVG
-  >
-    The AI reads intent, context, and your permissions.
-  </StepText>
+        <StepText
+          show={activeStep >= 2}
+          title="It Understands"
+          className="md:-mt-40"
+        >
+          The AI reads intent, context, and your permissions.
+        </StepText>
 
-  <StepText show={activeStep >= 3} title="It Does the Work">
-    Records are created, updated, or workflows triggered.
-  </StepText>
+        <StepText show={activeStep >= 3} title="It Does the Work">
+          Records are created, updated, or workflows triggered.
+        </StepText>
 
-  <StepText
-    show={activeStep >= 4}
-    title="You Get Results"
-    className="-mt-40" // pushes this text closer to the SVG
-  >
-    Instant confirmation or completed output, in real time.
-  </StepText>
-</div>
+        <StepText
+          show={activeStep >= 4}
+          title="You Get Results"
+          className="md:-mt-40"
+        >
+          Instant confirmation or completed output, in real time.
+        </StepText>
+      </div>
     </section>
   );
 }

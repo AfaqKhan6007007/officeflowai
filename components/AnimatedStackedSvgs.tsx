@@ -7,7 +7,7 @@ export default function AnimatedStackedSvgs() {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     amount: 0.4,
-    once: false, // 👈 IMPORTANT
+    once: false,
   });
 
   const variants = {
@@ -25,40 +25,51 @@ export default function AnimatedStackedSvgs() {
   };
 
   return (
-    <div ref={ref} className="relative w-[520px] h-[620px]">
-      {/* LEFT FLOATERS */}
-        <FloatingSvg
+    <div
+      ref={ref}
+      className="
+        relative
+        w-[320px] h-[420px]
+        sm:w-[420px] sm:h-[520px]
+        lg:w-[520px] lg:h-[620px]
+        mx-auto
+      "
+    >
+      {/* LEFT FLOATERS (hide on mobile) */}
+      <FloatingSvg
         src="/Frame1.svg"
-        size={64}
-        className="top-[80px] left-[60px]"
+        size={56}
+        className="hidden sm:block top-[60px] left-[40px]"
         delay={0}
-        />
-        <FloatingSvg
+      />
+      <FloatingSvg
         src="/Frame2.svg"
-        size={64}
-        className="top-[250px] left-[0px]"
+        size={56}
+        className="hidden sm:block top-[240px] left-[-10px]"
         delay={1}
-        />
-        <FloatingSvg
+      />
+      <FloatingSvg
         src="/Frame3.svg"
-        size={64}
-        className="bottom-[120px] left-[-90px]"
+        size={56}
+        className="hidden lg:block bottom-[100px] left-[-80px]"
         delay={2}
-        />
+      />
 
-        {/* RIGHT FLOATERS */}
-        <FloatingSvg
+      {/* RIGHT FLOATERS */}
+      <FloatingSvg
         src="/Frame4.svg"
-        size={64}
-        className="top-[240px] right-[-40px]"
+        size={56}
+        className="hidden sm:block top-[250px] right-[-30px]"
         delay={0.5}
-        />
-        <FloatingSvg
+      />
+      <FloatingSvg
         src="/Frame5.svg"
-        size={64}
-        className="bottom-[140px] right-[0px]"
+        size={56}
+        className="hidden lg:block bottom-[120px] right-[0px]"
         delay={1.5}
-        />
+      />
+
+      {/* STACKED CARDS */}
       <motion.div
         custom={0}
         variants={variants}
@@ -66,7 +77,13 @@ export default function AnimatedStackedSvgs() {
         animate={isInView ? "visible" : "hidden"}
         className="absolute top-0 right-0 z-10"
       >
-        <Image src="/talent.svg" alt="Talent" width={320} height={320} />
+        <Image
+          src="/talent.svg"
+          alt="Talent"
+          width={320}
+          height={320}
+          className="w-[200px] sm:w-[260px] lg:w-[320px] h-auto"
+        />
       </motion.div>
 
       <motion.div
@@ -74,9 +91,15 @@ export default function AnimatedStackedSvgs() {
         variants={variants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="absolute top-[180px] right-[100px] z-20"
+        className="absolute top-[120px] sm:top-[160px] right-[40px] sm:right-[80px] z-20"
       >
-        <Image src="/fin.svg" alt="Finance" width={320} height={320} />
+        <Image
+          src="/fin.svg"
+          alt="Finance"
+          width={320}
+          height={320}
+          className="w-[200px] sm:w-[260px] lg:w-[320px] h-auto"
+        />
       </motion.div>
 
       <motion.div
@@ -84,28 +107,25 @@ export default function AnimatedStackedSvgs() {
         variants={variants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="absolute top-[360px] right-[200px] z-30"
+        className="absolute top-[240px] sm:top-[320px] right-[80px] sm:right-[160px] z-30"
       >
-        <Image src="/ops.svg" alt="Operations" width={320} height={320} />
+        <Image
+          src="/ops.svg"
+          alt="Operations"
+          width={320}
+          height={320}
+          className="w-[200px] sm:w-[260px] lg:w-[320px] h-auto"
+        />
       </motion.div>
-
     </div>
   );
 }
 
-function FloatingSvg({
-  src,
-  size = 64,
-  className = "",
-  delay = 0,
-}) {
+function FloatingSvg({ src, size = 64, className = "", delay = 0 }) {
   return (
     <motion.div
       className={`absolute ${className}`}
-      animate={{
-        y: [0, -12, 0],
-        x: [0, 6, 0],
-      }}
+      animate={{ y: [0, -12, 0], x: [0, 6, 0] }}
       transition={{
         duration: 6,
         ease: "easeInOut",

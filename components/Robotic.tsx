@@ -20,22 +20,26 @@ const moduleData = [
   { title: "Role-aware & Secure", src: "/lock.png", desc: "The AI respects your role and access rights", features: ["Managers, finance teams, and employees each get controlled, secure interactions just like working with a real employee."] },
   { title: "Take real actions, not just chat", src: "/play.png", desc: "The AI doesn’t stop at suggestions. It can:", features: ["Add new records", "Edit existing data", "Delete or update entries","Trigger workflows & approvals"] },
   { title: "Smart Conversational Intelligence", src: "/chat.png", desc: "Ask anything in plain English (or Arabic).", features: ["Show last month’s petty cash", "Who approved this? or", "Audits"] },
-  
 ];
 
 export default function Robotic() {
   const { ref, inView } = useInView({ threshold: 0.3 });
-
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Cycle modules automatically when section is in view
+  const [isLg, setIsLg] = useState(false);
   useEffect(() => {
-    if (!inView) return; // pause if not visible
+  // This only runs on the client
+  const handleResize = () => setIsLg(window.innerWidth >= 1024);
 
+  handleResize(); // set initially
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+  useEffect(() => {
+    if (!inView) return;
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % moduleData.length);
-    }, 4000); // change module every 4s
-
+    }, 4000);
     return () => clearInterval(interval);
   }, [inView]);
 
@@ -46,109 +50,90 @@ export default function Robotic() {
   return (
     <section
       ref={ref}
-      className="relative py-28"
+      className="relative py-16 lg:py-28"
       style={{ backgroundImage: 'url("/Robotic_hero.png")', backgroundSize: 'cover' }}
     >
-      <div className='relative flex flex-col gap-4 mb-22 items-center justify-center z-30'>
-          <h1 className="text-2xl md:text-5xl font-bold text-center text-[white]">
-            The Intelligent Assistant Behind Every Task
-          </h1>
-          <p className="text-center text-white max-w-6xl">
-            Automate workflows, track tasks, and connect your teams all from one smart AI.
-          </p>
-          <p className="text-center text-white max-w-6xl">
-            OfficeFlowAI’s Agentic AI chatbot acts like a dedicated employee inside your system. It understands your data, follows your workflows, and performs actions on your behalf from answering questions to adding, editing, and managing records all in real time, 24/7.
-          </p>
+      {/* Header */}
+      <div className="relative flex flex-col gap-4 items-center justify-center z-30 px-4 text-center">
+        <h1 className="text-2xl md:text-5xl font-bold text-white">
+          The Intelligent Assistant Behind Every Task
+        </h1>
+        <p className="text-white max-w-6xl">
+          Automate workflows, track tasks, and connect your teams all from one smart AI.
+        </p>
+        <p className="text-white max-w-6xl">
+          OfficeFlowAI’s Agentic AI chatbot acts like a dedicated employee inside your system. It understands your data, follows your workflows, and performs actions on your behalf from answering questions to adding, editing, and managing records all in real time, 24/7.
+        </p>
       </div>
-      <div className="flex justify-end px-6 max-w-7xl mx-auto">
 
+      {/* Main Content */}
+      <div className="flex flex-col lg:flex-row items-center lg:items-start px-4 max-w-7xl mx-auto relative">
 
-        {/* Modules — one at a time in front of cards */}
-        <div className="relative left-55 transform -translate-x-1/2 top-0 z-30 w-[1300px] h-[400px] mb-10">
-        <AnimatePresence mode="wait">
+        {/* Module */}
+        <div className="relative z-30 w-full lg:w-[1300px] lg:h-[450px] h-[450px] mb-10 lg:left-55 lg:-translate-x-1/2 mt-30">
+          <AnimatePresence mode="wait">
             {inView && (
-            <motion.div
+              <motion.div
                 key={currentIndex}
                 onClick={nextModule}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="
-                  relative
-                  p-6
-                  border-5 border-[#33b386]
-                  rounded-lg
-                  bg-[#DAF6E6]
-                  flex flex-col items-center
-                  shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_0_0_40px_rgba(55,194,145,0.65)]
-                  outline outline-2 outline-white
-                "
-                >
-                {/* Centered Image */}
+                className="p-6 border-5 border-[#33b386] rounded-lg bg-[#DAF6E6] flex flex-col items-center shadow-[0_120px_120px_rgba(0,0,0,0.15),inset_0_0_40px_rgba(55,194,145,0.65)] outline outline-2 outline-white"
+              >
                 <Image
-                    src={moduleData[currentIndex].src}
-                    alt={moduleData[currentIndex].title}
-                    width={150}
-                    height={150}
-                    className="mb-4"
+                  src={moduleData[currentIndex].src}
+                  alt={moduleData[currentIndex].title}
+                  width={120}
+                  height={120}
+                  className="mb-4"
                 />
 
-                {/* Text container aligned left */}
-                <div className="w-full max-w-[80%]">
-                    <h3 className="text-xl font-semibold mb-2 text-left">
+                <div className="w-full max-w-full lg:max-w-[80%]">
+                  <h3 className="text-lg lg:text-xl font-semibold mb-2 text-left">
                     {moduleData[currentIndex].title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 text-left">
+                  </h3>
+                  <p className="text-gray-600 mb-4 text-left">
                     {moduleData[currentIndex].desc}
-                    </p>
-                    <ul className="list-disc pl-6 space-y-2 text-slate-600 text-left">
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2 text-slate-600 text-left">
                     {moduleData[currentIndex].features.map((f, i) => (
-                        <li key={i}>{f}</li>
+                      <li key={i}>{f}</li>
                     ))}
-                    </ul>
+                  </ul>
                 </div>
-            </motion.div>
+              </motion.div>
             )}
-        </AnimatePresence>
+          </AnimatePresence>
         </div>
-        {/* Robot Background */}
-        <div className="absolute right-0 bottom-0 top-80 ml-auto">
+
+        {/* Robot Background (hide on small screens) */}
+        <div className="hidden lg:block absolute right-0 top-20">
           <Image src="/Robot_bg.svg" alt="AI Robot BG" width={720} height={720} priority />
         </div>
 
-        {/* Robot */}
-        <div className="relative left-90 bottom-0 top-10 ml-auto">
-          <Image src="/Robot.svg" alt="AI Robot" width={1820} height={1820} priority />
+        {/* Robot (scaled on mobile) */}
+        <div className="relative lg:left-90 mt-8 lg:mt-25">
+          <Image
+            src="/Robot.svg"
+            alt="AI Robot"
+            width={900}
+            height={900}
+            className="lg:w-[1820px]"
+            priority
+          />
         </div>
 
-        {/* Cards — in front of robot */}
-        <div className="relative right-30 top-0 z-20 w-[700px] ml-auto mt-[-40]">
+        {/* Cards */}
+        <div className="relative z-20 w-full lg:w-[700px] mt-20 lg:mt-15 lg:right-30">
           {cards.map((card, i) => (
             <motion.div
-  key={i}
-  initial={{ opacity: 0, y: 24, x: cardOffsets[i] }}
-  animate={
-    inView
-      ? { opacity: 1, y: 0, x: cardOffsets[i] }
-      : { opacity: 0, y: 24, x: cardOffsets[i] }
-  }
-  transition={{
-    duration: 0.5,
-    delay: i * 0.35,
-    ease: "easeOut",
-  }}
-  className="
-    mt-6
-    rounded-2xl
-    bg-[#39E0A5]
-    p-5
-    text-white
-    shadow-[0_18px_40px_rgba(0,0,0,0.25)]
-    border
-    border-[#4cbc95]
-    relative
-    before:absolute
+              key={i}
+              initial={{ opacity: 0, y: 24, x:isLg ? cardOffsets[i]:0 }}
+              animate={inView ? { opacity: 1, y: 0, x:isLg ? cardOffsets[i]:0 } : { opacity: 0, y: 24, x: isLg ? cardOffsets[i]:0 }}
+              transition={{ duration: 0.5, delay: i * 0.35, ease: "easeOut" }}
+              className="mt-6 rounded-2xl bg-[#39E0A5] p-5 text-white shadow-[0_18px_40px_rgba(0,0,0,0.25)] border border-[#4cbc95] relative before:absolute
     before:inset-[1px]
     before:rounded-xl
     before:border
@@ -156,18 +141,14 @@ export default function Robotic() {
     before:content-['']
     before:pointer-events-none
     before:translate-x-3
-    before:-translate-y-3
-  "
->
-  <h3 className="font-semibold text-base text-center">
-    {card.title}
-  </h3>
-</motion.div>
-
-
+    before:-translate-y-3"
+            >
+              <h3 className="font-semibold text-base text-center">{card.title}</h3>
+            </motion.div>
           ))}
         </div>
-     </div>
+
+      </div>
     </section>
   );
 }
