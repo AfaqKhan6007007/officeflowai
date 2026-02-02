@@ -6,6 +6,7 @@ import HRModules from "@/components/HRModules";
 import Choice from "@/components/Choice";
 import Implementation from "@/components/Implementation";
 import Automation from "@/components/Automation";
+import HrAI from "@/components/HrAI";
 
 export default function HRModule () {
     return (
@@ -16,6 +17,7 @@ export default function HRModule () {
                 <HeroHR />
                 <HRModules />
                 <Automation />
+                <HrAI />
                 <Implementation />
                 <Choice />
                 <Management />
