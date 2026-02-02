@@ -3,21 +3,21 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function Glance() {
-  const [active, setActive] = useState("Invoice Management");
+export default function Clarity() {
+  const [active, setActive] = useState("Vendor Management");
 
   const buttons = [
-    "Invoice Management",
-    "Accounting & Reporting",
-    "Expenses & Approvals",
-    "Analytics & Compliance",
+    "Vendor Management",
+    "Contract Management",
+    "Purchase Requests",
+    "Purchase Orders",
   ];
 
   const screens: Record<string, string> = {
-    "Invoice Management": "/Screen6.png",
-    "Accounting & Reporting": "/Screen7.png",
-    "Expenses & Approvals": "/Screen8.png",
-    "Analytics & Compliance": "/Screen9.png",
+    "Vendor Management": "/pro.png",
+    "Contract Management": "/pro.png",
+    "Purchase Requests": "/pro.png",
+    "Purchase Orders": "/pro.png",
   };
 
   return (
@@ -25,10 +25,10 @@ export default function Glance() {
       {/* Heading */}
       <div className="flex flex-col gap-4 items-center text-center mt-10">
         <h1 className="text-2xl md:text-5xl font-bold text-[#005143]">
-          Accounting & Finance at a Glance
+          Manage Procurement with Clarity
         </h1>
         <p className="text-gray-700 max-w-6xl">
-          Track expenses, manage invoices, and stay on top of payroll with a clear, real-time financial overview.
+          Manage vendors, contracts, purchase requests, and orders in one connected workflow with full visibility and control.
         </p>
       </div>
 
@@ -54,9 +54,9 @@ export default function Glance() {
       </div>
 
      <div className="mt-20 flex justify-center">
-  <div className="relative w-full max-w-[600px] aspect-[16/10]">
+  <div className="relative w-full max-w-[580px] aspect-[16/10]">
     {/* Screen */}
-    <div className="absolute top-[10%] left-[13%] w-[75%] h-[72%] overflow-hidden rounded-md">
+    <div className="absolute top-[10%] left-[10%] w-[82%] h-[80%] overflow-hidden rounded-md">
       <Image
         key={active}
         src={screens[active]}

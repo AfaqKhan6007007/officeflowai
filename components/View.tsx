@@ -3,21 +3,19 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function Glance() {
-  const [active, setActive] = useState("Invoice Management");
+export default function View() {
+  const [active, setActive] = useState("Leads & Contacts");
 
   const buttons = [
-    "Invoice Management",
-    "Accounting & Reporting",
-    "Expenses & Approvals",
-    "Analytics & Compliance",
+    "Leads & Contacts",
+    "Sales Pipelines",
+    "Reports & Analytics",
   ];
 
   const screens: Record<string, string> = {
-    "Invoice Management": "/Screen6.png",
-    "Accounting & Reporting": "/Screen7.png",
-    "Expenses & Approvals": "/Screen8.png",
-    "Analytics & Compliance": "/Screen9.png",
+    "Leads & Contacts": "/S&m.png",
+    "Sales Pipelines": "/S&m.png",
+    "Reports & Analytics": "/S&m.png",
   };
 
   return (
@@ -25,10 +23,10 @@ export default function Glance() {
       {/* Heading */}
       <div className="flex flex-col gap-4 items-center text-center mt-10">
         <h1 className="text-2xl md:text-5xl font-bold text-[#005143]">
-          Accounting & Finance at a Glance
+           Sales & Marketing, All in One View
         </h1>
         <p className="text-gray-700 max-w-6xl">
-          Track expenses, manage invoices, and stay on top of payroll with a clear, real-time financial overview.
+          Track leads, manage pipelines, monitor performance, and automate follow-ups from one unified dashboard.
         </p>
       </div>
 

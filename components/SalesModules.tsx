@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-export default function HRModules() {
+export default function SalesModules() {
   // Observe the section
   const { ref, inView } = useInView({
     threshold: 0.1, // Trigger when 10% visible
@@ -32,13 +32,14 @@ export default function HRModules() {
   };
 
   const moduleData = [
-    { title: "Attendance & Leave Management", src: "/leave.png", desc: "Track employee work hours, check-ins, and late arrivals and leaves in real time." },
-    { title: "Recruitment & Hiring", src: "/hiring.png", desc: "Manage the entire hiring process from job posting to onboarding."},
-    { title: "Payroll", src: "/payroll.png", desc: "Automate salary calculations, deductions, and payslip generation without errors."},
-    { title: "Employee Records", src: "/employee.png", desc: "Store and manage employee profiles, documents, and job details securely."},
-    { title: "Performance Tracking", src: "/performance.png", desc: "Monitor goals, reviews, and performance insights to support growth." },
-    { title: "Documents & Policies", src: "/document.png", desc: "Centralize HR documents and company policies for easy access and updates." },
-  ];
+    { title: "Lead & Contact Management", src: "/man.png", desc: "Capture, organize, and manage leads and contacts with full profiles, lifecycle stages, region tags, and complete interaction history." },
+    { title: "Sales Funnel & Pipeline Tracking", src: "/funnel.png", desc: "Visualize your entire sales funnel with Kanban-style pipelines, automated lead scoring, aging alerts, and conversion tracking across teams and regions."},
+    { title: "Communication Logging & Follow-Ups", src: "/communication.png", desc: "Record all calls, emails, meetings, and notes in a unified timeline with automated logging, follow-up scheduling, and smart reminders."},
+    { title: "Employee Performance Monitoring", src: "/monitor.png", desc: "Track sales team productivity with dashboards showing lead handling, deal progress, follow-up completion,  and leaderboard rankings."},
+    { title: "Reports & Analytics", src: "/pc.png", desc: "Access real-time dashboards, drill-down reports, scheduled exports, and performance insights across leads, sales activity, regions, and employees."},
+     { title: "AI-Powered Automation", src: "/chip.png", desc: "Automatically fetch and enrich leads from marketing platforms, detect duplicates, assign quality scores, trigger smart alerts, and sync data in real time."},
+
+];
 
   return (
     <section
@@ -48,14 +49,14 @@ export default function HRModules() {
     >
       <div className='relative flex flex-col gap-4 mb-22 items-center justify-center z-30 mt-10'>
           <h1 className="text-2xl md:text-5xl font-bold text-center text-[#005143]">
-          Everything Your Office Needs, All in One Platform
+          Everything You Need to Drive Growth
           </h1>
-          <p className="text-center text-gray-700 max-w-6xl">All core HR operations, managed from one place.
+          <p className="text-center text-gray-700 max-w-6xl">From first contact to closed deals and ongoing engagement, manage the full sales and marketing lifecycle in one place.
           </p>
       </div>
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-12"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"} // Animate based on inView
@@ -64,7 +65,7 @@ export default function HRModules() {
             <motion.div
               key={index}
               variants={cardVariants}
-              className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm items-center justify-center"
+              className="p-3 border border-gray-200 rounded-lg bg-white shadow-sm items-center justify-center"
             >
               <div className="flex justify-center mb-4">
                 <Image 
