@@ -874,6 +874,205 @@ function PolicySection (){
 }
 
 
+function ResourceSection (){
+    const seeHowRef = useRef(null);
+  const seeHowInView = useInView(seeHowRef, {
+    once: false,
+    amount: 0.1,
+  });
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.4 });
+  const gridItemsChat = [
+    { img: "/definition.png", text: "Project / Shift Definition" },
+    { img: "/map.png", text: "Skill & Availability Mapping" },
+    { img: "/speed.png", text: "Workload & Capacity Analysis" },
+    { img: "/assignment.png", text: "Resource Assignment" },
+    { img: "/conflict.png", text: "Conflict Detection" },
+    { img: "/schedule.png", text: "Schedule Finalization" },
+  ];
+  const gridVariants = {
+    hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
+    visible: { 
+      opacity: 1, 
+      height: "auto", 
+      transition: { duration: 0.6, ease: "easeInOut" } 
+    }
+  };
+  const cards = [
+    {
+      title: "Staffing Matrix Alignment",
+      img:"/tick.png"
+    },
+    {
+      title: "Workspace utilization verify",
+      img:"/tick.png"
+    },
+    {
+      title: "Inventory sync complete",
+      img:"/tick.png"
+    
+    },
+    {
+        title:"Conflict Resolution: 1 potential overlap resolved. "
+    }
+  ];
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2, // cards appear one by one
+      },
+    },
+  };
+
+  const cardVariants = {
+  hidden: (custom: number) => {
+    if (custom === 3) {
+      return {
+        opacity: 0,
+        scale: 0.6,
+      };
+    }
+
+    return {
+      opacity: 0,
+      y: 50,
+    };
+  },
+
+  visible: (custom: number) => {
+    if (custom === 3) {
+      return {
+        opacity: 1,
+        scale: 0.9,
+        transition: {
+          type: "spring",
+          stiffness: 50,
+          damping: 4,
+        },
+      };
+    }
+
+    return {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      },
+    };
+  },
+};
+
+
+    return (
+        <>
+        <motion.div 
+        initial="hidden"
+        variants={gridVariants}
+        animate="visible"   // ✅ REQUIRED
+        exit="hidden"
+        className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
+      >
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
+          <h2 className="text-2xl font-semibold">Resource Allocation Agent</h2>
+          <p className="font-semibold">Intelligent Planning & Assignment</p>
+          <p>
+            Automatically assigns the right people to the right work by analyzing skills,<br/> availability, and capacity in real time ensuring balanced workloads and zero<br/> conflicts.
+          </p>
+          <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
+            <span>Try for Free </span>
+            <MoveRightIcon />
+          </button>
+        </div>
+
+        <motion.div
+      ref={containerRef}
+      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 rounded-md p-4 lg:p-10 lg:ml-auto lg:mr-10 rounded-lg"
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+        <h2 className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-center font-semibold text-xl">
+            Resource Allocation Engine
+        </h2>
+        <div className="flex gap-2">
+            <div className="bg-[#1f7a4d] text-white rounded-4xl px-6 py-3">Project X</div>
+            <div className="bg-[#1f7a4d] text-white rounded-4xl px-6 py-3">Shift A</div>
+        </div>
+        <p className="text-emerald-600 text-md font-semibold">Capacity Analysis</p>
+        <div className="w-full h-2 rounded-lg bg-emerald-400" />
+      {cards.map((card, idx) => (
+        <motion.div
+          key={idx}
+          className={idx!==3 ? "bg-[#005143] w-full rounded-lg text-white px-6 p-4 flex justify-flex-start gap-4": "bg-[#e7e98b] w-full rounded-4xl text-[#005143] px-6 p-4 gap-4 text-center"}
+          variants={cardVariants}
+          custom={idx}
+        >
+            {card.img && <Image src={card.img} alt={card.title} width={29} height={29} />}
+            {card.title && <h2 className="text-[16px] mt-0">{card.title}</h2>}
+            
+        </motion.div>
+      ))}
+    </motion.div>
+      </div>
+        <h1 className="text-white text-2xl md:text-3xl text-center mb-4 mt-12" ref={seeHowRef}>
+          See How it works
+        </h1>
+        <motion.div
+  initial={false}
+  animate={seeHowInView ? "open" : "closed"}
+  variants={{
+    closed: {
+      height: 0,
+      opacity: 0,
+      overflow: "hidden",
+    },
+    open: {
+      height: "auto",
+      opacity: 1,
+      transition: {
+        height: { duration: 0.6, ease: "easeInOut" },
+        opacity: { duration: 0.4, delay: 0.2 },
+      },
+    },
+  }}
+  className="relative mt-10 w-full"
+>
+          {/* SVG Lines */}
+          <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <AnimatedPath isInView={seeHowInView} d="
+              M250 250
+              H1000
+              V550
+              H0
+              V840
+              H800
+            " />
+          </svg>
+
+          {/* Grid Items */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 items-center justify-items-center gap-4 sm:gap-6 lg:gap-10 px-2 sm:px-4 lg:px-0">
+            {gridItemsChat.map((item, idx) => (
+              <div
+                key={idx}
+                className={`flex gap-4 sm:gap-6 bg-[#1F7A5A] text-white rounded-lg p-4 text-lg sm:text-xl font-semibold w-full sm:max-w-[400px] z-10 justify-center
+                  ${idx === 6 ? "sm:col-start-2 lg:col-start-2" : ""}
+                `}
+              >
+                <Image src={item.img} alt={item.text} width={39} height={30} />
+                <span className="mt-1">{item.text}</span>
+              </div>
+            ))}
+          </div>
+          </motion.div>
+      </motion.div>
+        </>
+    )
+}
+
 
 const AnimatedPath = ({ d, isInView }) => {
   return (
@@ -969,6 +1168,7 @@ export default function HrAI() {
   {/*activeSection === 0 && <AttendanceSection key="attendance" />*/}
   {/*activeSection === 0 && <LeaveSection key="leave" />*/}
   {/*activeSection === 0 && <PolicySection key="policy" />*/}
+  {activeSection === 0 && <ResourceSection key="resource" />}
 </AnimatePresence>
 
 
