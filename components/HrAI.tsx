@@ -306,7 +306,7 @@ function AttendanceSection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
-    amount: 0.1,
+    amount: 0.5,
   });
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.9 });
@@ -525,6 +525,186 @@ function AttendanceSection (){
     )
 }
 
+
+function LeaveSection (){
+    const seeHowRef = useRef(null);
+  const seeHowInView = useInView(seeHowRef, {
+    once: false,
+    amount: 0.1,
+  });
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.4 });
+    const gridItemsChat = [
+    { img: "/calender.png", text: "Smart Leave Request" },
+    { img: "/balance.png", text: "AI Leave Balance Check" },
+    { img: "/intelligent.png", text: "Intelligent Workload & Shift Analysis" },
+    { img: "/tick.png", text: "Automated Approval Recommendation" },
+    { img: "/dollar.png", text: "Excess Leave Salary Adjustment" },
+    { img: "/refresh.png", text: "Real-Time Leave Record Synchronization" },
+  ];
+  const gridVariants = {
+    hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
+    visible: { 
+      opacity: 1, 
+      height: "auto", 
+      transition: { duration: 0.6, ease: "easeInOut" } 
+    }
+  };
+  const cards = [
+    {
+      title: "Leave Request",
+      desc: "Document “medical_certificate.pdf” verified.",
+      img: "/right.png",
+      bar: false
+    },
+    {
+      title: "AI Leave Balance Check ",
+      desc: "Remaining: 12 days",
+      bar:true
+    },
+    {
+      title: "Workload & Shift Analysis",
+      desc: "No crtical shift dependencies detected.",
+      img: "/shift1.png",
+      bar: false
+    },
+    {
+      title: "Salary Adjustment ",
+      desc: "Calculating impact...",
+      bar: false
+    },
+  ];
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2, // cards appear one by one
+      },
+    },
+  };
+
+  const cardVariants = {
+  hidden: (custom: number) => ({
+    opacity: 0,
+    y: 50, // even index from left, odd index from right
+  }),
+  visible: (custom: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeInOut" },
+  }),
+};
+
+    return (
+        <>
+        <motion.div 
+        initial="hidden"
+        variants={gridVariants}
+        animate="visible"   // ✅ REQUIRED
+        exit="hidden"
+        className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
+      >
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="text-white flex flex-col gap-7 mt-4 lg:mt-25 ml-0 lg:ml-10">
+          <h2 className="text-2xl font-semibold">Leave Management Agent</h2>
+          <p className="font-semibold">Manages employee leave intelligently without disrupting teams or payroll.</p>
+          <p>
+            Leave Management Agent evaluates leave requests in real time, checks<br/> balances, analyzes workload and shifts, recommends approvals, and keeps<br/> payroll and records perfectly in sync no manual follow-ups needed.
+          </p>
+          <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
+            <span>Try for Free </span>
+            <MoveRightIcon />
+          </button>
+        </div>
+
+        <motion.div
+      ref={containerRef}
+      className="bg-emerald-100 w-full lg:w-[550px] flex flex-col gap-4 md:gap-9 rounded-md p-4 lg:p-10 lg:ml-auto lg:mr-10"
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+      {cards.map((card, idx) => (
+        <motion.div
+          key={idx}
+          className="bg-[white] w-full rounded-lg text-white px-6 p-4 flex justify-between shadow-[-8px_-8px_0_0_#d3d3d3]"
+          variants={cardVariants}
+          custom={idx}
+        >
+          <div className="w-full">
+            <h2 className="text-[16px] font-semibold text-emerald-800">{card.title}</h2>
+            {card.bar && <div className="w-full h-2 rounded-lg bg-emerald-400 my-2" />}
+            <p className="text-[13px] text-emerald-700">{card.desc}</p>
+          </div>
+          {card.img && <Image
+            src={card.img}
+            alt={card.title}
+            width={42}
+            height={42}
+            style={{ width: "42px", height: "42px", marginTop: 6 }}
+          />}
+        </motion.div>
+      ))}
+    </motion.div>
+      </div>
+        <h1 className="text-white text-2xl md:text-3xl text-center mb-4 mt-12" ref={seeHowRef}>
+          See How it works
+        </h1>
+        <motion.div
+  initial={false}
+  animate={seeHowInView ? "open" : "closed"}
+  variants={{
+    closed: {
+      height: 0,
+      opacity: 0,
+      overflow: "hidden",
+    },
+    open: {
+      height: "auto",
+      opacity: 1,
+      transition: {
+        height: { duration: 0.6, ease: "easeInOut" },
+        opacity: { duration: 0.4, delay: 0.2 },
+      },
+    },
+  }}
+  className="relative mt-10 w-full"
+>
+          {/* SVG Lines */}
+          <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <AnimatedPath isInView={seeHowInView} d="
+              M250 250
+              H1000
+              V550
+              H0
+              V840
+              H800
+            " />
+          </svg>
+
+          {/* Grid Items */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 items-center justify-items-center gap-4 sm:gap-6 lg:gap-10 px-2 sm:px-4 lg:px-0">
+            {gridItemsChat.map((item, idx) => (
+              <div
+                key={idx}
+                className={`flex gap-4 sm:gap-6 bg-[#1F7A5A] text-white rounded-lg p-4 text-lg sm:text-xl font-semibold w-full sm:max-w-[350px] z-10 justify-center items-center
+                  
+                `}
+              >
+                <Image src={item.img} alt={item.text} width={29} height={20} style={{width:'39px',height:'49px'}} />
+                <span className="mt-1">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+        </>
+    )
+}
+
+
+
 const AnimatedPath = ({ d, isInView }) => {
   return (
     <motion.path
@@ -616,7 +796,8 @@ export default function HrAI() {
       <AnimatePresence mode="wait">
   {/*{activeSection === 0 && <RecruitementSection key="recruitment" />}*/}
   {/*activeSection ===0 && <PayrollSection key="payroll" />*/}
-  {activeSection === 0 && <AttendanceSection key="attendance" />}
+  {/*activeSection === 0 && <AttendanceSection key="attendance" />*/}
+  {activeSection === 0 && <LeaveSection key="leave" />}
 </AnimatePresence>
 
 
