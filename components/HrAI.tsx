@@ -3,6 +3,7 @@ import { MoveRightIcon } from "lucide-react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import "../app/globals.css";
 
 import { useEffect, useState } from "react";
 
@@ -308,7 +309,7 @@ function AttendanceSection (){
     amount: 0.1,
   });
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.4 });
+  const isInView = useInView(containerRef, { once: false, amount: 0.9 });
     const gridItemsChat = [
     { img: "/checkin.png", text: "Employee Check-In / Out" },
     { img: "/facial.png", text: "Facial Recognition" },
@@ -337,7 +338,8 @@ function AttendanceSection (){
         title2:"Location Capture & Validation",
         desc2:"NSTP, Islamabad",
         img2:"/loc.png",
-        isAnimation: true
+        isAnimation: true,
+        img3:"/avatar.jpg",
     }
     
   ];
@@ -380,7 +382,7 @@ function AttendanceSection (){
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
-        <div className="text-white flex flex-col gap-7 mt-4 lg:mt-15 ml-0 lg:ml-10">
+        <div className="text-white flex flex-col gap-7 mt-4 lg:mt-25 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Attendance Agent</h2>
           <p className="font-semibold">Tracks employee attendance automatically with identity, location, and<br/> policy checks.</p>
           <p>
@@ -434,6 +436,36 @@ function AttendanceSection (){
             style={{ width: "142px", height: "30px", marginTop: 6 }}
             className="hidden sm:block"
           />}
+          {card.isAnimation && (
+  <div className="relative border-8 border-blue-300 rounded-lg p-5 overflow-hidden bg-white/50 ml-[1%] justify-center items-center hidden sm:flex">
+    {/* The Scanning Line */}
+    <motion.div
+      initial={{ top: "0%" }}
+      animate={{ top: isInView ? "85%" : "25%" }}
+      transition={{
+        duration: 2,
+        repeatType: "loop",
+        ease: "linear",
+      }}
+      className="absolute left-0 right-0 h-[2px] bg-blue-400 shadow-[0_0_15px_2px_rgba(96,165,250,0.8)] z-10 w-3/4 mx-auto"
+    />
+
+    {/* The Image */}
+    <div className="focus-box">
+      <Image
+      src={card.img3}
+      alt={card.title}
+      width={142}
+      height={130}
+      style={{ width: "162px", height: "150px", marginTop: 20 }}
+      className="hidden sm:block relative z-0"
+    />
+    <div className="focus-box-tr"></div> 
+    <div className="focus-box-bl"></div>
+    </div>
+    
+  </div>
+)}
         </motion.div>
       ))}
     </motion.div>
