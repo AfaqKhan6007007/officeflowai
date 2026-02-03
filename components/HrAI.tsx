@@ -42,7 +42,7 @@ function RecruitementSection () {
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
-        <div className="text-white flex flex-col gap-7 mt-4 lg:mt-0 ml-0 lg:ml-10">
+        <div className="text-white flex flex-col gap-7 mt-4 lg:mt-20 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Recruitement Agent</h2>
           <p className="font-semibold">Automates hiring from resumes to final selection.</p>
           <p>
@@ -1364,17 +1364,21 @@ const WordByWordAnimation = ({ sentence }) => {
 };
 
 export default function HrAI() {
+  const TOTAL_SECTIONS = 7;
+  const [activeSection, setActiveSection] = useState(0);
 
-    const [activeSection, setActiveSection] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSection(prev => (prev + 1) % TOTAL_SECTIONS);
+    }, 8000);
 
- 
-    {/*useEffect(() => {
-  const interval = setInterval(() => {
-    setActiveSection(prev => (prev === 0 ? 1 : 0));
-  }, 8000);
+    return () => clearInterval(interval);
+  }, []);
 
-  return () => clearInterval(interval);
-}, []);*/}
+  // Advance to next section on click
+  const handleSectionClick = () => {
+    setActiveSection(prev => (prev + 1) % TOTAL_SECTIONS);
+  };
 
   return (
     <div className="p-6 md:p-12 bg-emerald-900">
@@ -1388,19 +1392,44 @@ export default function HrAI() {
         </p>
       </div>
 
-      {/* Recruitment Agent Section */}
-
+      {/* Clickable Section */}
       <AnimatePresence mode="wait">
-  {/*activeSection === 0 && <RecruitementSection key="recruitment" />*/}
-  {/*activeSection ===0 && <PayrollSection key="payroll" />*/}
-  {/*activeSection === 0 && <AttendanceSection key="attendance" />*/}
-  {/*activeSection === 0 && <LeaveSection key="leave" />*/}
-  {/*activeSection === 0 && <PolicySection key="policy" />*/}
-  {/*activeSection === 0 && <ResourceSection key="resource" />*/}
-  {activeSection === 0 && <LearningSection key="learning" />}
-</AnimatePresence>
-
-
+        {activeSection === 0 && (
+          <div onClick={handleSectionClick}>
+            <RecruitementSection key="recruitment" />
+          </div>
+        )}
+        {activeSection === 1 && (
+          <div onClick={handleSectionClick}>
+            <PayrollSection key="payroll" />
+          </div>
+        )}
+        {activeSection === 2 && (
+          <div onClick={handleSectionClick}>
+            <AttendanceSection key="attendance" />
+          </div>
+        )}
+        {activeSection === 3 && (
+          <div onClick={handleSectionClick}>
+            <LeaveSection key="leave" />
+          </div>
+        )}
+        {activeSection === 4 && (
+          <div onClick={handleSectionClick}>
+            <PolicySection key="policy" />
+          </div>
+        )}
+        {activeSection === 5 && (
+          <div onClick={handleSectionClick}>
+            <ResourceSection key="resource" />
+          </div>
+        )}
+        {activeSection === 6 && (
+          <div onClick={handleSectionClick}>
+            <LearningSection key="learning" />
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
