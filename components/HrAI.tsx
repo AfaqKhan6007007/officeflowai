@@ -41,7 +41,7 @@ function RecruitementSection () {
         exit="hidden"
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
-        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-20 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Recruitement Agent</h2>
           <p className="font-semibold">Automates hiring from resumes to final selection.</p>
@@ -205,7 +205,7 @@ function PayrollSection (){
         exit="hidden"
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
-        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-25 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Payroll Agent</h2>
           <p className="font-semibold">Automates payroll processing with smart AI insights and real-time accuracy.</p>
@@ -381,7 +381,7 @@ function AttendanceSection (){
         exit="hidden"
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
-        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-25 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Attendance Agent</h2>
           <p className="font-semibold">Tracks employee attendance automatically with identity, location, and<br/> policy checks.</p>
@@ -605,7 +605,7 @@ function LeaveSection (){
         exit="hidden"
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
-        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-25 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Leave Management Agent</h2>
           <p className="font-semibold">Manages employee leave intelligently without disrupting teams or payroll.</p>
@@ -781,7 +781,7 @@ function PolicySection (){
         exit="hidden"
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
-        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-35 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Policy Agent</h2>
           <p className="font-semibold">Instant answers to company policies, explained clearly and applied correctly.</p>
@@ -975,7 +975,7 @@ function ResourceSection (){
         exit="hidden"
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
-        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Resource Allocation Agent</h2>
           <p className="font-semibold">Intelligent Planning & Assignment</p>
@@ -1191,7 +1191,7 @@ function LearningSection (){
         exit="hidden"
         className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
       >
-        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10">
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
           <h2 className="text-2xl font-semibold">Learning & Development (L&D) Recommendation Agent</h2>
           <p className="font-semibold">Intelligent Growth Planning</p>

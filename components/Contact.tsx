@@ -47,21 +47,25 @@ export default function Contact({ speed = 10 }) {
     style={{ width: "fit-content" }} // Ensures the div is as wide as all images combined
   >
     {/* Render the list twice for a seamless loop */}
-    {[...headings, ...headings].map((heading, idx) => (
-      <Image 
+    {[...headings, ...headings].map((heading, idx) => {
+        const originalIdx = idx % headings.length;
+        return(
+            <Image 
         key={idx} 
         src={heading.img} 
         alt="logo" 
         width={400} 
         height={400} 
         style={{ 
-          width: "200px", 
+          width: (originalIdx === 1 || originalIdx === 2) ? "100px" : "200px",
           height: "100px", 
           flexShrink: 0, 
           marginRight: "240px" 
         }} 
       />
-    ))}
+        )
+      
+})}
   </motion.div>
 </div>
 
