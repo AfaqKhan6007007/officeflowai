@@ -29,7 +29,7 @@ export default function Header() {
             (item,idx) => (
               <Link
                 key={item}
-                href={idx!==1 ? "/":"/about"}
+                href={idx!==1 ? idx===5 ?"/contact":"/":"/about"}
                 className="hover:text-emerald-600 transition"
               >
                 {item}
