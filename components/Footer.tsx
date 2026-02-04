@@ -8,7 +8,7 @@ export default function Footer () {
       <div className="flex flex-col lg:flex-row items-start lg:items-center mb-8 mt-8 w-full max-w-7xl">
 
         {/* Logo + description */}
-        <div className="flex flex-col items-start w-full lg:w-[400px] mb-10 lg:mb-0">
+        <div className="flex flex-col items-center sm:items-start w-full lg:w-[400px] mb-10 lg:mb-0">
           <Image
             src="/OfficeFlowAI-Logo.png"
             alt="OfficeFlowAI Logo"
@@ -47,7 +47,7 @@ export default function Footer () {
       {/* Social */}
       <div className="flex flex-col sm:flex-row items-center gap-4">
         <h4 className="font-semibold">Follow Us</h4>
-        <div className="flex gap-1">
+        <div className="flex gap-0 mt-2">
           <Image src="/facebook.png" alt="Facebook" width={40} height={40} />
           <Image src="/dm.png" alt="Direct Message" width={40} height={40} />
           <Image src="/cat.png" alt="Catalog" width={40} height={40} />
@@ -61,10 +61,10 @@ export default function Footer () {
       {/* Legal links */}
       <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-5 text-center">
         <p className="text-gray-500">Privacy Policy</p>
-        <p className="text-gray-500">Terms of Service</p>
+        <p className="text-gray-500">Terms of Use</p>
         <p className="text-gray-500">Sales & Refunds</p>
         <p className="text-gray-500">Legal</p>
-        <p className="text-gray-500">Sidemap</p>
+        <p className="text-gray-500">Site map</p>
       </div>  
 
       <p className="text-sm text-center">

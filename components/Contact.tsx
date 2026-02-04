@@ -2,16 +2,16 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const headings = [
-  "Unsplash",
-  "Notion",
-  "INTERCOM",
-  "descript",
-  "grammarly",
+  {img:"/sealand.png"},
+  {img:"/bmi.png"},
+  {img:"/smz.png"},
+  {img:"/alrashed.png"}
 ];
 
-export default function Contact({ speed = 50 }) {
+export default function Contact({ speed = 10 }) {
   return (
     <div className="overflow-hidden w-full py-4 items-center justify-center">
         <div className="mx-auto flex flex-col w-full gap-10 bg-[#F1FDF6] pt-10 pb-10 items-center border-t-2 border-b-2 border-emerald-200">
@@ -33,35 +33,37 @@ export default function Contact({ speed = 50 }) {
                 </button>
             </div>
         </div>
-      <motion.div
-        className="flex gap-60 whitespace-nowrap mt-10"
-        animate={{ x: ["100%", "-100%"] }} // move from right to left
-        transition={{
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "linear",
-          duration: speed, // seconds to cross screen
-        }}
-      >
-        {headings.map((text, idx) => (
-          <div
-            key={idx}
-            className="text-lg md:text-xl font-bold text-gray-800"
-          >
-            {text}
-          </div>
-        ))}
-
-        {/* Duplicate for smooth looping */}
-        {headings.map((text, idx) => (
-          <div
-            key={`dup-${idx}`}
-            className="text-lg md:text-xl font-bold text-gray-800"
-          >
-            {text}
-          </div>
-        ))}
-      </motion.div>
+    <div className="overflow-hidden w-full"> {/* Container to hide the scroll */}
+  <motion.div
+    className="flex mt-10"
+    initial={{ x: 0 }}
+    animate={{ x: "-50%" }} // Move exactly half the width of the total content
+    transition={{ 
+      repeat: Infinity, 
+      ease: "linear", 
+      duration: 30, // Control speed here
+      repeatType: "loop"
+    }}
+    style={{ width: "fit-content" }} // Ensures the div is as wide as all images combined
+  >
+    {/* Render the list twice for a seamless loop */}
+    {[...headings, ...headings].map((heading, idx) => (
+      <Image 
+        key={idx} 
+        src={heading.img} 
+        alt="logo" 
+        width={400} 
+        height={400} 
+        style={{ 
+          width: "200px", 
+          height: "100px", 
+          flexShrink: 0, 
+          marginRight: "240px" 
+        }} 
+      />
+    ))}
+  </motion.div>
+</div>
 
       <section className="flex items-center justify-center min-h-screen bg-slate-50 p-6">
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row border-1 border-gray-300">

@@ -23,7 +23,7 @@ const moduleData = [
 ];
 
 export default function Robotic() {
-  const { ref, inView } = useInView({ threshold: 0.3 });
+  const { ref, inView } = useInView({ threshold: 0.6 });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLg, setIsLg] = useState(false);
   useEffect(() => {
@@ -132,16 +132,16 @@ export default function Robotic() {
               key={i}
               initial={{ opacity: 0, y: 24, x:isLg ? cardOffsets[i]:0 }}
               animate={inView ? { opacity: 1, y: 0, x:isLg ? cardOffsets[i]:0 } : { opacity: 0, y: 24, x: isLg ? cardOffsets[i]:0 }}
-              transition={{ duration: 0.5, delay: i * 0.35, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: i*0.55, ease: "easeInOut" }}
               className="mt-6 rounded-2xl bg-[#39E0A5] p-5 text-white shadow-[0_18px_40px_rgba(0,0,0,0.25)] border border-[#4cbc95] relative before:absolute
-    before:inset-[1px]
-    before:rounded-xl
-    before:border
-    before:border-[#39E0A5]
-    before:content-['']
-    before:pointer-events-none
-    before:translate-x-3
-    before:-translate-y-3"
+                before:inset-[1px]
+                before:rounded-xl
+                before:border
+                before:border-[#39E0A5]
+                before:content-['']
+                before:pointer-events-none
+                before:translate-x-3
+                before:-translate-y-3"
             >
               <h3 className="font-semibold text-base text-center">{card.title}</h3>
             </motion.div>
