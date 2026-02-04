@@ -385,10 +385,10 @@ function FraudSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Learning & Development (L&D) Recommendation Agent</h2>
-          <p className="font-semibold">Intelligent Growth Planning</p>
+          <h2 className="text-2xl font-semibold">Fraud Detection Agent</h2>
+          <p className="font-semibold">Continuous monitoring to detect financial risk before it escalates</p>
           <p>
-            Identifies skill gaps, aligns learning with future roles and projects, and recommends<br/> personalized development paths helping teams grow where it matters most.
+            This agent quietly monitors transactions and account activity, analyzes behavior<br/> patterns, detects anomalies, assigns risk scores, and generates alerts only when<br/> needed. High-risk cases are escalated to compliance teams and logged automatically<br/> for audit and traceability.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -404,8 +404,24 @@ function FraudSection (){
       animate={isInView ? "visible" : "hidden"}
     >
         <h2 className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-center font-semibold text-xl">
-            Growth Planning Engine<br/>
-            <p className="text-sm font-normal mt-2">Automated career pathing and readiness analysis</p>
+            Fraud Detection Agent<br/>
+            <p className="text-sm font-normal mt-2">Continuous monitoring to detect financial risk before it escalates</p>
+        </h2>
+        <h2 className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-left font-semibold text-sm flex gap-3 justify-between">
+            <span>Live Transaction Monitoring</span>
+            <div className="w-[15%] h-5 rounded-3xl bg-[linear-gradient(to_left,red_76%,white_24%)] text-right px-1 flex gap-3">
+                <motion.div className="w-2 h-2 rounded-full bg-[red] my-auto" animate={{
+    opacity: [1,0],
+  }}
+  transition={{
+    duration: 1.5,
+    repeat: Infinity,
+    ease:"linear",
+    repeatType:"loop",
+    repeatDelay:0.4
+  }}></motion.div>
+                <span>Live</span>
+            </div>
         </h2>
         <div className="bg-[#005143] w-full rounded-lg text-white px-4 p-4 flex-col justify-center items-center gap-4">
             <Image src="/profile.png" alt="profile" width={100} height={100} className="ml-auto mr-auto" />
