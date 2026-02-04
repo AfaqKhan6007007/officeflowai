@@ -17,6 +17,10 @@ export default function Categories() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   const totalBars = barHeights.length;
+  const scrollToModules = () => {
+    const element = document.getElementById("modules");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const listItems = [
     {
@@ -222,12 +226,13 @@ export default function Categories() {
           </ul>
 
           <button
+            onClick={()=>scrollToModules()}
             style={{
               background:
                 "linear-gradient(359.02deg, #1F7A5A 32.42%, #39E0A5 131.86%)",
             }}
             className="text-white px-8 py-4 rounded-lg font-bold shadow-xl
-                       hover:brightness-110 active:scale-95 mt-10 ml-0 sm:ml-5"
+                       hover:brightness-110 active:scale-95 mt-10 ml-0 sm:ml-5 cursor-pointer"
           >
             Explore Modules
           </button>

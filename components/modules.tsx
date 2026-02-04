@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRouter } from "next/navigation";
 
 export default function Modules() {
+  const router = useRouter();
   // Observe the section
   const { ref, inView } = useInView({
     threshold: 0.1, // Trigger when 10% visible
@@ -31,17 +33,19 @@ export default function Modules() {
     },
   };
 
+
   const moduleData = [
-    { title: "HR Management", src: "/hr-bg.png", desc: "Automate onboarding...", features: ["Payroll", "Attendance", "Reviews"] },
-    { title: "Finance & Accounting", src: "/finance-bg.png", desc: "AI-powered insights...", features: ["Expenses", "Reporting", "Budgeting"] },
-    { title: "Procurement", src: "/procurement-bg.png", desc: "Streamline sourcing...", features: ["Purchase Orders", "Vendors", "Inventory"] },
-    { title: "Sales & Marketing", src: "/sales-bg.png", desc: "Lead scoring...", features: ["Lead Management", "Campaigns", "Insights"] },
-    { title: "Quality Management", src: "/quality-bg.png", desc: "Ensure excellence...", features: ["Defect Tracking", "Compliance", "Audits"] },
-    { title: "Operations Management", src: "/operations-bg.png", desc: "Optimize workflows...", features: ["Resource Planning", "Automation", "KPIs"] },
+    { title: "HR Management", src: "/hr-bg.png", desc: "Automate onboarding...", features: ["Payroll", "Attendance", "Reviews"], path:"/hr" },
+    { title: "Finance & Accounting", src: "/finance-bg.png", desc: "AI-powered insights...", features: ["Expenses", "Reporting", "Budgeting"], path:"/finance" },
+    { title: "Procurement", src: "/procurement-bg.png", desc: "Streamline sourcing...", features: ["Purchase Orders", "Vendors", "Inventory"], path:"/procurement" },
+    { title: "Sales & Marketing", src: "/sales-bg.png", desc: "Lead scoring...", features: ["Lead Management", "Campaigns", "Insights"], path:"/sales" },
+    { title: "Quality Management", src: "/quality-bg.png", desc: "Ensure excellence...", features: ["Defect Tracking", "Compliance", "Audits"], path:"/quality" },
+    { title: "Operations Management", src: "/operations-bg.png", desc: "Optimize workflows...", features: ["Resource Planning", "Automation", "KPIs"], path:"/operations" },
   ];
 
   return (
     <section
+      id="modules"
       ref={ref} // Observe this section
       className="py-12 bg-white"
       style={{ backgroundImage: 'url("/background_modules.png")', backgroundSize: 'cover' }}
@@ -80,7 +84,9 @@ export default function Modules() {
               <ul className="list-disc pl-6 space-y-2 text-slate-600">
                 {item.features.map((f, i) => <li key={i}>{f}</li>)}
               </ul>
-              <button className="w-full mt-6 bg-[#DAF6E6] py-4 rounded-lg font-bold">
+              <button onClick={()=>{
+                router.push(item.path);
+              }} className="w-full mt-6 bg-[#DAF6E6] py-4 rounded-lg font-bold hover:bg-[#baf7d4] cursor-pointer active:scale-95">
                 Explore Module
               </button>
             </motion.div>

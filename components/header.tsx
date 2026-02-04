@@ -26,10 +26,10 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex gap-10 text-sm font-medium text-slate-700">
           {["Home", "About", "Products", "Pricing", "Testimonial", "Contact Us"].map(
-            (item) => (
+            (item,idx) => (
               <Link
                 key={item}
-                href="/"
+                href={idx!==1 ? "/":"/about"}
                 className="hover:text-emerald-600 transition"
               >
                 {item}
