@@ -69,7 +69,7 @@ export default function Reviews() {
             key={slot.item.name} 
             layout
             initial={false}
-            className="absolute"
+            className="absolute rounded-xl"
             style={{ zIndex: slot.position === "center" ? 10 : 0 }}
             animate={{
               x: slot.position === "left" ? -250 : slot.position === "right" ? 250 : 0,
@@ -101,7 +101,7 @@ export default function Reviews() {
 function Card({ name, role, text, avatar, isCenter }: Review & { isCenter: boolean }) {
   return (
     <div
-      className={`relative p-6 border ${isCenter ? 'border-[#B4B4B4]' : 'border-slate-200'} rounded-lg bg-white shadow-4xl flex flex-col items-center w-[320px] transition-colors duration-500 cursor-pointer`}
+      className={`relative p-6 border ${isCenter ? 'border-[#B4B4B4]' : 'border-slate-200'} rounded-xl bg-white shadow-4xl flex flex-col items-center w-[320px] transition-colors duration-500 cursor-pointer`}
     >
       <Image
         src={avatar}
