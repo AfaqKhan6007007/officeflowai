@@ -6,6 +6,7 @@ import Glance from "@/components/Glance";
 import FinanceImplement from "@/components/FinanceImplement";
 import FinanceChoice from "@/components/FinanceChoice";
 import FinanceOps from "@/components/FinanceOps";
+import FinanceAI from "@/components/FinanceAI";
 
 
 export default function FinanceModule () {
@@ -17,6 +18,7 @@ export default function FinanceModule () {
                 <HeroFinance />
                 <FinanceModules />
                 <Glance />
+                <FinanceAI />
                 <FinanceImplement />
                 <FinanceChoice />
                 <FinanceOps />
