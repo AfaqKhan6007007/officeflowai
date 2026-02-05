@@ -637,15 +637,16 @@ function AccountSection (){
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <div className="bg-[#005143] w-full rounded-lg text-white px-6 py-4 text-left font-semibold text-xl">
+        <div className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col">
+            <div className="px-6 py-4 mb-1">
             Reconciliation Agent<br/>
             <ul className="list-disc pl-5 mt-2">
                 <li className="text-sm font-normal">
                     Active Process
                 </li>
             </ul>
-            <hr className="-mx-6 border-[#6fd8a8] my-8"/>
-            <div className="flex gap-15 justify-center mb-10">
+            <hr className="-mx-6 border-[#6fd8a8] mt-4 mb-8"/>
+            <div className="flex sm:flex-row flex-col gap-15 justify-center mb-10">
                 <div className="flex flex-col w-1/5 gap-3">
                     <div className="bg-[#57b887] p-4 rounded-lg w-full flex justify-center">
                         <Image src="/bank.png" alt="alt" width={48} height={20} />
@@ -666,11 +667,32 @@ function AccountSection (){
                 </div>
             </div>
             <div className="flex flex-col gap-4 border-2 border-[#6fd8a8] p-6 rounded-xl">
-                <div className="flex justify-between">
+                <div className="flex flex-col sm:flex-row justify-between">
                     <p className="text-sm font-semibold">Real Time Matching</p>
                     <p className="text-[#6fd8a8] text-sm">342 matches</p>
                 </div>
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden">
+                    <Image src="/fix.png" alt="fix" width={30} height={10} />
+                    <div>
+                        <p className="text-sm">TXN-239 Stripe payout</p>
+                        <p className="text-[12px]">$12,000 matched</p>
+                    </div>
+                    <div className="text-[#6fd8a8] text-sm ml-auto">100% matched</div>
+                </motion.div>
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#a0a323] p-6 rounded-xl bg-[#576504] gap-3 overflow-hidden">
+                    <Image src="/sign.png" alt="fix" width={30} height={10} />
+                    <div>
+                        <p className="text-sm">Adjustment Needed</p>
+                        <p className="text-[12px]">Unrecognized Fee: $1400</p>
+                    </div>
+                    <div className="text-[white] text-sm ml-auto bg-[#b9bc3d] border-2 border-[#a0a323] py-2 px-5 rounded-xl sm:block hidden">Resolve</div>
+                </motion.div>
             </div>
+            </div>
+            <motion.div variants={itemVariants} className="bg-[#056554] text-white mt-auto flex p-6 gap-3 rounded-xl">
+                <Image src="/fix.png" alt="fix" width={30} height={20} />
+                <div className="text-lg">Reconciliation Complete</div>
+            </motion.div>
         </div>
         
         
@@ -741,13 +763,12 @@ function TaxSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const gridItemsChat = [
-    { img: "/assessment.png", text: "Smart Profile Assessment" },
-    { img: "/target.png", text: "AI Skill Gap Detection" },
-    { img: "/future.png", text: "Role, Project & Future Demand Mapping" },
-    { img: "/book.png", text: "Personalized Learning Recommendation" },
-    { img: "/score.png", text: "Readiness & Impact Scoring" },
-    { img: "/tick.png", text: "Approval & Assignment" },
-    { img: "/progress.png", text: "Progress Tracking" },
+    { img: "/stack.png", text: "Data Aggregation" },
+    { img: "/calculator.png", text: "Tax Liability Calculation" },
+    { img: "/ok.png", text: "Compliance Check" },
+    { img: "/filing.png", text: "Filing Preparation" },
+    { img: "/yes.png", text: "Approval & Submission" },
+    { img: "/archival.png", text: "Record Archival & Audit Trail" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -851,10 +872,10 @@ function TaxSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Learning & Development (L&D) Recommendation Agent</h2>
-          <p className="font-semibold">Intelligent Growth Planning</p>
+          <h2 className="text-2xl font-semibold">Tax Handling Agent</h2>
+          <p className="font-semibold">Accurate tax calculation, compliant filing, zero last-minute stress</p>
           <p>
-            Identifies skill gaps, aligns learning with future roles and projects, and recommends<br/> personalized development paths helping teams grow where it matters most.
+            This agent gathers tax-relevant data from payroll, invoices, and expenses,<br/> calculates liabilities automatically, checks compliance, prepares filings, and submits<br/> them with approval. Every step is logged, archived, and ready for audit when<br/> needed.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -864,40 +885,51 @@ function TaxSection (){
 
         <motion.div
       ref={containerRef}
-      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 rounded-md p-4 lg:p-10 lg:ml-auto lg:mr-10 rounded-lg"
+      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 rounded-md p-4 lg:p-7 lg:ml-auto lg:mr-10 rounded-lg"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <h2 className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-center font-semibold text-xl">
-            Growth Planning Engine<br/>
-            <p className="text-sm font-normal mt-2">Automated career pathing and readiness analysis</p>
-        </h2>
-        <div className="bg-[#005143] w-full rounded-lg text-white px-4 p-4 flex-col justify-center items-center gap-4">
-            <Image src="/profile.png" alt="profile" width={100} height={100} className="ml-auto mr-auto" />
-            <h2 className="text-center font-semibold mt-1">Current Status: Senior Lead</h2>
-            <div className="gap-3 mr-auto ml-auto my-6 text-sm items-center justify-center sm:flex hidden">
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-5 py-3">Product Startegy</div>
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-4 py-3">Project Management</div>
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-3 py-3">AI/ML Ops</div>
-            </div>
-            <motion.div variants={itemVariants} className="bg-emerald-50 w-full rounded-lg text-white px-3 py-6 font-semibold text-sm flex gap-2 mt-3">
-                    <Image src="/gemini.png" alt="gemini" width={28} height={8} className="hidden sm:block"/>
-                    <div>
-                        <p className="text-emerald-800 font-semibold">AI Recommendation</p>
-                        <p className="text-emerald-700">Next role recommended: Excutive Operational Manager</p>
-                    </div>
-            
+        <div className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col gap-4">
+            <div className="px-6 py-4 mb-1">
+                Tax Handling System<br/>
+                <ul className="list-disc pl-5 mt-2">
+                    <li className="text-sm font-normal">
+                        Active Process
+                    </li>
+                </ul>
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden mt-8">
+                    <Image src="/fix.png" alt="fix" width={30} height={10} />
+                    <p className="text-sm flex justify-center items-center">Payroll Total</p>
+
+                    <div className="text-white text-sm ml-auto flex items-center font-semibold">$142,500</div>
                 </motion.div>
-            <motion.div variants={itemVariants}>
-                <div className="flex justify-between text-white text-md mt-6">
-                    <p>System Readiness</p>
-                    <p className="text-sm">Aligned</p>
-                </div>
-                <div className="w-full h-2 rounded-lg bg-emerald-400 mt-2 mb-5" />
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden mt-8">
+                    <Image src="/fix.png" alt="fix" width={30} height={10} />
+                    <p className="text-sm flex justify-center items-center">Invoice Tax</p>
+
+                    <div className="text-white text-sm ml-auto flex items-center font-semibold">$12,825</div>
+                </motion.div>
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden mt-8">
+                    <Image src="/fix.png" alt="fix" width={30} height={10} />
+                    <p className="text-sm flex justify-center items-center">Expense Deduction</p>
+
+                    <div className="text-white text-sm ml-auto flex items-center font-semibold">$4,200</div>
+                </motion.div>
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden mt-8">
+                    <Image src="/fix.png" alt="fix" width={30} height={10} />
+                    <p className="text-sm flex justify-center items-center">Net Tax Liability</p>
+
+                    <div className="text-white text-sm ml-auto flex items-center font-semibold">$8,625.00</div>
+                </motion.div>
+            </div>
+            <motion.div variants={itemVariants} className="bg-[#056554] text-white mt-auto flex p-6 gap-6 rounded-xl">
+                <Image src="/archive.png" alt="fix" width={30} height={20} className="hidden sm:block"/>
+                <div className="text-sm">Archive / Audit Log<br/>Record Stored</div>
+                <div className="text-sm ml-auto text-[#6fd8a8] flex items-center">secure</div>
             </motion.div>
-            
         </div>
+        
         
        
     </motion.div>
@@ -928,14 +960,12 @@ function TaxSection (){
           {/* SVG Lines */}
           <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <AnimatedPath isInView={seeHowInView} d="
-              M150 150
+              M150 290
               H1000
-              V350
+              V550
               H0
-              V540
-              H1000
-              V880
-              H600
+              V820
+              H800
             " />
           </svg>
 
@@ -958,6 +988,7 @@ function TaxSection (){
         </>
     )
 }
+
 
 
 
