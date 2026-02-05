@@ -997,13 +997,13 @@ export default function FinanceAI() {
   const TOTAL_SECTIONS = 4;
   const [activeSection, setActiveSection] = useState(0);
 
-  {/*useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setActiveSection(prev => (prev + 1) % TOTAL_SECTIONS);
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);*/}
+  }, []);
 
   // Advance to next section on click
   const handleSectionClick = () => {
