@@ -510,13 +510,12 @@ function AccountSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const gridItemsChat = [
-    { img: "/assessment.png", text: "Smart Profile Assessment" },
-    { img: "/target.png", text: "AI Skill Gap Detection" },
-    { img: "/future.png", text: "Role, Project & Future Demand Mapping" },
-    { img: "/book.png", text: "Personalized Learning Recommendation" },
-    { img: "/score.png", text: "Readiness & Impact Scoring" },
-    { img: "/tick.png", text: "Approval & Assignment" },
-    { img: "/progress.png", text: "Progress Tracking" },
+    { img: "/data.png", text: "Data Collection" },
+    { img: "/transaction.png", text: "Transaction Matching" },
+    { img: "/identity.png", text: "Exception Identification" },
+    { img: "/suggestion.png", text: "Adjustment Suggestion" },
+    { img: "/tick.png", text: "Approval & Posting" },
+    { img: "/reconciliation.png", text: "Reconciliation Reporting" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -620,10 +619,10 @@ function AccountSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Learning & Development (L&D) Recommendation Agent</h2>
-          <p className="font-semibold">Intelligent Growth Planning</p>
+          <h2 className="text-2xl font-semibold">Account Reconciliation Agent</h2>
+          <p className="font-semibold">Automatically aligning records for accurate, audit-ready accounts</p>
           <p>
-            Identifies skill gaps, aligns learning with future roles and projects, and recommends<br/> personalized development paths helping teams grow where it matters most.
+            This agent collects data from banks and internal ledgers, matches transactions<br/> intelligently, flags exceptions, suggests adjustments, and finalizes reconciliations<br/> with approval and reporting. The result is clean books, fewer manual checks, and<br/> confidence in every close.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -633,40 +632,47 @@ function AccountSection (){
 
         <motion.div
       ref={containerRef}
-      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 rounded-md p-4 lg:p-10 lg:ml-auto lg:mr-10 rounded-lg"
+      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 rounded-md p-4 lg:p-7 lg:ml-auto lg:mr-10 rounded-lg"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <h2 className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-center font-semibold text-xl">
-            Growth Planning Engine<br/>
-            <p className="text-sm font-normal mt-2">Automated career pathing and readiness analysis</p>
-        </h2>
-        <div className="bg-[#005143] w-full rounded-lg text-white px-4 p-4 flex-col justify-center items-center gap-4">
-            <Image src="/profile.png" alt="profile" width={100} height={100} className="ml-auto mr-auto" />
-            <h2 className="text-center font-semibold mt-1">Current Status: Senior Lead</h2>
-            <div className="gap-3 mr-auto ml-auto my-6 text-sm items-center justify-center sm:flex hidden">
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-5 py-3">Product Startegy</div>
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-4 py-3">Project Management</div>
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-3 py-3">AI/ML Ops</div>
-            </div>
-            <motion.div variants={itemVariants} className="bg-emerald-50 w-full rounded-lg text-white px-3 py-6 font-semibold text-sm flex gap-2 mt-3">
-                    <Image src="/gemini.png" alt="gemini" width={28} height={8} className="hidden sm:block"/>
-                    <div>
-                        <p className="text-emerald-800 font-semibold">AI Recommendation</p>
-                        <p className="text-emerald-700">Next role recommended: Excutive Operational Manager</p>
+        <div className="bg-[#005143] w-full rounded-lg text-white px-6 py-4 text-left font-semibold text-xl">
+            Reconciliation Agent<br/>
+            <ul className="list-disc pl-5 mt-2">
+                <li className="text-sm font-normal">
+                    Active Process
+                </li>
+            </ul>
+            <hr className="-mx-6 border-[#6fd8a8] my-8"/>
+            <div className="flex gap-15 justify-center mb-10">
+                <div className="flex flex-col w-1/5 gap-3">
+                    <div className="bg-[#57b887] p-4 rounded-lg w-full flex justify-center">
+                        <Image src="/bank.png" alt="alt" width={48} height={20} />
                     </div>
-            
-                </motion.div>
-            <motion.div variants={itemVariants}>
-                <div className="flex justify-between text-white text-md mt-6">
-                    <p>System Readiness</p>
-                    <p className="text-sm">Aligned</p>
+                    <p className="text-sm text-center">Bank API</p>
                 </div>
-                <div className="w-full h-2 rounded-lg bg-emerald-400 mt-2 mb-5" />
-            </motion.div>
-            
+                <div className="flex flex-col w-1/5 gap-3">
+                    <div className="bg-[#57b887] p-4 rounded-lg w-full flex justify-center">
+                        <Image src="/erp.png" alt="erp" width={34} height={20} />
+                    </div>
+                    <p className="text-sm text-center">ERP Ledger</p>
+                </div>
+                <div className="flex flex-col w-1/5 gap-3">
+                    <div className="bg-[#57b887] p-4 rounded-lg w-full flex justify-center">
+                        <Image src="/paper.png" alt="paper" width={50} height={20} />
+                    </div>
+                    <p className="text-sm text-center">Invoices</p>
+                </div>
+            </div>
+            <div className="flex flex-col gap-4 border-2 border-[#6fd8a8] p-6 rounded-xl">
+                <div className="flex justify-between">
+                    <p className="text-sm font-semibold">Real Time Matching</p>
+                    <p className="text-[#6fd8a8] text-sm">342 matches</p>
+                </div>
+            </div>
         </div>
+        
         
        
     </motion.div>
@@ -697,14 +703,12 @@ function AccountSection (){
           {/* SVG Lines */}
           <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <AnimatedPath isInView={seeHowInView} d="
-              M150 150
+              M150 290
               H1000
-              V350
+              V550
               H0
-              V540
-              H1000
-              V880
-              H600
+              V820
+              H800
             " />
           </svg>
 
