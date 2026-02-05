@@ -275,13 +275,13 @@ function FraudSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const gridItemsChat = [
-    { img: "/assessment.png", text: "Smart Profile Assessment" },
-    { img: "/target.png", text: "AI Skill Gap Detection" },
-    { img: "/future.png", text: "Role, Project & Future Demand Mapping" },
-    { img: "/book.png", text: "Personalized Learning Recommendation" },
-    { img: "/score.png", text: "Readiness & Impact Scoring" },
-    { img: "/tick.png", text: "Approval & Assignment" },
-    { img: "/progress.png", text: "Progress Tracking" },
+    { img: "/layout.png", text: "Transaction / Activity Monitoring" },
+    { img: "/pattern.png", text: "Pattern Analysis" },
+    { img: "/anamoly.png", text: "Anomaly Detection" },
+    { img: "/scoring.png", text: "Risk Scoring" },
+    { img: "/alert.png", text: "Alert Generation" },
+    { img: "/correct.png", text: "Escalation to Compliance Team" },
+    { img: "/log.png", text: "Case Logging & Audit" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -322,7 +322,7 @@ function FraudSection (){
   const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    y: 40,
   },
   visible: {
     opacity: 1,
@@ -409,45 +409,37 @@ function FraudSection (){
         </h2>
         <h2 className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-left font-semibold text-sm flex gap-3 justify-between">
             <span>Live Transaction Monitoring</span>
-            <div className="w-[15%] h-5 rounded-3xl bg-[linear-gradient(to_left,red_76%,white_24%)] text-right px-1 flex gap-3">
+            <div className="w-[15%] h-5 rounded-3xl bg-[linear-gradient(to_left,red_76%,white_24%)] text-right px-1 gap-3 sm:flex hidden">
                 <motion.div className="w-2 h-2 rounded-full bg-[red] my-auto" animate={{
-    opacity: [1,0],
-  }}
-  transition={{
-    duration: 1.5,
-    repeat: Infinity,
-    ease:"linear",
-    repeatType:"loop",
-    repeatDelay:0.4
-  }}></motion.div>
-                <span>Live</span>
+                    opacity: [1,0.8,.6,.4,.2,0,.2,.4,.6,.8],
+                }}
+                transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease:"easeInOut",
+                    repeatType:"loop",
+                    repeatDelay:0.4
+                }}></motion.div>
+                <span>LIVE</span>
             </div>
         </h2>
-        <div className="bg-[#005143] w-full rounded-lg text-white px-4 p-4 flex-col justify-center items-center gap-4">
-            <Image src="/profile.png" alt="profile" width={100} height={100} className="ml-auto mr-auto" />
-            <h2 className="text-center font-semibold mt-1">Current Status: Senior Lead</h2>
-            <div className="gap-3 mr-auto ml-auto my-6 text-sm items-center justify-center sm:flex hidden">
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-5 py-3">Product Startegy</div>
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-4 py-3">Project Management</div>
-                <div className="bg-[#1f7a4d] text-white rounded-4xl px-3 py-3">AI/ML Ops</div>
-            </div>
-            <motion.div variants={itemVariants} className="bg-emerald-50 w-full rounded-lg text-white px-3 py-6 font-semibold text-sm flex gap-2 mt-3">
-                    <Image src="/gemini.png" alt="gemini" width={28} height={8} className="hidden sm:block"/>
-                    <div>
-                        <p className="text-emerald-800 font-semibold">AI Recommendation</p>
-                        <p className="text-emerald-700">Next role recommended: Excutive Operational Manager</p>
-                    </div>
+        <motion.div variants={itemVariants} className="bg-[#005143] w-full rounded-lg px-4 p-8 flex flex-col justify-center items-center gap-7">
             
-                </motion.div>
-            <motion.div variants={itemVariants}>
-                <div className="flex justify-between text-white text-md mt-6">
-                    <p>System Readiness</p>
-                    <p className="text-sm">Aligned</p>
+            <h2 className="text-center font-semibold mt-1 text-white">Anamoly Detected</h2>
+            <div
+                className="w-40 h-40 rounded-full flex items-center justify-center"
+                style={{
+                    background: `conic-gradient(#d6d94e 0% 30%, white 30% 100%)`,
+                }}
+            >
+                <div className="w-[130px] h-[130px] rounded-full bg-[#005143] flex items-center justify-center text-4xl font-semibold text-white">
+                    30%
                 </div>
-                <div className="w-full h-2 rounded-lg bg-emerald-400 mt-2 mb-5" />
-            </motion.div>
+            </div>
+            <div className="text-[#005143] bg-white  rounded-4xl px-5 py-3 w-3/4 sm:w-1/2 mx-auto text-center font-semibold border-1 border-[#d6d94e]">Low medium risk</div>
+               
             
-        </div>
+        </motion.div>
         
        
     </motion.div>
@@ -480,7 +472,7 @@ function FraudSection (){
             <AnimatedPath isInView={seeHowInView} d="
               M150 150
               H1000
-              V350
+              V390
               H0
               V540
               H1000
