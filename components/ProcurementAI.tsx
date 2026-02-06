@@ -565,7 +565,7 @@ function QuotationSection (){
     )
 }
 
-function AccountSection (){
+function PurchaseSection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
@@ -574,12 +574,13 @@ function AccountSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const gridItemsChat = [
-    { img: "/data.png", text: "Data Collection" },
-    { img: "/transaction.png", text: "Transaction Matching" },
-    { img: "/identity.png", text: "Exception Identification" },
-    { img: "/suggestion.png", text: "Adjustment Suggestion" },
-    { img: "/tick.png", text: "Approval & Posting" },
-    { img: "/reconciliation.png", text: "Reconciliation Reporting" },
+    { img: "/copy.png", text: "Approved Vendor" },
+    { img: "/draft.png", text: "PO Draft Generation" },
+    { img: "/conditions.png", text: "Terms & Conditions Alignment" },
+    { img: "/verify_badge.png", text: "Budget & Authority Check" },
+    { img: "/copy.png", text: "Approval Workflow" },
+    { img: "/send.png", text: "PO Issuance to Vendor" },
+    { img: "/po.png", text: "PO Record & Audit Trail" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -683,10 +684,10 @@ function AccountSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Account Reconciliation Agent</h2>
-          <p className="font-semibold">Automatically aligning records for accurate, audit-ready accounts</p>
+          <h2 className="text-2xl font-semibold">Purchase Order Creation Agent</h2>
+          <p className="font-semibold">Generate, approve, and issue purchase orders seamlessly.</p>
           <p>
-            This agent collects data from banks and internal ledgers, matches transactions<br/> intelligently, flags exceptions, suggests adjustments, and finalizes reconciliations<br/> with approval and reporting. The result is clean books, fewer manual checks, and<br/> confidence in every close.
+            Automate the creation of purchase orders from vendor selection and draft<br/> generation to approval and issuance ensuring accurate, compliant, and traceable<br/> procurement operations.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -696,69 +697,47 @@ function AccountSection (){
 
         <motion.div
       ref={containerRef}
-      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 rounded-md p-4 lg:p-7 lg:ml-auto lg:mr-10 rounded-lg"
+      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 p-4 lg:p-7 lg:ml-auto lg:mr-10 rounded-lg"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <div className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col">
+       <div className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col shadow-[-8px_-8px_0px_0px_rgba(0,0,0,1)] mb-3 sm:mb-0">
             <div className="px-6 py-4 mb-1">
-            Reconciliation Agent<br/>
-            <ul className="list-disc pl-5 mt-2">
-                <li className="text-sm font-normal">
-                    Active Process
-                </li>
-            </ul>
-            <hr className="-mx-6 border-[#6fd8a8] mt-4 mb-8"/>
-            <div className="flex sm:flex-row flex-col gap-15 justify-center mb-10">
-                <div className="flex flex-col w-1/5 gap-3">
-                    <div className="bg-[#57b887] p-4 rounded-lg w-full flex justify-center">
-                        <Image src="/bank.png" alt="alt" width={48} height={20} />
-                    </div>
-                    <p className="text-sm text-center">Bank API</p>
-                </div>
-                <div className="flex flex-col w-1/5 gap-3">
-                    <div className="bg-[#57b887] p-4 rounded-lg w-full flex justify-center">
-                        <Image src="/erp.png" alt="erp" width={34} height={20} />
-                    </div>
-                    <p className="text-sm text-center">ERP Ledger</p>
-                </div>
-                <div className="flex flex-col w-1/5 gap-3">
-                    <div className="bg-[#57b887] p-4 rounded-lg w-full flex justify-center">
-                        <Image src="/paper.png" alt="paper" width={50} height={20} />
-                    </div>
-                    <p className="text-sm text-center">Invoices</p>
+                Approved Vendors<br/>
+                <div className="flex flex-row gap-2">
+                    <div className="text-sm">Verified Vendor</div>
+                    <Image src="/tick_filled.png" alt="tick" width={20} height={20} />
                 </div>
             </div>
-            <div className="flex flex-col gap-4 border-2 border-[#6fd8a8] p-6 rounded-xl">
-                <div className="flex flex-col sm:flex-row justify-between">
-                    <p className="text-sm font-semibold">Real Time Matching</p>
-                    <p className="text-[#6fd8a8] text-sm">342 matches</p>
-                </div>
-                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden">
-                    <Image src="/fix.png" alt="fix" width={30} height={10} />
-                    <div>
-                        <p className="text-sm">TXN-239 Stripe payout</p>
-                        <p className="text-[12px]">$12,000 matched</p>
-                    </div>
-                    <div className="text-[#6fd8a8] text-sm ml-auto">100% matched</div>
-                </motion.div>
-                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#a0a323] p-6 rounded-xl bg-[#576504] gap-3 overflow-hidden">
-                    <Image src="/sign.png" alt="fix" width={30} height={10} />
-                    <div>
-                        <p className="text-sm">Adjustment Needed</p>
-                        <p className="text-[12px]">Unrecognized Fee: $1400</p>
-                    </div>
-                    <div className="text-[white] text-sm ml-auto bg-[#b9bc3d] border-2 border-[#a0a323] py-2 px-5 rounded-xl sm:block hidden">Resolve</div>
-                </motion.div>
-            </div>
-            </div>
-            <motion.div variants={itemVariants} className="bg-[#056554] text-white mt-auto flex p-6 gap-3 rounded-xl">
-                <Image src="/fix.png" alt="fix" width={30} height={20} />
-                <div className="text-lg">Reconciliation Complete</div>
-            </motion.div>
         </div>
-        
+        <motion.div variants={itemVariants} className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col shadow-[-8px_-8px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex flex-row justify-between px-5 py-5">
+                <div className="flex flex-col p-5 gap-2">
+                    <span className="text-sm text-[#6fd8a8]">AI Generation In Progress</span>
+                    <span className="font-semibold text-sm">Purchase Order</span>
+                    <span className="text-[80%]"># PO - 2025 - 882</span>
+                </div>
+                <div className="bg-[#6fd8a8] p-4 rounded-lg justify-center h-[70%] mt-5 mr-5 hidden sm:flex">
+                    <Image src="/pager.png" alt="pager" width={40} height={20} />
+                </div>
+            </div>
+            <div className="bg-[#d9d9d9] w-[84%] h-4 rounded-lg my-4 mx-auto" />
+            <div className="bg-[#d9d9d9] w-[84%] h-4 rounded-lg my-4 mx-auto" />
+            <div className="bg-[#d9d9d9] w-[44%] h-4 rounded-lg my-4 ml-10" />
+            <div className="flex flex-col sm:flex-row gap-4 sm:pl-10 my-10 mx-5 sm:mx-0">
+                <div className="rounded-4xl text-white p-3 bg-[#57b887] text-sm text-center">
+                    Budget Validated
+                </div>
+                <div className="rounded-4xl text-[#5170ff] p-3 bg-[white] text-sm text-center">
+                    Clause Matched
+                </div>
+            </div>
+        </motion.div>
+        <motion.div variants={itemVariants} className="text-sm text-white bg-black text-center rounded-lg w-full p-4 font-semibold">
+            PO Issued & Recorded
+        </motion.div>
+            
         
        
     </motion.div>
@@ -789,12 +768,15 @@ function AccountSection (){
           {/* SVG Lines */}
           <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <AnimatedPath isInView={seeHowInView} d="
-              M150 290
+               M150 150
               H1000
-              V550
+              V390
               H0
-              V820
-              H800
+              V540
+              H1000
+              V880
+              H600
+              
             " />
           </svg>
 
@@ -1100,7 +1082,7 @@ export default function ProcurementAI() {
         )}
         {activeSection === 2 && (
           <div onClick={handleSectionClick}>
-            <AccountSection key="account" />
+            <PurchaseSection key="purchase" />
           </div>
         )}
         {activeSection === 3 && (
