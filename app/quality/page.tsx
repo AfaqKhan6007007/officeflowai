@@ -6,6 +6,7 @@ import Risk from "@/components/Risk";
 import QualityImplement from "@/components/QualityImplement";
 import QualityChoice from "@/components/QualityChoice";
 import QualityOps from "@/components/QualityOps";
+import QualityAI from "@/components/QualityAI";
 
 
 
@@ -19,6 +20,7 @@ export default function QualityModule () {
                 <HeroQuality />
                 <QualityModules />
                 <Risk />
+                <QualityAI />
                 <QualityImplement />
                 <QualityChoice />
                 <QualityOps />
