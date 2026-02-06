@@ -255,7 +255,7 @@ function ComplianceSection (){
     )
 }
 
-function QuotationSection (){
+function IncidentSection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
@@ -264,13 +264,12 @@ function QuotationSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const gridItemsChat = [
-    { img: "/consolidate.png", text: "Quotation Consolidation" },
-    { img: "/term.png", text: "Price & Term Comparison" },
-    { img: "/meter.png", text: "Vendor Scoring" },
-    { img: "/tick.png", text: "Compliance & Policy Check" },
-    { img: "/generate.png", text: "Recommendation Generation" },
-    { img: "/approve.png", text: "Approval Workflow" },
-    { img: "/finalize.png", text: "Vendor Finalization" },
+    { img: "/incident.png", text: "Incident Detection" },
+    { img: "/layers.png", text: "Classification & Prioritization" },
+    { img: "/copy_new.png", text: "Automated or Manual Assignment" },
+    { img: "/investigate.png", text: "Investigation & Resolution" },
+    { img: "/message.png", text: "Communication / Escalation" },
+    { img: "/ingestion.png", text: "Logging & Reporting" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -374,10 +373,10 @@ function QuotationSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Quotation Evaluation Agent</h2>
-          <p className="font-semibold">Analyze quotes, score vendors, and recommend the best options automatically.</p>
+          <h2 className="text-2xl font-semibold">Incident Management Agent</h2>
+          <p className="font-semibold">Detects, prioritizes, and resolves incidents before they disrupt operations.</p>
           <p>
-            Automate the evaluation of vendor quotations compare pricing, terms,<br/> quality, and compliance so your procurement decisions are faster, smarter,<br/> and more consistent.
+            Continuously monitors activity to detect incidents, classifies their impact, assigns<br/> them to the right teams, and tracks resolution while keeping stakeholders informed<br/> and maintaining complete incident records.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -387,66 +386,54 @@ function QuotationSection (){
 
         <motion.div
       ref={containerRef}
-      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 p-4 lg:p-5 lg:ml-auto lg:mr-10 rounded-lg"
+      className="relative overflow-visible bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 p-4 lg:p-6 lg:ml-auto lg:mr-10 rounded-lg"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <div className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-left font-semibold text-xl flex flex-col justify-center items-center gap-4">
-            <span className="mr-auto">Quotation Evaluation Agent</span>
-            <p className="text-sm font-normal mt-2 text-[60%] mr-auto">Visualizing the automated workflows from purchase intent to vendor dispatch. </p>
-            <div className="bg-[#dff1e6] rounded-lg p-5 flex flex-col justify-center items-center gap-4 w-[100%]">
-
-            
-            <div className="bg-[#005143] text-white text-sm sm:text-sm text-center w-[70%] px-2 sm:px-8 py-6 rounded-lg">
-                Purchase Request
-            </div>
-            <div className="bg-[#005143] text-white text-sm sm:text-sm text-center w-[100%] px-2 sm:px-4 py-4 rounded-lg flex flex-col gap-4 opacity-50">
-                <p className="text-left">Quote A</p>
-                <div className="flex flex-col sm:flex-row justify-between">
-                    <div className="bg-[#57b887] rounded-4xl px-4 py-2 text-[80%]">
-                        Price High
-                    </div>
-                    <div className="ml-auto text-[#6fd8a8] flex justify-center items-center">
-                        72% Score
-                    </div>
-                    
-                </div>
-                <div className="w-full bg-[linear-gradient(to_right,#6fd8a8_72%,white_72%)] h-2 rounded-4xl" />
-            </div>
-            <motion.div variants={cardVariants} custom={3} className="bg-[#005143] text-white text-sm sm:text-sm text-center w-[100%] px-2 sm:px-4 py-4 rounded-lg flex flex-col gap-4">
-                <p className="text-left">Quote B</p>
-                <div className="flex flex-col sm:flex-row justify-between gap-2">
-                    <div className="bg-[#57b887] rounded-4xl px-3 py-2 text-[80%]">
-                        Price: Optimized
-                    </div>
-                    <div className="bg-[#57b887] rounded-4xl px-3 py-2 text-[80%]">
-                        Terms: Net 30
-                    </div>
-                    <div className="ml-auto text-[#6fd8a8] flex justify-center items-center">
-                        95% Score
-                    </div>
-                    
-                </div>
-                <div className="w-full bg-[linear-gradient(to_right,#6fd8a8_95%,white_72%)] h-2 rounded-4xl" />
-            </motion.div>
-            <div className="bg-[#005143] text-white text-sm sm:text-sm text-center w-[100%] px-2 sm:px-4 py-4 rounded-lg flex flex-col gap-4 opacity-50">
-                <p className="text-left">Quote C</p>
-                <div className="flex flex-col sm:flex-row justify-between">
-                    <div className="bg-[#57b887] rounded-4xl px-4 py-2 text-[80%]">
-                        Price Mid
-                    </div>
-                    <div className="ml-auto text-[#6fd8a8] flex justify-center items-center">
-                        60% Score
-                    </div>
-                    
-                </div>
-                <div className="w-full bg-[linear-gradient(to_right,#6fd8a8_60%,white_60%)] h-2 rounded-4xl" />
-            </div>
-            </div>
+        <div className="bg-[#005143] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl">
+            Incident Management Agent
         </div>
+        <ul className="list-disc pl-5 mt-2">
+            <li className="text-sm font-semibold text-[#005143]">
+                Incident Detected
+            </li>
+        </ul>
+        <motion.div variants={itemVariants} className="bg-[#005143] text-center rounded-lg text-white px-6 p-4 font-semibold text-xl flex flex-row justify-between mx-4">
+            <div className="flex flex-col">
+                <span className="text-sm font-normal">
+                    System outage detected.
+                </span>
+                <span className="text-sm font-semibold text-left">
+                    Affected service: Biling 
+                </span>
+            </div>
+            <Image src="/light_fill.svg" alt="light" width={40} height={30} />
+        </motion.div>
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 justify-center sm:mt-0 mt-3">
+            <motion.div variants={itemVariants} className="bg-[#e7f2ff] rounded-lg p-6 text-center text-sm flex flex-col shadow-[-8px_-8px_0px_0px_#005143] sm:w-[39%]">
+                <span className="text-[#005143] font-semibold">Classification</span>
+                <span className="text-[#005143]">Impact: Medium</span>
+            </motion.div>
+            <motion.div variants={itemVariants} className="bg-[#e7f2ff] rounded-lg p-6 text-center text-sm flex flex-col shadow-[-8px_-8px_0px_0px_#005143] sm:w-[39%]">
+                <span className="text-[#005143] font-semibold">Assignment</span>
+                <span className="text-[#005143]">Assigned to Ops Team</span>
+            </motion.div>
+        </div>
+        <motion.div variants={itemVariants} className="bg-[#dff0f1] rounded-lg p-6 text-center text-sm flex flex-col shadow-[-8px_-8px_0px_0px_#005143] sm:w-[39%] mx-auto mt-5 sm:mt-0">
+            <span className="text-[#005143] font-semibold">Resolution</span>
+            <span className="text-[#005143]">Issue Resolved</span>
+        </motion.div>
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] rounded-lg p-6 text-center text-sm flex flex-col sm:flex-row shadow-[-8px_-8px_0px_0px_#005143] mx-4 justify-between sm:mt-0 mt-5">
+            <div className="flex flex-col">
+                <span className="text-[#005143] font-semibold">Human Escalation</span>
+                <span className="text-[#005143] text-left">Not Required</span>
+            </div>
+            <div className="bg-[#d9d9d9] border-2 border-[#5e5d5b] p-5 text-black rounded-lg sm:w-[30%] font-semibold py-3">
+                Inactive
+            </div>
+        </motion.div>
         
-       
     </motion.div>
       </div>
         <h1 className="text-white text-2xl md:text-3xl text-center mb-4 mt-12" ref={seeHowRef}>
@@ -475,14 +462,12 @@ function QuotationSection (){
           {/* SVG Lines */}
           <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <AnimatedPath isInView={seeHowInView} d="
-              M150 150
+              M150 290
               H1000
-              V390
+              V550
               H0
-              V540
-              H1000
-              V880
-              H600
+              V820
+              H800
             " />
           </svg>
 
@@ -506,7 +491,7 @@ function QuotationSection (){
     )
 }
 
-function PurchaseSection (){
+function RiskSection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
@@ -515,13 +500,12 @@ function PurchaseSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const gridItemsChat = [
-    { img: "/copy.png", text: "Approved Vendor" },
-    { img: "/draft.png", text: "PO Draft Generation" },
-    { img: "/conditions.png", text: "Terms & Conditions Alignment" },
-    { img: "/verify_badge.png", text: "Budget & Authority Check" },
-    { img: "/copy.png", text: "Approval Workflow" },
-    { img: "/send.png", text: "PO Issuance to Vendor" },
-    { img: "/po.png", text: "PO Record & Audit Trail" },
+    { img: "/layers.png", text: "Data Aggregation" },
+    { img: "/warning.png", text: "Risk Identification" },
+    { img: "/meter.png", text: "Risk Scoring & Prioritization" },
+    { img: "/bell.png", text: "Alerts & Escalation" },
+    { img: "/verify_badge.png", text: "Mitigation Recommendations" },
+    { img: "/copy_new.png", text: "Reporting & Audit" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -562,7 +546,7 @@ function PurchaseSection (){
   const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    y: 40,
   },
   visible: {
     opacity: 1,
@@ -593,7 +577,7 @@ function PurchaseSection (){
     if (custom === 3) {
       return {
         opacity: 1,
-        scale: 0.9,
+        scale: 1,
         transition: {
           type: "spring",
           stiffness: 50,
@@ -625,10 +609,10 @@ function PurchaseSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Purchase Order Creation Agent</h2>
-          <p className="font-semibold">Generate, approve, and issue purchase orders seamlessly.</p>
+          <h2 className="text-2xl font-semibold">Risk Monitoring Agent</h2>
+          <p className="font-semibold">Identifies, prioritizes, and mitigates operational risks in real time.</p>
           <p>
-            Automate the creation of purchase orders from vendor selection and draft<br/> generation to approval and issuance ensuring accurate, compliant, and traceable<br/> procurement operations.
+            Continuously aggregates data across operations, finance, and market signals to<br/> detect emerging risks, assess their impact, trigger timely alerts, and recommend<br/> mitigation actions while maintaining a complete audit trail.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -638,49 +622,58 @@ function PurchaseSection (){
 
         <motion.div
       ref={containerRef}
-      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 p-4 lg:p-7 lg:ml-auto lg:mr-10 rounded-lg"
+      className="relative overflow-visible bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 p-4 lg:p-6 lg:ml-auto lg:mr-10 rounded-lg"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-       <div className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col shadow-[-8px_-8px_0px_0px_rgba(0,0,0,1)] mb-3 sm:mb-0">
-            <div className="px-6 py-4 mb-1">
-                Approved Vendors<br/>
-                <div className="flex flex-row gap-2">
-                    <div className="text-sm">Verified Vendor</div>
-                    <Image src="/tick_filled.png" alt="tick" width={20} height={20} />
-                </div>
-            </div>
+        <div className="bg-[#005143] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl">
+            Risk Monitoring Agent
         </div>
-        <motion.div variants={itemVariants} className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col shadow-[-8px_-8px_0px_0px_rgba(0,0,0,1)]">
-            <div className="flex flex-row justify-between px-5 py-5">
-                <div className="flex flex-col p-5 gap-2">
-                    <span className="text-sm text-[#6fd8a8]">AI Generation In Progress</span>
-                    <span className="font-semibold text-sm">Purchase Order</span>
-                    <span className="text-[80%]"># PO - 2025 - 882</span>
-                </div>
-                <div className="bg-[#6fd8a8] p-4 rounded-lg justify-center h-[70%] mt-5 mr-5 hidden sm:flex">
-                    <Image src="/pager.png" alt="pager" width={40} height={20} />
-                </div>
-            </div>
-            <div className="bg-[#d9d9d9] w-[84%] h-4 rounded-lg my-4 mx-auto" />
-            <div className="bg-[#d9d9d9] w-[84%] h-4 rounded-lg my-4 mx-auto" />
-            <div className="bg-[#d9d9d9] w-[44%] h-4 rounded-lg my-4 ml-10" />
-            <div className="flex flex-col sm:flex-row gap-4 sm:pl-10 my-10 mx-5 sm:mx-0">
-                <div className="rounded-4xl text-white p-3 bg-[#57b887] text-sm text-center">
-                    Budget Validated
-                </div>
-                <div className="rounded-4xl text-[#5170ff] p-3 bg-[white] text-sm text-center">
-                    Clause Matched
-                </div>
-            </div>
+        <motion.div variants={itemVariants}>
+            <ul className="list-disc pl-5 mt-2 mb-3">
+                <li className="text-sm font-semibold text-[#005143]">
+                    Risk Identified
+                </li>
+            </ul>
+            <div className="bg-[#dff1e6] text-sm text-[#005143] p-5 rounded-lg w-[90%] mx-auto">Supplier delay detected in regional hub. </div>
         </motion.div>
-        <motion.div variants={itemVariants} className="text-sm text-white bg-black text-center rounded-lg w-full p-4 font-semibold">
-            PO Issued & Recorded
-        </motion.div>
+        <motion.div variants={itemVariants}>
+            <div className="flex flex-row justify-between">
+                <ul className="list-disc pl-5 mt-2 mb-3">
+                    <li className="text-sm font-semibold text-[#005143]">
+                        Risk Score
+                    </li>
+                </ul>
+                <div className="text-sm text-[#005143] flex flex-col justify-center">Medium</div>
+            </div>
             
+            <div className="w-full bg-[linear-gradient(to_right,#e7e98b_90%,#d6d8d9_60%)] h-3 rounded-4xl" />     
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+            <ul className="list-disc pl-5 mt-2 mb-3">
+                <li className="text-sm font-semibold text-[#005143]">
+                    Priority Level
+                </li>
+            </ul>
+            <div className="bg-[#eeeeee] text-sm text-[#5e5d5b] p-5 rounded-lg w-[90%] mx-auto font-semibold">Action Required </div>
+        </motion.div>
         
-       
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-[90%] p-5 mx-auto rounded-lg">
+            <div className="text-sm text-[#005143] font-semibold">Autonomous Monitoring</div>
+            <div className="text-sm text-[#005143] mt-2">
+                The agent continously scans global supply chain data, financial markets, and internal operations to identify bottlenecks before they impact delivery. 
+            </div>
+        </motion.div>
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-[93%] p-5 mx-auto rounded-lg">
+            <div className="text-sm text-[#005143] font-semibold">Predictive Analytics</div>
+            <div className="text-sm text-[#005143] mt-2">
+                Using properiety scoring models, Officeflow AI determines the priority suggests the optimal mitigation startegy based on historical success rates.
+            </div>
+        </motion.div>
+        
+        
     </motion.div>
       </div>
         <h1 className="text-white text-2xl md:text-3xl text-center mb-4 mt-12" ref={seeHowRef}>
@@ -709,15 +702,12 @@ function PurchaseSection (){
           {/* SVG Lines */}
           <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <AnimatedPath isInView={seeHowInView} d="
-               M150 150
+              M150 290
               H1000
-              V390
+              V550
               H0
-              V540
-              H1000
-              V880
-              H600
-              
+              V820
+              H800
             " />
           </svg>
 
@@ -784,12 +774,12 @@ export default function QualityAI() {
         )}
         {activeSection === 1 && (
           <div onClick={handleSectionClick}>
-            <QuotationSection key="quotation" />
+            <IncidentSection key="incident" />
           </div>
         )}
         {activeSection === 2 && (
           <div onClick={handleSectionClick}>
-            <PurchaseSection key="purchase" />
+            <RiskSection key="risk" />
           </div>
         )}
       </AnimatePresence>
