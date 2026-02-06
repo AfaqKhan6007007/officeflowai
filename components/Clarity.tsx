@@ -15,9 +15,9 @@ export default function Clarity() {
 
   const screens: Record<string, string> = {
     "Vendor Management": "/pro.png",
-    "Contract Management": "/pro.png",
-    "Purchase Requests": "/pro.png",
-    "Purchase Orders": "/pro.png",
+    "Contract Management": "/pro1.png",
+    "Purchase Requests": "/pro2.png",
+    "Purchase Orders": "/pro3.png",
   };
 
   return (

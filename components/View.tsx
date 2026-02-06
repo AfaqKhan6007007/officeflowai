@@ -14,8 +14,8 @@ export default function View() {
 
   const screens: Record<string, string> = {
     "Leads & Contacts": "/S&m.png",
-    "Sales Pipelines": "/S&m.png",
-    "Reports & Analytics": "/S&m.png",
+    "Sales Pipelines": "/S&m1.png",
+    "Reports & Analytics": "/S&m2.png",
   };
 
   return (

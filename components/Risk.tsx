@@ -15,9 +15,9 @@ export default function Risk() {
 
   const screens: Record<string, string> = {
     "AI Risk Detection": "/QM.png",
-    "Enterprise Risk & Incidents": "/QM.png",
-    "Dynamic Risk Register": "/QM.png",
-    "Predictive Analytics & CAPAs": "/QM.png"
+    "Enterprise Risk & Incidents": "/QM1.png",
+    "Dynamic Risk Register": "/QM2.png",
+    "Predictive Analytics & CAPAs": "/QM3.png"
   };
 
   return (
