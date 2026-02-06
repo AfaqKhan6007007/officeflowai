@@ -6,6 +6,7 @@ import Clarity from "@/components/Clarity";
 import ProcurementImplement from "@/components/ProcurementImplement";
 import ProcurementChoice from "@/components/ProcurementChoice";
 import ProcurementOps from "@/components/ProcurementOps";
+import ProcurementAI from "@/components/ProcurementAI";
 
 
 
@@ -18,6 +19,7 @@ export default function ProcurementModule () {
                 <HeroProcurement />
                 <ProcurementModules />
                 <Clarity />
+                <ProcurementAI />
                 <ProcurementImplement />
                 <ProcurementChoice />
                 <ProcurementOps />
