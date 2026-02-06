@@ -1040,11 +1040,302 @@ function VendorSection (){
 }
 
 
+const WordByWordAnimation = ({ sentence }) => {
+  const letters = sentence.split("");
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.3 });
+  const typingSpeed = 0.08;
+  const pauseAtEnd = 1.5; 
+  const totalDuration = letters.length * typingSpeed + pauseAtEnd;
+
+  return (
+    <div 
+      ref={containerRef} 
+      className="inline-flex min-h-[1.5em] min-w-[200px]"
+    >
+      <AnimatePresence mode="wait">
+        {isInView && (
+          <motion.div 
+            key="animation-container" 
+            className="flex"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {letters.map((letter, index) => (
+              <motion.span
+                key={`${index}-${isInView}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.01,
+                  delay: index * typingSpeed, 
+                  repeatDelay: totalDuration - 0.01,
+                }}
+                className="whitespace-pre"
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+function ContractSection (){
+    const seeHowRef = useRef(null);
+  const seeHowInView = useInView(seeHowRef, {
+    once: false,
+    amount: 0.5,
+  });
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.4 });
+  const gridItemsChat = [
+    { img: "/create.png", text: "Contract Draft Creation" },
+    { img: "/clause.png", text: "Clause & Policy Alignment" },
+    { img: "/stakeholder.png", text: "Stakeholder Review" },
+    { img: "/revise.png", text: "Negotiation & Revision Tracking" },
+    { img: "/booklet.png", text: "Approval Workflow" },
+    { img: "/end.png", text: "Contract Finalization & Signingl" },
+    { img: "/stack.png", text: "Secure Storage & Audit Trail" },
+  ];
+  const gridVariants = {
+    hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
+    visible: { 
+      opacity: 1, 
+      height: "auto", 
+      transition: { duration: 0.6, ease: "easeInOut" } 
+    }
+  };
+  const cards = [
+    {
+      title: "Staffing Matrix Alignment",
+      img:"/tick.png"
+    },
+    {
+      title: "Workspace utilization verify",
+      img:"/tick.png"
+    },
+    {
+      title: "Inventory sync complete",
+      img:"/tick.png"
+    
+    },
+    {
+        title:"Conflict Resolution: 1 potential overlap resolved. "
+    }
+  ];
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2, // cards appear one by one
+      },
+    },
+  };
+
+  const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  },
+};
+
+  const cardVariants = {
+  hidden: (custom: number) => {
+    if (custom === 3) {
+      return {
+        opacity: 0,
+        scale: 0.6,
+      };
+    }
+
+    return {
+      opacity: 0,
+      y: 50,
+    };
+  },
+
+  visible: (custom: number) => {
+    if (custom === 3) {
+      return {
+        opacity: 1,
+        scale: 1,
+        transition: {
+          type: "spring",
+          stiffness: 50,
+          damping: 4,
+        },
+      };
+    }
+
+    return {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      },
+    };
+  },
+};
+
+
+    return (
+        <>
+        <motion.div 
+        initial="hidden"
+        variants={gridVariants}
+        animate="visible"   // ✅ REQUIRED
+        exit="hidden"
+        className="flex flex-col gap-4 md:gap-6 mt-20 px-4 md:px-0"
+      >
+        <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
+        <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
+          <h2 className="text-2xl font-semibold">Contract Management Agent</h2>
+          <p className="font-semibold">Streamline contract creation, review, approval, and secure storage automatically.</p>
+          <p>
+            Automate the life-cycle of contracts from drafting and clause alignment to<br/> stakeholder review, approval, and secure archival ensuring compliance and<br/> reducing manual effort.
+          </p>
+          <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
+            <span>Try for Free </span>
+            <MoveRightIcon />
+          </button>
+        </div>
+
+        <motion.div
+      ref={containerRef}
+      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 p-4 lg:p-7 lg:ml-auto lg:mr-10 rounded-lg"
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+        <div className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-row mb-3 sm:mb-0 sm:gap-0 gap-10 justify-between">
+            <div className="px-8 py-6 mb-1 flex flex-col sm:flex-row justify-between sm:gap-0 gap-10">
+                <div>
+                    <span className="text-[70%] text-[#6fd8a8]">Contract Draft</span>
+                    <br/>
+                    <span className="text-[90%]">Service Agreement - Draft</span>
+                    <br/>
+                    <span className="text-[60%]">version 1.0</span>
+                </div>
+            </div>
+            <div className="bg-[#6fd8a8] p-4 rounded-lg justify-center h-[55%] my-auto mr-5 hidden sm:flex">
+                <Image src="/pager.png" alt="pager" width={35} height={20} />
+            </div>
+        </div>
+        <div className="text-[#005143] text-[100%] font-semibold">
+            Clause & Policy Alignment
+        </div>
+        <div className="flex flex-row gap-3 ml-4 mb-2">
+            <Image src="/tick_fill.png" alt="tick" width={25} height={20} />
+            <div className="text-[#005143] text-[100%]">Payment Terms</div>
+        </div>
+        <div className="flex flex-row gap-3 ml-4 mb-2">
+            <div className="h-[10%]">
+                <Image src="/tick_fill.png" alt="tick" width={25} height={20} />
+            </div>
+            <div className="text-[#005143] text-[100%]">Termination Clause</div>
+        </div>
+        <div className="flex flex-row gap-3 ml-4 mb-2">
+            <Image src="/tick_fill.png" alt="tick" width={25} height={20} />
+            <div className="text-[#005143] text-[100%]">Confidentiality</div>
+        </div>
+        <div className="text-[#005143] text-[100%] font-semibold">
+            Stakeholder Review
+        </div>
+        <div className="flex flex-col gap-5 pl-4 sm:flex-row">
+            <div className="rounded-4xl text-white py-3 px-6 bg-[#57b887] text-sm text-center font-semibold">
+                Legal
+            </div>
+            <div className="rounded-4xl text-white py-3 px-6 bg-[#57b887] text-sm text-center font-semibold">
+                Finance
+            </div>
+            <div className="rounded-4xl text-white py-3 px-6 bg-[#57b887] text-sm text-center font-semibold">
+                Procurement
+            </div>
+        </div>
+        <ul className="list-disc pl-5 mt-2">
+            <li className="text-sm font-normal text-[#005143] italic">
+                <WordByWordAnimation sentence="Review in progress..." />
+            </li>
+        </ul>
+    </motion.div>
+      </div>
+        <h1 className="text-white text-2xl md:text-3xl text-center mb-4 mt-12" ref={seeHowRef}>
+          See How it works
+        </h1>
+        <motion.div
+  initial={false}
+  animate={seeHowInView ? "open" : "closed"}
+  variants={{
+    closed: {
+      height: 0,
+      opacity: 0,
+      overflow: "hidden",
+    },
+    open: {
+      height: "auto",
+      opacity: 1,
+      transition: {
+        height: { duration: 0.6, ease: "easeInOut" },
+        opacity: { duration: 0.4, delay: 0.2 },
+      },
+    },
+  }}
+  className="relative mt-10 w-full"
+>
+          {/* SVG Lines */}
+          <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <AnimatedPath isInView={seeHowInView} d="
+               M150 150
+              H1000
+              V360
+              H0
+              V520
+              H1000
+              V880
+              H600
+              
+            " />
+          </svg>
+
+          {/* Grid Items */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 items-center justify-items-center gap-4 sm:gap-6 lg:gap-10 px-2 sm:px-4 lg:px-0">
+            {gridItemsChat.map((item, idx) => (
+              <div
+                key={idx}
+                className={`flex gap-4 sm:gap-6 bg-[#1F7A5A] text-white rounded-lg p-4 text-lg sm:text-xl font-semibold w-full sm:max-w-[400px] z-10 justify-center
+                  ${idx === 6 ? "sm:col-start-2 lg:col-start-2" : ""}
+                `}
+              >
+                <Image src={item.img} alt={item.text} width={39} height={30} />
+                <span className="mt-1">{item.text}</span>
+              </div>
+            ))}
+          </div>
+          </motion.div>
+      </motion.div>
+        </>
+    )
+}
+
+
 
 
 
 export default function ProcurementAI() {
-  const TOTAL_SECTIONS = 4;
+  const TOTAL_SECTIONS = 5;
   const [activeSection, setActiveSection] = useState(0);
 
   {/*useEffect(() => {
@@ -1092,6 +1383,11 @@ export default function ProcurementAI() {
         {activeSection === 3 && (
           <div onClick={handleSectionClick}>
             <VendorSection key="vendor" />
+          </div>
+        )}
+        {activeSection === 4 && (
+          <div onClick={handleSectionClick}>
+            <ContractSection key="contract" />
           </div>
         )}
       </AnimatePresence>
