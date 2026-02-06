@@ -800,7 +800,7 @@ function PurchaseSection (){
     )
 }
 
-function TaxSection (){
+function VendorSection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
@@ -809,12 +809,12 @@ function TaxSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const gridItemsChat = [
-    { img: "/stack.png", text: "Data Aggregation" },
-    { img: "/calculator.png", text: "Tax Liability Calculation" },
-    { img: "/ok.png", text: "Compliance Check" },
-    { img: "/filing.png", text: "Filing Preparation" },
-    { img: "/yes.png", text: "Approval & Submission" },
-    { img: "/archival.png", text: "Record Archival & Audit Trail" },
+    { img: "/stack.png", text: "Historical Data Aggregation" },
+    { img: "/calculator.png", text: "Performance Metrics Calculation" },
+    { img: "/meter.png", text: "Scoring & Ranking" },
+    { img: "/insight.png", text: "Trend Analysis & Insights" },
+    { img: "/engagement.png", text: "Recommendation for Future Engagement" },
+    { img: "/po.png", text: "Record Archival & Audit Trail" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -886,7 +886,7 @@ function TaxSection (){
     if (custom === 3) {
       return {
         opacity: 1,
-        scale: 0.9,
+        scale: 1,
         transition: {
           type: "spring",
           stiffness: 50,
@@ -918,10 +918,10 @@ function TaxSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Tax Handling Agent</h2>
-          <p className="font-semibold">Accurate tax calculation, compliant filing, zero last-minute stress</p>
+          <h2 className="text-2xl font-semibold">Vendor Performance Agent</h2>
+          <p className="font-semibold">Evaluate vendors, track performance, and guide future engagements<br/> automatically.</p>
           <p>
-            This agent gathers tax-relevant data from payroll, invoices, and expenses,<br/> calculates liabilities automatically, checks compliance, prepares filings, and submits<br/> them with approval. Every step is logged, archived, and ready for audit when<br/> needed.
+            Aggregate historical vendor data, calculate performance metrics, and generate<br/> insights to help procurement teams make informed, data-driven decisions for<br/> supplier management.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -931,53 +931,57 @@ function TaxSection (){
 
         <motion.div
       ref={containerRef}
-      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 rounded-md p-4 lg:p-7 lg:ml-auto lg:mr-10 rounded-lg"
+      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 p-4 lg:p-7 lg:ml-auto lg:mr-10 rounded-lg"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <div className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col gap-4">
-            <div className="px-6 py-4 mb-1">
-                Tax Handling System<br/>
-                <ul className="list-disc pl-5 mt-2">
-                    <li className="text-sm font-normal">
-                        Active Process
-                    </li>
-                </ul>
-                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden mt-8">
-                    <Image src="/fix.png" alt="fix" width={30} height={10} />
-                    <p className="text-sm flex justify-center items-center">Payroll Total</p>
-
-                    <div className="text-white text-sm ml-auto flex items-center font-semibold">$142,500</div>
-                </motion.div>
-                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden mt-8">
-                    <Image src="/fix.png" alt="fix" width={30} height={10} />
-                    <p className="text-sm flex justify-center items-center">Invoice Tax</p>
-
-                    <div className="text-white text-sm ml-auto flex items-center font-semibold">$12,825</div>
-                </motion.div>
-                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden mt-8">
-                    <Image src="/fix.png" alt="fix" width={30} height={10} />
-                    <p className="text-sm flex justify-center items-center">Expense Deduction</p>
-
-                    <div className="text-white text-sm ml-auto flex items-center font-semibold">$4,200</div>
-                </motion.div>
-                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-2 border-[#6fd8a8] p-6 rounded-xl bg-[#046554] gap-3 overflow-hidden mt-8">
-                    <Image src="/fix.png" alt="fix" width={30} height={10} />
-                    <p className="text-sm flex justify-center items-center">Net Tax Liability</p>
-
-                    <div className="text-white text-sm ml-auto flex items-center font-semibold">$8,625.00</div>
-                </motion.div>
+        <div className="bg-[#005143] w-full rounded-lg text-white text-left font-semibold text-xl flex flex-col mb-3 sm:mb-0 sm:gap-0 gap-10">
+            <div className="px-8 py-6 mb-1 flex flex-col sm:flex-row justify-between sm:gap-0 gap-10">
+                <div>
+                    <span className="text-[90%]">Vendor Performance Summary</span>
+                    <br/>
+                    <span className="text-[70%]">Based on historical data</span>
+                </div>
+               <div className="relative w-20 h-20 rounded-full flex justify-center items-center p-[5px] bg-[conic-gradient(#6fd8a8_80%,#000_0%)]">
+                    {/* The Inner Circle (White part) */}
+                    <div className="bg-white w-full h-full rounded-full flex justify-center items-center text-black text-[95%] font-bold">
+                        80%
+                    </div>
+                </div>
             </div>
-            <motion.div variants={itemVariants} className="bg-[#056554] text-white mt-auto flex p-6 gap-6 rounded-xl">
-                <Image src="/archive.png" alt="fix" width={30} height={20} className="hidden sm:block"/>
-                <div className="text-sm">Archive / Audit Log<br/>Record Stored</div>
-                <div className="text-sm ml-auto text-[#6fd8a8] flex items-center">secure</div>
-            </motion.div>
         </div>
-        
-        
-       
+        <motion.div variants={itemVariants} className="flex flex-col gap-3 mt-4">
+            <div className="flex flex-row gap-5 ml-2">
+                <Image src="/car.png" alt="car" width={35} height={20} />
+                <span className="text-[#005143] font-semibold flex flex-col justify-center items-center">Delivery</span>
+            </div>
+            <div className="bg-[linear-gradient(to_right,#6fd8a8_80%,#d6d8d9_72%)] h-3 rounded-lg" />
+        </motion.div>
+        <motion.div variants={itemVariants} className="flex flex-col gap-3">
+            <div className="flex flex-row gap-8 ml-2">
+                <Image src="/badge_fill.png" alt="badge" width={23} height={29} />
+                <span className="text-[#005143] font-semibold flex flex-col justify-center items-center">Quality</span>
+            </div>
+            <div className="bg-[linear-gradient(to_right,#6fd8a8_80%,#d6d8d9_72%)] h-3 rounded-lg" />
+        </motion.div>
+        <motion.div variants={itemVariants} className="flex flex-col gap-3">
+            <div className="flex flex-row gap-8 ml-2">
+                <Image src="/money_fill.png" alt="money" width={23} height={29} />
+                <span className="text-[#005143] font-semibold flex flex-col justify-center items-center">Cost</span>
+            </div>
+            <div className="bg-[linear-gradient(to_right,#6fd8a8_80%,#d6d8d9_72%)] h-3 rounded-lg" />
+        </motion.div>
+        <motion.div variants={itemVariants} className="flex flex-col gap-3">
+            <div className="flex flex-row gap-8 ml-2">
+                <Image src="/compliance_fill.png" alt="compliance" width={23} height={29} />
+                <span className="text-[#005143] font-semibold flex flex-col justify-center items-center">Compliance</span>
+            </div>
+            <div className="bg-[linear-gradient(to_right,#6fd8a8_80%,#d6d8d9_72%)] h-3 rounded-lg" />
+        </motion.div>
+        <motion.div variants={cardVariants} custom={3} className="bg-[#005143] rounded-lg text-white text-center font-semibold text-sm flex flex-col p-4 w-1/2 mx-auto mb-10 mt-10 overflow-hidden">
+            Recommended Vendor
+        </motion.div>
     </motion.div>
       </div>
         <h1 className="text-white text-2xl md:text-3xl text-center mb-4 mt-12" ref={seeHowRef}>
@@ -1087,7 +1091,7 @@ export default function ProcurementAI() {
         )}
         {activeSection === 3 && (
           <div onClick={handleSectionClick}>
-            <TaxSection key="tax" />
+            <VendorSection key="vendor" />
           </div>
         )}
       </AnimatePresence>
