@@ -314,7 +314,7 @@ function RFQSection (){
     )
 }
 
-function FraudSection (){
+function QuotationSection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
@@ -323,13 +323,13 @@ function FraudSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.4 });
   const gridItemsChat = [
-    { img: "/layout.png", text: "Transaction / Activity Monitoring" },
-    { img: "/pattern.png", text: "Pattern Analysis" },
-    { img: "/anamoly.png", text: "Anomaly Detection" },
-    { img: "/scoring.png", text: "Risk Scoring" },
-    { img: "/alert.png", text: "Alert Generation" },
-    { img: "/correct.png", text: "Escalation to Compliance Team" },
-    { img: "/log.png", text: "Case Logging & Audit" },
+    { img: "/consolidate.png", text: "Quotation Consolidation" },
+    { img: "/term.png", text: "Price & Term Comparison" },
+    { img: "/meter.png", text: "Vendor Scoring" },
+    { img: "/tick.png", text: "Compliance & Policy Check" },
+    { img: "/generate.png", text: "Recommendation Generation" },
+    { img: "/approve.png", text: "Approval Workflow" },
+    { img: "/finalize.png", text: "Vendor Finalization" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -401,7 +401,7 @@ function FraudSection (){
     if (custom === 3) {
       return {
         opacity: 1,
-        scale: 0.9,
+        scale: 1,
         transition: {
           type: "spring",
           stiffness: 50,
@@ -433,10 +433,10 @@ function FraudSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Fraud Detection Agent</h2>
-          <p className="font-semibold">Continuous monitoring to detect financial risk before it escalates</p>
+          <h2 className="text-2xl font-semibold">Quotation Evaluation Agent</h2>
+          <p className="font-semibold">Analyze quotes, score vendors, and recommend the best options automatically.</p>
           <p>
-            This agent quietly monitors transactions and account activity, analyzes behavior<br/> patterns, detects anomalies, assigns risk scores, and generates alerts only when<br/> needed. High-risk cases are escalated to compliance teams and logged automatically<br/> for audit and traceability.
+            Automate the evaluation of vendor quotations compare pricing, terms,<br/> quality, and compliance so your procurement decisions are faster, smarter,<br/> and more consistent.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -446,48 +446,64 @@ function FraudSection (){
 
         <motion.div
       ref={containerRef}
-      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 rounded-md p-4 lg:p-10 lg:ml-auto lg:mr-10 rounded-lg"
+      className="bg-white w-full lg:w-[550px] flex flex-col gap-2 md:gap-6 p-4 lg:p-5 lg:ml-auto lg:mr-10 rounded-lg"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <h2 className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-center font-semibold text-xl">
-            Fraud Detection Agent<br/>
-            <p className="text-sm font-normal mt-2">Continuous monitoring to detect financial risk before it escalates</p>
-        </h2>
-        <h2 className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-left font-semibold text-sm flex gap-3 justify-between">
-            <span>Live Transaction Monitoring</span>
-            <div className="w-[15%] h-5 rounded-3xl bg-[linear-gradient(to_left,red_76%,white_24%)] text-right px-1 gap-3 sm:flex hidden">
-                <motion.div className="w-2 h-2 rounded-full bg-[red] my-auto" animate={{
-                    opacity: [1,0.8,.6,.4,.2,0,.2,.4,.6,.8],
-                }}
-                transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease:"easeInOut",
-                    repeatType:"loop",
-                    repeatDelay:0.4
-                }}></motion.div>
-                <span>LIVE</span>
-            </div>
-        </h2>
-        <motion.div variants={itemVariants} className="bg-[#005143] w-full rounded-lg px-4 p-8 flex flex-col justify-center items-center gap-7">
+        <div className="bg-[#005143] w-full rounded-lg text-white px-6 p-4 text-left font-semibold text-xl flex flex-col justify-center items-center gap-4">
+            <span className="mr-auto">Quotation Evaluation Agent</span>
+            <p className="text-sm font-normal mt-2 text-[60%] mr-auto">Visualizing the automated workflows from purchase intent to vendor dispatch. </p>
+            <div className="bg-[#dff1e6] rounded-lg p-5 flex flex-col justify-center items-center gap-4 w-[100%]">
+
             
-            <h2 className="text-center font-semibold mt-1 text-white">Anamoly Detected</h2>
-            <div
-                className="w-40 h-40 rounded-full flex items-center justify-center"
-                style={{
-                    background: `conic-gradient(#d6d94e 0% 30%, white 30% 100%)`,
-                }}
-            >
-                <div className="w-[130px] h-[130px] rounded-full bg-[#005143] flex items-center justify-center text-4xl font-semibold text-white">
-                    30%
+            <div className="bg-[#005143] text-white text-sm sm:text-sm text-center w-[70%] px-2 sm:px-8 py-6 rounded-lg">
+                Purchase Request
+            </div>
+            <div className="bg-[#005143] text-white text-sm sm:text-sm text-center w-[100%] px-2 sm:px-4 py-4 rounded-lg flex flex-col gap-4 opacity-50">
+                <p className="text-left">Quote A</p>
+                <div className="flex flex-col sm:flex-row justify-between">
+                    <div className="bg-[#57b887] rounded-4xl px-4 py-2 text-[80%]">
+                        Price High
+                    </div>
+                    <div className="ml-auto text-[#6fd8a8] flex justify-center items-center">
+                        72% Score
+                    </div>
+                    
                 </div>
+                <div className="w-full bg-[linear-gradient(to_right,#6fd8a8_72%,white_72%)] h-2 rounded-4xl" />
             </div>
-            <div className="text-[#005143] bg-white  rounded-4xl px-5 py-3 w-3/4 sm:w-1/2 mx-auto text-center font-semibold border-1 border-[#d6d94e]">Low medium risk</div>
-               
-            
-        </motion.div>
+            <motion.div variants={cardVariants} custom={3} className="bg-[#005143] text-white text-sm sm:text-sm text-center w-[100%] px-2 sm:px-4 py-4 rounded-lg flex flex-col gap-4">
+                <p className="text-left">Quote B</p>
+                <div className="flex flex-col sm:flex-row justify-between gap-2">
+                    <div className="bg-[#57b887] rounded-4xl px-3 py-2 text-[80%]">
+                        Price: Optimized
+                    </div>
+                    <div className="bg-[#57b887] rounded-4xl px-3 py-2 text-[80%]">
+                        Terms: Net 30
+                    </div>
+                    <div className="ml-auto text-[#6fd8a8] flex justify-center items-center">
+                        95% Score
+                    </div>
+                    
+                </div>
+                <div className="w-full bg-[linear-gradient(to_right,#6fd8a8_95%,white_72%)] h-2 rounded-4xl" />
+            </motion.div>
+            <div className="bg-[#005143] text-white text-sm sm:text-sm text-center w-[100%] px-2 sm:px-4 py-4 rounded-lg flex flex-col gap-4 opacity-50">
+                <p className="text-left">Quote C</p>
+                <div className="flex flex-col sm:flex-row justify-between">
+                    <div className="bg-[#57b887] rounded-4xl px-4 py-2 text-[80%]">
+                        Price Mid
+                    </div>
+                    <div className="ml-auto text-[#6fd8a8] flex justify-center items-center">
+                        60% Score
+                    </div>
+                    
+                </div>
+                <div className="w-full bg-[linear-gradient(to_right,#6fd8a8_60%,white_60%)] h-2 rounded-4xl" />
+            </div>
+            </div>
+        </div>
         
        
     </motion.div>
@@ -1079,7 +1095,7 @@ export default function ProcurementAI() {
         )}
         {activeSection === 1 && (
           <div onClick={handleSectionClick}>
-            <FraudSection key="fraud" />
+            <QuotationSection key="quotation" />
           </div>
         )}
         {activeSection === 2 && (
