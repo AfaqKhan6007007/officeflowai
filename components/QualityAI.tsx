@@ -740,13 +740,13 @@ export default function QualityAI() {
   const TOTAL_SECTIONS = 3;
   const [activeSection, setActiveSection] = useState(0);
 
-  {/*useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setActiveSection(prev => (prev + 1) % TOTAL_SECTIONS);
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);*/}
+  }, []);
 
   // Advance to next section on click
   const handleSectionClick = () => {
