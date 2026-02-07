@@ -6,6 +6,7 @@ import Place from "@/components/Place";
 import OperationsImplement from "@/components/OperationsImplement";
 import OperationsChoice from "@/components/OperationsChoice";
 import OperationsOps from "@/components/OperationsOps";
+import OperationsAI from "@/components/OperationsAI";
 
 
 
@@ -20,6 +21,7 @@ export default function OperationsModule () {
                 <HeroOperations />
                 <OperationsModules />
                 <Place />
+                <OperationsAI />
                 <OperationsImplement />
                 <OperationsChoice />
                 <OperationsOps />

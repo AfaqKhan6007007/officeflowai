@@ -16,10 +16,10 @@ export default function Place() {
 
   const screens: Record<string, string> = {
     "Project Management": "/manager.png",
-    "Inventory & Stock": "/manager.png",
-    "Asset Management": "/manager.png",
-    "Employee Training": "/manager.png",
-    "Shift Management":"/manager.png"
+    "Inventory & Stock": "/manager1.png",
+    "Asset Management": "/manager2.png",
+    "Employee Training": "/manager3.png",
+    "Shift Management":"/manager4.png"
   };
 
   return (
