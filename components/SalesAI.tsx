@@ -300,11 +300,11 @@ function LeadSection (){
   };
 
   const itemVariants = {
-  hidden: (direction = "up") => ({
+  hidden: {
     opacity: 0,
-    x: direction === "right" ? 40 : 0,
-    y: direction === "up" ? 20 : 0,
-  }),
+    x: -40,
+    y:0
+  },
   visible: {
     opacity: 1,
     x: 0,
