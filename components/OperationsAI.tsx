@@ -505,21 +505,22 @@ function ResourceSection (){
     )
 }
 
-function RiskSection (){
+function SupplySection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
-    amount: 0.5,
+    amount: 0.3,
   });
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.4 });
+  const isInView = useInView(containerRef, { once: false, amount: 0.5 });
   const gridItemsChat = [
-    { img: "/layers.png", text: "Data Aggregation" },
-    { img: "/warning.png", text: "Risk Identification" },
-    { img: "/meter.png", text: "Risk Scoring & Prioritization" },
-    { img: "/bell.png", text: "Alerts & Escalation" },
-    { img: "/verify_badge.png", text: "Mitigation Recommendations" },
-    { img: "/copy_new.png", text: "Reporting & Audit" },
+    { img: "/stack.png", text: "Collect Data" },
+    { img: "/latest.png", text: "Predict Demand" },
+    { img: "/layers.png", text: "Recommend Stock" },
+    { img: "/tag.png", text: "Optimize Price" },
+    { img: "/alert.png", text: "Flag Exceptions" },
+    { img: "/tick.png", text: "Approve & Execute" },
+    { img: "/copy_new.png", text: "Approve & Execute" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -558,12 +559,14 @@ function RiskSection (){
   };
 
   const itemVariants = {
-  hidden: {
+  hidden: (direction = "up") => ({
     opacity: 0,
-    y: 40,
-  },
+    x: direction === "right" ? 40 : 0,
+    y: direction === "up" ? 20 : 0,
+  }),
   visible: {
     opacity: 1,
+    x: 0,
     y: 0,
     transition: {
       duration: 0.4,
@@ -588,14 +591,14 @@ function RiskSection (){
   },
 
   visible: (custom: number) => {
-    if (custom === 3) {
+    if (custom === 0) {
       return {
         opacity: 1,
-        scale: 1,
+        scale: 0.8,
         transition: {
           type: "spring",
           stiffness: 50,
-          damping: 4,
+          damping: 3,
         },
       };
     }
@@ -623,10 +626,10 @@ function RiskSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Risk Monitoring Agent</h2>
-          <p className="font-semibold">Identifies, prioritizes, and mitigates operational risks in real time.</p>
+          <h2 className="text-2xl font-semibold">Supply Optimization Agent</h2>
+          <p className="font-semibold">Keeps inventory balanced, costs controlled, and supply always aligned with<br/> demand.</p>
           <p>
-            Continuously aggregates data across operations, finance, and market signals to<br/> detect emerging risks, assess their impact, trigger timely alerts, and recommend<br/> mitigation actions while maintaining a complete audit trail.
+            Continuously analyzes supply data and demand signals to recommend optimal<br/> stock levels and pricing. The agent flags exceptions early, executes approved<br/> actions, and keeps supply flowing without overstock or shortages.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -642,51 +645,40 @@ function RiskSection (){
       animate={isInView ? "visible" : "hidden"}
     >
         <div className="bg-[#005143] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl">
-            Risk Monitoring Agent
+            Supply Optimization Agent
         </div>
-        <motion.div variants={itemVariants}>
-            <ul className="list-disc pl-5 mt-2 mb-3">
-                <li className="text-sm font-semibold text-[#005143]">
-                    Risk Identified
-                </li>
-            </ul>
-            <div className="bg-[#dff1e6] text-sm text-[#005143] p-5 rounded-lg w-[90%] mx-auto">Supplier delay detected in regional hub. </div>
-        </motion.div>
-        <motion.div variants={itemVariants}>
-            <div className="flex flex-row justify-between">
-                <ul className="list-disc pl-5 mt-2 mb-3">
-                    <li className="text-sm font-semibold text-[#005143]">
-                        Risk Score
-                    </li>
-                </ul>
-                <div className="text-sm text-[#005143] flex flex-col justify-center">Medium</div>
+        <div className="bg-[#dff1e6] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl">
+            <motion.div variants={itemVariants}>
+                <div className="text-[#005143] text-sm font-semibold text-left mb-4">Demand Prediction Engine</div>
+            <div className="border-1 bg-white border-[#d6d8d9] flex flex-col gap-4 rounded-lg">
+                <div className="flex flex-col sm:flex-row justify-between font-normal text-[#005143] text-sm px-6 pt-6">
+                    <span>Product</span>
+                    <span>Recommended Stock</span>
+                </div>
+                <hr className="w-full bg-[#d6d8d9] h-[2px]" />
+                <div className="flex flex-col sm:flex-row justify-between font-normal text-[#005143] text-sm px-6 py-2">
+                    <span>Product A</span>
+                    <span>1240 Units</span>
+                </div>
+                <div className="flex flex-col sm:flex-row justify-between font-normal text-[#005143] text-sm px-6 py-2">
+                    <span>Product B</span>
+                    <span>840 Units</span>
+                </div>
+                <div className="flex flex-col sm:flex-row justify-between font-normal text-[#005143] text-sm px-6 py-2 pb-4">
+                    <span>Product C</span>
+                    <span>2100 Units</span>
+                </div>
             </div>
+            </motion.div>
             
-            <div className="w-full bg-[linear-gradient(to_right,#e7e98b_90%,#d6d8d9_60%)] h-3 rounded-4xl" />     
-        </motion.div>
-
-        <motion.div variants={itemVariants}>
-            <ul className="list-disc pl-5 mt-2 mb-3">
-                <li className="text-sm font-semibold text-[#005143]">
-                    Priority Level
-                </li>
-            </ul>
-            <div className="bg-[#eeeeee] text-sm text-[#5e5d5b] p-5 rounded-lg w-[90%] mx-auto font-semibold">Action Required </div>
-        </motion.div>
-        
-        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-[90%] p-5 mx-auto rounded-lg">
-            <div className="text-sm text-[#005143] font-semibold">Autonomous Monitoring</div>
-            <div className="text-sm text-[#005143] mt-2">
-                The agent continously scans global supply chain data, financial markets, and internal operations to identify bottlenecks before they impact delivery. 
+            <motion.div variants={itemVariants}>
+                <div className="text-[#005143] text-sm font-semibold text-left mb-4 mt-8">Approve & Execute</div>
+            <div className="border-1 text-[#005143] bg-white border-[#d6d8d9] flex flex-col gap-4 rounded-lg text-sm p-5 text-left font-normal">
+                Product A & B is approved by the director of supply chain system. Product C needs further changes and enhancements for appproval.
             </div>
-        </motion.div>
-        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-[93%] p-5 mx-auto rounded-lg">
-            <div className="text-sm text-[#005143] font-semibold">Predictive Analytics</div>
-            <div className="text-sm text-[#005143] mt-2">
-                Using properiety scoring models, Officeflow AI determines the priority suggests the optimal mitigation startegy based on historical success rates.
-            </div>
-        </motion.div>
-        
+            </motion.div>
+            
+        </div>
         
     </motion.div>
       </div>
@@ -716,12 +708,15 @@ function RiskSection (){
           {/* SVG Lines */}
           <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <AnimatedPath isInView={seeHowInView} d="
-              M150 290
+               M150 150
               H1000
-              V550
+              V360
               H0
-              V820
-              H800
+              V520
+              H1000
+              V880
+              H600
+              
             " />
           </svg>
 
@@ -744,6 +739,7 @@ function RiskSection (){
         </>
     )
 }
+
 
 
 
@@ -793,7 +789,7 @@ export default function OperationsAI() {
         )}
         {activeSection === 2 && (
           <div onClick={handleSectionClick}>
-            <RiskSection key="risk" />
+            <SupplySection key="supply" />
           </div>
         )}
       </AnimatePresence>
