@@ -6,6 +6,7 @@ import View from "@/components/View";
 import SalesImplement from "@/components/SalesImplement";
 import SalesChoice from "@/components/SalesChoice";
 import SalesOps from "@/components/SalesOps";
+import SalesAI from "@/components/SalesAI";
 
 
 
@@ -19,6 +20,7 @@ export default function SalesModule () {
                 <HeroSales />
                 <SalesModules />
                 <View />
+                <SalesAI />
                 <SalesImplement />
                 <SalesChoice />
                 <SalesOps />
