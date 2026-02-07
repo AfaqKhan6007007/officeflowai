@@ -954,12 +954,12 @@ function MarketingSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.5 });
   const gridItemsChat = [
-    { img: "/stack.png", text: "Historical Data Collection" },
-    { img: "/pattern.png", text: "Trend & Pattern Analysis" },
-    { img: "/dependency.png", text: "Predictive Modeling" },
-    { img: "/pattern.png", text: "Forecast Generation" },
-    { img: "/block.png", text: "Scenario Simulation" },
-    { img: "/copy_new.png", text: "Stakeholder Reporting" },
+    { img: "/community.png", text: "Audience & Segmentation Analysis" },
+    { img: "/cal.png", text: "Campaign Planning" },
+    { img: "/stars_2.png", text: "Content Recommendation" },
+    { img: "/send.png", text: "Campaign Execution" },
+    { img: "/pattern.png", text: "Performance Monitoring" },
+    { img: "/copy_new.png", text: "Optimization Suggestions" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -998,19 +998,34 @@ function MarketingSection (){
   };
 
   const itemVariants = {
-  hidden: {
-    opacity: 0,
-    x: -40,
-    y:0
+  hidden: (custom:number) => {
+    if(custom===3){
+        return {
+            opacity: 0,
+            y: 0,
+            x: 40
+        }
+    }
+    return {
+        opacity: 0,
+        x: -40,
+        y:0
+    }
+    
   },
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut",
-    },
+  visible: (custom: number) => {
+    // custom 3 appears first, others follow
+    let delay = custom === 3 ? 0 : 0.3 + 0.15 * custom;
+    return {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        delay,
+      },
+    };
   },
 };
 
@@ -1065,10 +1080,10 @@ function MarketingSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Sales Forecasting Agent</h2>
-          <p className="font-semibold">Predict future sales trends with AI-powered insights.</p>
+          <h2 className="text-2xl font-semibold">Marketing Agent</h2>
+          <p className="font-semibold">Plans, runs, and optimizes campaigns with AI precision.</p>
           <p>
-            Analyzes historical sales data, identifies patterns, runs predictive models, generates<br/> forecasts, simulates different scenarios, and provides clear reports for stakeholders<br/> helping your team make informed decisions and plan ahead.
+            Analyzes audience segments, plans campaigns, recommends content, executes<br/> across channels, monitors performance, and continuously suggests optimizations<br/> so marketing stays effective without constant manual effort.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -1083,34 +1098,47 @@ function MarketingSection (){
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <div className="bg-[#005143] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl flex flex-row justify-between">
-            <span>Sales Forecasting Agent</span>
+        <div className="bg-[#005143] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl">
+            <span className="text-center">Marketing Agent</span>
         </div>
-       <div className="flex flex-row gap-1 justify-center scale-65 sm:scale-100">
-        <div className="flex flex-col gap-4">
-            <motion.div variants={cardVariants} custom={0} className="bg-[#dff1e6] border-[#6fd8a8] border p-5 px-4 text-[#005143] rounded-lg text-sm text-center z-10">Past Sales</motion.div>
-            <motion.div variants={cardVariants} custom={0} className="bg-[#dff1e6] border-[#6fd8a8] border p-5 px-4 text-[#005143] rounded-lg text-sm text-center z-10">Seasonality</motion.div>
-            <motion.div variants={cardVariants} custom={0} className="bg-[#dff1e6] border-[#6fd8a8] border p-5 px-4 text-[#005143] rounded-lg text-sm text-center z-10">Market Signals</motion.div>
-        </div>
-        <div className="flex flex-col gap-8">
-            <motion.hr variants={cardVariants} custome={0} className="w-10 border border-[#005143] border-dashed [border-dasharray:12_8] rotate-[50deg] origin-left -mx-5 mt-8" />
-            <motion.hr variants={cardVariants} className="w-10 border border-[#005143] border-dashed [border-dasharray:12_8] origin-left mt-10 -mx-5" />
-            <motion.hr variants={cardVariants} className="w-10 border border-[#005143] border-dashed [border-dasharray:12_8] rotate-[-50deg] origin-left -mx-5 mt-11" />
-        </div>
-        
-        <div className="bg-[#dff1e6] border-[#6fd8a8] border py-9 px-3 text-[#005143] rounded-lg text-sm text-center font-semibold my-auto z-10">Predictive Model</div>
-        <motion.hr variants={cardVariants} className="w-8 border border-[#005143] border-dashed [border-dasharray:12_8] origin-left mt-[105px] mr-0 sm:-mr-5 sm:-ml-1 ml-0" />
-        <motion.div variants={cardVariants} custom={0} className="bg-[#dff1e6] border-[#6fd8a8] border p-5 px-4 text-[#005143] rounded-lg text-sm text-center my-auto -ml-3 sm:ml-0 z-10 ">Forecast Generated</motion.div>
+       <div className="flex sm:flex-row flex-col justify-center gap-4">
+            <div className="flex flex-col gap-8 justify-center z-20">
+                <motion.div variants={itemVariants} custom={0} className="flex flex-row justify-center gap-5 bg-white p-4 border border-[#005143] rounded-lg sm:translate-x-7">
+                    <Image src="/audience.svg" alt="audience" width={30} height={40} />
+                    <span className="text-sm text-[#005143] my-auto">Audience & Segmentation</span>
+                </motion.div>
+                <motion.div variants={itemVariants} custom={1} className="flex flex-row justify-center gap-10 bg-white p-4 border border-[#005143] rounded-lg">
+                    <Image src="/horn.svg" alt="horn" width={30} height={40} />
+                    <span className="text-sm text-[#005143] my-auto">Campaign Executed</span>
+                </motion.div>
+                <motion.div variants={itemVariants} custom={2} className="flex flex-row justify-center gap-5 bg-white p-4 border border-[#005143] rounded-lg sm:translate-x-7">
+                    <Image src="/notes.svg" alt="notes" width={30} height={40} />
+                    <span className="text-sm text-[#005143] my-auto">Content Recommended</span>
+                </motion.div>
+            </div>
+            <motion.div variants={itemVariants} custom={3} className="bg-[#dff1e6] p-4 py-8 border-[#6fd8a8] border rounded-lg flex flex-col gap-4">
+                <Image src="/campaign.svg" alt="campaign" width={80} height={80} className="mx-auto" />
+                <span className="text-center text-[#005143] font-semibold text-md">Campaign Engine</span>
+                <hr className="border-[#005143] sm:-mx-4" />
+                <div className="flex flex-col gap-5">
+                    <div className="flex flex-row gap-2">
+                        <Image src="/tick_final.svg" alt="tick" width={30} height={30} />
+                        <span className="text-sm text-[#005143] mt-auto">Campaign Planning</span>
+                    </div>
+                    <div className="flex flex-row gap-2">
+                        <Image src="/tick_final.svg" alt="tick" width={30} height={30} />
+                        <span className="text-sm text-[#005143] mt-auto">Monitoring Performance </span>
+                    </div>
+                    <div className="flex flex-row gap-2">
+                        <Image src="/tick_final.svg" alt="tick" width={30} height={30} />
+                        <span className="text-sm text-[#005143] mt-auto">Analyzing Audience</span>
+                    </div>
+                </div>
+                
+            </motion.div>
        </div>
         <hr className="border-[#dff1e6] sm:-mx-6" />
-        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-left rounded-lg text-[#005143] px-6 p-4 font-semibold text-xl flex flex-col gap-0">
-            <span className="font-semibold text-sm">Past Sales </span>
-            <span className="font-normal text-[13px]">Deep historical data analysis across all regions.</span>
-        </motion.div>
-        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-left rounded-lg text-[#005143] px-6 p-4 font-semibold text-xl flex flex-col gap-0">
-            <span className="font-semibold text-sm">Market Signals</span>
-            <span className="font-normal text-[13px]">Global economic indicators integrated in real-time.</span>
-        </motion.div>
+        <div className="text-[13px] text-[#005143] font-normal text-center italic mb-10">Suggested Optimizations</div>
         
     </motion.div>
       </div>
@@ -1176,13 +1204,13 @@ export default function SalesAI() {
   const TOTAL_SECTIONS = 5;
   const [activeSection, setActiveSection] = useState(0);
 
-  {/*useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setActiveSection(prev => (prev + 1) % TOTAL_SECTIONS);
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);*/}
+  }, []);
 
   // Advance to next section on click
   const handleSectionClick = () => {
