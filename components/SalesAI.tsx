@@ -471,7 +471,8 @@ function LeadSection (){
     )
 }
 
-function SupplySection (){
+
+function SalesSection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
@@ -480,13 +481,12 @@ function SupplySection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.5 });
   const gridItemsChat = [
-    { img: "/stack.png", text: "Collect Data" },
-    { img: "/latest.png", text: "Predict Demand" },
-    { img: "/layers.png", text: "Recommend Stock" },
-    { img: "/tag.png", text: "Optimize Price" },
-    { img: "/alert.png", text: "Flag Exceptions" },
-    { img: "/tick.png", text: "Approve & Execute" },
-    { img: "/copy_new.png", text: "Approve & Execute" },
+    { img: "/stack.png", text: "Historical Data Collection" },
+    { img: "/pattern.png", text: "Trend & Pattern Analysis" },
+    { img: "/dependency.png", text: "Predictive Modeling" },
+    { img: "/pattern.png", text: "Forecast Generation" },
+    { img: "/block.png", text: "Scenario Simulation" },
+    { img: "/copy_new.png", text: "Stakeholder Reporting" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -525,11 +525,11 @@ function SupplySection (){
   };
 
   const itemVariants = {
-  hidden: (direction = "up") => ({
+  hidden: {
     opacity: 0,
-    x: direction === "right" ? 40 : 0,
-    y: direction === "up" ? 20 : 0,
-  }),
+    x: -40,
+    y:0
+  },
   visible: {
     opacity: 1,
     x: 0,
@@ -552,7 +552,7 @@ function SupplySection (){
 
     return {
       opacity: 0,
-      y: 50,
+      y: -5,
     };
   },
 
@@ -592,10 +592,10 @@ function SupplySection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Supply Optimization Agent</h2>
-          <p className="font-semibold">Keeps inventory balanced, costs controlled, and supply always aligned with<br/> demand.</p>
+          <h2 className="text-2xl font-semibold">Sales Forecasting Agent</h2>
+          <p className="font-semibold">Predict future sales trends with AI-powered insights.</p>
           <p>
-            Continuously analyzes supply data and demand signals to recommend optimal<br/> stock levels and pricing. The agent flags exceptions early, executes approved<br/> actions, and keeps supply flowing without overstock or shortages.
+            Analyzes historical sales data, identifies patterns, runs predictive models, generates<br/> forecasts, simulates different scenarios, and provides clear reports for stakeholders<br/> helping your team make informed decisions and plan ahead.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -610,41 +610,34 @@ function SupplySection (){
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-        <div className="bg-[#005143] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl">
-            Supply Optimization Agent
+        <div className="bg-[#005143] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl flex flex-row justify-between">
+            <span>Sales Forecasting Agent</span>
         </div>
-        <div className="bg-[#dff1e6] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl">
-            <motion.div variants={itemVariants}>
-                <div className="text-[#005143] text-sm font-semibold text-left mb-4">Demand Prediction Engine</div>
-            <div className="border-1 bg-white border-[#d6d8d9] flex flex-col gap-4 rounded-lg">
-                <div className="flex flex-col sm:flex-row justify-between font-normal text-[#005143] text-sm px-6 pt-6">
-                    <span>Product</span>
-                    <span>Recommended Stock</span>
-                </div>
-                <hr className="w-full bg-[#d6d8d9] h-[2px]" />
-                <div className="flex flex-col sm:flex-row justify-between font-normal text-[#005143] text-sm px-6 py-2">
-                    <span>Product A</span>
-                    <span>1240 Units</span>
-                </div>
-                <div className="flex flex-col sm:flex-row justify-between font-normal text-[#005143] text-sm px-6 py-2">
-                    <span>Product B</span>
-                    <span>840 Units</span>
-                </div>
-                <div className="flex flex-col sm:flex-row justify-between font-normal text-[#005143] text-sm px-6 py-2 pb-4">
-                    <span>Product C</span>
-                    <span>2100 Units</span>
-                </div>
-            </div>
-            </motion.div>
-            
-            <motion.div variants={itemVariants}>
-                <div className="text-[#005143] text-sm font-semibold text-left mb-4 mt-8">Approve & Execute</div>
-            <div className="border-1 text-[#005143] bg-white border-[#d6d8d9] flex flex-col gap-4 rounded-lg text-sm p-5 text-left font-normal">
-                Product A & B is approved by the director of supply chain system. Product C needs further changes and enhancements for appproval.
-            </div>
-            </motion.div>
-            
+       <div className="flex flex-row gap-1 justify-center scale-65 sm:scale-100">
+        <div className="flex flex-col gap-4">
+            <motion.div variants={cardVariants} custom={0} className="bg-[#dff1e6] border-[#6fd8a8] border p-5 px-4 text-[#005143] rounded-lg text-sm text-center z-10">Past Sales</motion.div>
+            <motion.div variants={cardVariants} custom={0} className="bg-[#dff1e6] border-[#6fd8a8] border p-5 px-4 text-[#005143] rounded-lg text-sm text-center z-10">Seasonality</motion.div>
+            <motion.div variants={cardVariants} custom={0} className="bg-[#dff1e6] border-[#6fd8a8] border p-5 px-4 text-[#005143] rounded-lg text-sm text-center z-10">Market Signals</motion.div>
         </div>
+        <div className="flex flex-col gap-8">
+            <motion.hr variants={cardVariants} custome={0} className="w-10 border border-[#005143] border-dashed [border-dasharray:12_8] rotate-[50deg] origin-left -mx-5 mt-8" />
+            <motion.hr variants={cardVariants} className="w-10 border border-[#005143] border-dashed [border-dasharray:12_8] origin-left mt-10 -mx-5" />
+            <motion.hr variants={cardVariants} className="w-10 border border-[#005143] border-dashed [border-dasharray:12_8] rotate-[-50deg] origin-left -mx-5 mt-11" />
+        </div>
+        
+        <div className="bg-[#dff1e6] border-[#6fd8a8] border py-9 px-3 text-[#005143] rounded-lg text-sm text-center font-semibold my-auto z-10">Predictive Model</div>
+        <motion.hr variants={cardVariants} className="w-8 border border-[#005143] border-dashed [border-dasharray:12_8] origin-left mt-[105px] mr-0 sm:-mr-5 sm:-ml-1 ml-0" />
+        <motion.div variants={cardVariants} custom={0} className="bg-[#dff1e6] border-[#6fd8a8] border p-5 px-4 text-[#005143] rounded-lg text-sm text-center my-auto -ml-3 sm:ml-0 z-10 ">Forecast Generated</motion.div>
+       </div>
+        <hr className="border-[#dff1e6] sm:-mx-6" />
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-left rounded-lg text-[#005143] px-6 p-4 font-semibold text-xl flex flex-col gap-0">
+            <span className="font-semibold text-sm">Past Sales </span>
+            <span className="font-normal text-[13px]">Deep historical data analysis across all regions.</span>
+        </motion.div>
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-left rounded-lg text-[#005143] px-6 p-4 font-semibold text-xl flex flex-col gap-0">
+            <span className="font-semibold text-sm">Market Signals</span>
+            <span className="font-normal text-[13px]">Global economic indicators integrated in real-time.</span>
+        </motion.div>
         
     </motion.div>
       </div>
@@ -674,15 +667,12 @@ function SupplySection (){
           {/* SVG Lines */}
           <svg className="absolute w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <AnimatedPath isInView={seeHowInView} d="
-               M150 150
+              M150 290
               H1000
-              V360
+              V550
               H0
-              V520
-              H1000
-              V880
-              H600
-              
+              V820
+              H800
             " />
           </svg>
 
@@ -755,7 +745,7 @@ export default function SalesAI() {
         )}
         {activeSection === 2 && (
           <div onClick={handleSectionClick}>
-            <SupplySection key="supply" />
+            <SalesSection key="sales" />
           </div>
         )}
       </AnimatePresence>
