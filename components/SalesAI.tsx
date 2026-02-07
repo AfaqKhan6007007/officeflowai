@@ -247,7 +247,7 @@ function CustomerSection (){
     )
 }
 
-function ResourceSection (){
+function LeadSection (){
     const seeHowRef = useRef(null);
   const seeHowInView = useInView(seeHowRef, {
     once: false,
@@ -256,12 +256,12 @@ function ResourceSection (){
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.5 });
   const gridItemsChat = [
-    { img: "/cal.png", text: "Project / Shift Definition" },
-    { img: "/community.png", text: "Skill & Availability Mapping" },
-    { img: "/stack.png", text: "Workload & Capacity Analysis" },
-    { img: "/dependency.png", text: "Resource Assignment" },
-    { img: "/alert.png", text: "Conflict Detection" },
-    { img: "/cal.png", text: "Schedule Finalization" },
+    { img: "/dependency.png", text: "Lead Source Identification" },
+    { img: "/copy_new.png", text: "Lead Data Extraction" },
+    { img: "/ingestion.png", text: "Qualification & Scoring" },
+    { img: "/stack.png", text: " CRM Record Creation" },
+    { img: "/copy_new.png", text: "Lead Assignment" },
+    { img: "/cal.png", text: "Follow-Up Scheduling" },
   ];
   const gridVariants = {
     hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } },
@@ -367,10 +367,10 @@ function ResourceSection (){
       >
         <div className="bg-[#005143] border-white border-2 flex flex-col lg:flex-row gap-4 p-10 md:p-8 mt-10 shadow-[inset_0_0_4px_4px_#02ab81,_0_0_10px_#02ab81]">
         <div className="text-white flex flex-col gap-7 mt-4 lg:mt-45 ml-0 lg:ml-10">
-          <h2 className="text-2xl font-semibold">Resource Allocation Agent</h2>
-          <p className="font-semibold">Aligns people, skills, and capacity before work begins.</p>
+          <h2 className="text-2xl font-semibold">Lead Capturing Agent</h2>
+          <p className="font-semibold">Automatically collects, qualifies, and routes leads to your team.</p>
           <p>
-            Plans projects and shifts by intelligently mapping skills, availability, and workload.<br/> The agent assigns resources, detects conflicts early, and finalizes balanced<br/> schedules that keep teams productive without overload.
+            Captures leads from multiple sources, extracts relevant data, scores their quality,<br/> creates CRM records, assigns them to the right team member, and schedules<br/> follow-ups so sales never miss an opportunity.
           </p>
           <button className="flex gap-3 sm:gap-5 bg-[#1F7A5A] text-white rounded-lg p-2 sm:p-4 text-lg sm:text-xl w-full sm:w-[200px] font-semibold hover:bg-[#35bd8e] justify-center">
             <span>Try for Free </span>
@@ -386,27 +386,32 @@ function ResourceSection (){
       animate={isInView ? "visible" : "hidden"}
     >
         <div className="bg-[#005143] w-full text-center rounded-lg text-white px-6 p-4 font-semibold text-xl flex flex-row justify-between">
-            <span>Active Project</span>
-            <span>Project A</span>
+            <span>Lead Capture Agent</span>
         </div>
-        <div className="text-sm text-[#005143] text-left mt-2">
-            Resource Allocation
-        </div>
-        <motion.div variants={itemVariants} className="p-5 rounded-lg w-full border-2 border-[#005143] flex flex-col gap-1 mt-2 bg-[#dff1e6]">
-            <span className="text-sm text-[#005143]">Design Task</span>
-            <span className="text-sm text-[#005143] font-semibold">Ailah, Hani</span>
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-center rounded-lg text-[#005143] px-6 p-4 font-semibold text-sm flex flex-row gap-3">
+            <Image src="/tick_final.svg" alt="tick" width={25} height={20} />
+            <span>Data extracted</span>
         </motion.div>
-        <motion.div variants={itemVariants} className="p-5 rounded-lg w-full border-2 border-[#005143] flex flex-col gap-1 mt-2 bg-[#dff1e6]">
-            <span className="text-sm text-[#005143]">Development</span>
-            <span className="text-sm text-[#005143] font-semibold">Dev Team A → Ali, Hamza</span>
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-center rounded-lg text-[#005143] px-6 p-4 font-semibold text-sm flex flex-row gap-3">
+            <Image src="/tick_final.svg" alt="tick" width={25} height={20} />
+            <span>Lead Scored</span>
         </motion.div>
-        <motion.div variants={itemVariants} className="p-5 rounded-lg w-full border-2 border-[#005143] flex flex-col gap-1 mt-2 bg-[#dff1e6]">
-            <span className="text-sm text-[#005143]">QA Testing</span>
-            <span className="text-sm text-[#005143] font-semibold">Sarah Khan</span>
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-center rounded-lg text-[#005143] px-6 p-4 font-semibold text-sm flex flex-row gap-3">
+            <Image src="/tick_final.svg" alt="tick" width={25} height={20} />
+            <span>Qualified</span>
         </motion.div>
-        <motion.div variants={itemVariants} className="p-5 rounded-lg w-full border-2 border-[#005143] flex flex-col gap-1 mt-2 bg-[#dff1e6]">
-            <span className="text-sm text-[#005143]">Support Ops</span>
-            <span className="text-sm text-[#005143] font-semibold">Ahmed</span>
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-center rounded-lg text-[#005143] px-6 p-4 font-semibold text-sm flex flex-row gap-3">
+            <Image src="/tick_final.svg" alt="tick" width={25} height={20} />
+            <span>CRM record created</span>
+        </motion.div>
+        <hr className="border-[#dff1e6] sm:-mx-6" />
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-left rounded-lg text-[#005143] px-6 p-4 font-semibold text-xl flex flex-col gap-0">
+            <span className="font-semibold text-sm">Instant Capture</span>
+            <span className="font-normal text-[13px]">Convert leads in seconds from any digial touchpoint with AI powered intake. </span>
+        </motion.div>
+        <motion.div variants={itemVariants} className="bg-[#dff1e6] w-full text-left rounded-lg text-[#005143] px-6 p-4 font-semibold text-xl flex flex-col gap-0">
+            <span className="font-semibold text-sm">Intelligent Scoring</span>
+            <span className="font-normal text-[13px]">Automatically qualify prospects based on company size, intent and historical data. </span>
         </motion.div>
         
     </motion.div>
@@ -745,7 +750,7 @@ export default function SalesAI() {
         )}
         {activeSection === 1 && (
           <div onClick={handleSectionClick}>
-            <ResourceSection key="resource" />
+            <LeadSection key="lead" />
           </div>
         )}
         {activeSection === 2 && (
